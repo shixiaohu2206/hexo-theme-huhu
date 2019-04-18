@@ -1,0 +1,22 @@
+<% if (is_home()){ %>
+    <% page.posts.each(function (post) { %>
+    <article class="list">
+        <div class="list-time">
+            <a href="<%- url_for(post.path) %>">
+                <%- date(post.date, "YYYY-MM-DD") %>
+            </a>
+        </div>
+        <div class="list-title">
+            <a href="<%- url_for(post.path) %>">
+                <%= post.title %>
+            </a>
+        </div>
+    </article>
+    <% }) %>
+    <div class="list-paginator">
+        <%- paginator({
+            prev_text: __('prev'),
+            next_text: __('next')
+        }) %>
+    </div>
+    <% } %>
