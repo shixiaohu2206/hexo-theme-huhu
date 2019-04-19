@@ -13,21 +13,32 @@
     <%- css('style/style') %>
   </head>
   <body>
-    <div id="main">
-        <header>
-        <div class="title">utone</div>
-        </header>
-        <article>31231</article>
-      
-        <footer>
-        </footer>
-      <span class="svg svg-brush">
-        <svg width="100%" height="100%" class="icon-brush">
-          <use
-            xlink:href="https://www.kikk.be/2017/files/templates/kikk2017/public/assets/sprite.svg#brush"
-          ></use>
-        </svg>
-      </span>
+    <div class="container">
+      <header>
+        <div class="title hover">utone</div>
+        <div class="menu">
+          <ul>
+            <li><a href="#" class="hover">Home</a></li>
+            <li><a href="#" class="hover">Archive</a></li>
+            <li><a href="#" class="hover">About</a></li>
+            <li><a href="#" class="hover">Rss</a></li>
+            <li><a href="#" class="hover">Search</a></li>
+          </ul>
+        </div>
+      </header>
+      <div class="main">
+        <div class="mask"></div>
+        <aside class="left"></aside>
+        <aside class="right"></aside>
+        <div class="logo hover">
+          <div class="sign hover">
+            utone
+            <p>personal site</p>
+          </div>
+        </div>
+      </div>
+      <footer></footer>
     </div>
   </body>
 </html>
+<%- js('scripts/index.js') %>

@@ -2,29 +2,151 @@
 @import 'font.styl'
 @import 'index.styl'
 
-#main {
+.container {
     width: 100%
-    height: 100%
-    background-color: #fff
+    min-height: 1000px
+    background: -webkit-linear-gradient(left, #116D7A, #0D2041) /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(right, #116D7A, #0D2041) /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(right, #116D7A, #0D2041) /* Firefox 3.6 - 15 */
+    background: linear-gradient(to right, #116D7A, #0D2041) /* 标准的语法 */
+    position: relative
+
+    .hidden {
+        display: none
+    }
+
+    .show-header {
+        transform: translateY(0)
+    }
+
+    .hide-header {
+        transform: translateY(-100%)
+    }
+
+    .hover {
+        transition: text-shadow 0.6s ease
+
+        &:hover {
+            text-shadow: 1px 1px 0px #fff
+        }
+    }
 
     header {
-        width: 100%
         position: fixed
-        padding-top: 29px
-        padding-bottom: 30px
-        background-color: #0c2f51
+        width: 100%
+        z-index: 999
+        padding-top: 1rem
+        padding-bottom: 1rem
+        display: -webkit-box
+        display: -moz-box
+        display: -ms-flexbox
+        display: -webkit-flex
+        display: flex
+        justify-content: space-between
+        border-top-left-radius: 2rem
+        border-bottom-left-radius: 2rem
+        transition: -webkit-transform, top, background-color 1s cubic-bezier(0.165, 0.84, 0.44, 1)
+        transition: transform, top, background-color 1s cubic-bezier(0.165, 0.84, 0.44, 1)
+        transition: transform, top, background-color 1s cubic-bezier(0.165, 0.84, 0.44, 1), -webkit-transform 1s cubic-bezier(0.165, 0.84, 0.44, 1)
+
+        .title {
+            width: 80px
+            color: #fff
+            font-size: 2rem
+            padding: 0 1rem
+            cursor: pointer
+            font-family: 'California-Medium'
+            text-shadow: 0 0 3rem #fff
+            -webkit-transform: skewY(-11.5deg)
+            transform: skewY(-11.5deg)
+            transition: text-shadow 0.6s ease
         }
 
+        .menu {
+            line-height: 2rem
 
-    .title {
-        width: 120px
-        color: #fff
-        font-size: 48px
-        padding: 0 20px
-        font-family: 'California-Medium'
-        text-shadow: 0 0 42px #fff
-        -webkit-transform: skewY(-11.5deg)
-        transform: skewY(-11.5deg)
-        pointer-events: none // 去除鼠标事件
+            ul {
+                display: flex
+
+                li {
+                    height: 2rem
+
+                    a {
+                        color: #fff
+                        font-size: 0.625rem
+                        font-family: 'Radikal-Bold'
+                        margin: 0 1rem
+                        text-shadow: 0 0 3rem #fff
+                        position: relative
+
+                        &::after {
+                            content: ''
+                            height: 1px
+                            position: absolute
+                            left: 0
+                            bottom: -5px
+                            width: 0
+                            background: #fff
+                            transition: width 0.3s ease-in-out
+                        }
+
+                        &:hover::after {
+                            width: 100%
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .main {
+        box-sizing: border-box
+        display: -webkit-box
+        display: -moz-box
+        display: -ms-flexbox
+        display: -webkit-flex
+        display: flex
+        width: 100%
+        height: 25rem
+        padding: 6rem
+
+        // background: url('../images/background.jpg') no-repeat center center / 100% 100%
+        .mask {
+            // top: 0
+            // left: 0
+            // position: absolute
+            // width: 100%
+            // height: 100%
+            // background: -webkit-linear-gradient(left, #333, transparent) /* Safari 5.1 - 6.0 */
+            // background: -o-linear-gradient(right, #333, transparent) /* Opera 11.1 - 12.0 */
+            // background: -moz-linear-gradient(right, #333, transparent) /* Firefox 3.6 - 15 */
+            // background: linear-gradient(to right, #333, transparent) /* 标准的语法 */
+        }
+
+        .sign {
+            width: 13rem
+            color: #fff
+            font-size: 2.5rem
+            cursor: pointer
+            font-family: 'California-Medium'
+            text-shadow: 1px 1px 3rem #fff
+            -webkit-transform: skewY(-11.5deg)
+            transform: skewY(-11.5deg)
+            border-bottom: 0.1rem solid #fff
+            padding-bottom: 1.2rem
+
+            &:hover {
+                text-shadow: 1px 1px 0px #fff
+            }
+        }
+    }
+
+    footer {
+        position: absolute
+        left: 0
+        bottom: 0
+        width: 100%
+        height: 10rem
+        background-color: #fff
     }
 }
