@@ -2,13 +2,19 @@
 @import 'font.styl'
 @import 'index.styl'
 
+#universe {
+    width: 100%
+    height: 100%
+    position: fixed
+    background: -webkit-linear-gradient(left, #125685, #0A1A3B) /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(right, #125685, #0A1A3B) /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(right, #125685, #0A1A3B) /* Firefox 3.6 - 15 */
+    background: linear-gradient(to right, #125685, #0A1A3B) /* 标准的语法 */
+}
+
 .container {
     width: 100%
     min-height: 1000px
-    background: -webkit-linear-gradient(left, #116D7A, #0D2041) /* Safari 5.1 - 6.0 */
-    background: -o-linear-gradient(right, #116D7A, #0D2041) /* Opera 11.1 - 12.0 */
-    background: -moz-linear-gradient(right, #116D7A, #0D2041) /* Firefox 3.6 - 15 */
-    background: linear-gradient(to right, #116D7A, #0D2041) /* 标准的语法 */
     position: relative
 
     .hidden {
@@ -24,6 +30,7 @@
     }
 
     .hover {
+        text-shadow: 0 0 3rem #fff
         transition: text-shadow 0.6s ease
 
         &:hover {
@@ -31,19 +38,35 @@
         }
     }
 
+    .diagonal {
+        cursor: pointer
+        font-family: 'California-Medium'
+        -webkit-transform: skewY(-11.5deg)
+        transform: skewY(-11.5deg)
+        transition: text-shadow 0.6s cubic-bezier(0.165, 0.84, 0.44, 1)
+    }
+
+    .hover-effect {
+        transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1)
+
+        &:hover {
+            transform: scale(1.02, 1.02)
+        }
+    }
+
     header {
+        opacity: 0.95
         position: fixed
         width: 100%
         z-index: 999
-        padding-top: 1rem
-        padding-bottom: 1rem
+        padding-top: 2rem
+        padding-bottom: 2rem
         display: -webkit-box
         display: -moz-box
         display: -ms-flexbox
         display: -webkit-flex
         display: flex
         justify-content: space-between
-        border-top-left-radius: 2rem
         border-bottom-left-radius: 2rem
         transition: -webkit-transform, top, background-color 1s cubic-bezier(0.165, 0.84, 0.44, 1)
         transition: transform, top, background-color 1s cubic-bezier(0.165, 0.84, 0.44, 1)
@@ -53,13 +76,7 @@
             width: 80px
             color: #fff
             font-size: 2rem
-            padding: 0 1rem
-            cursor: pointer
-            font-family: 'California-Medium'
-            text-shadow: 0 0 3rem #fff
-            -webkit-transform: skewY(-11.5deg)
-            transform: skewY(-11.5deg)
-            transition: text-shadow 0.6s ease
+            padding: 0 3rem
         }
 
         .menu {
@@ -73,7 +90,7 @@
 
                     a {
                         color: #fff
-                        font-size: 0.625rem
+                        font-size: 1rem
                         font-family: 'Radikal-Bold'
                         margin: 0 1rem
                         text-shadow: 0 0 3rem #fff
@@ -99,54 +116,98 @@
         }
     }
 
-    .main {
+    .banner {
         box-sizing: border-box
         display: -webkit-box
         display: -moz-box
         display: -ms-flexbox
         display: -webkit-flex
         display: flex
+        justify-content: space-between
         width: 100%
-        height: 25rem
-        padding: 6rem
+        height: 40rem
+        padding-top: 12rem
+        padding-bottom: 5rem
 
-        // background: url('../images/background.jpg') no-repeat center center / 100% 100%
-        .mask {
-            // top: 0
-            // left: 0
-            // position: absolute
-            // width: 100%
-            // height: 100%
-            // background: -webkit-linear-gradient(left, #333, transparent) /* Safari 5.1 - 6.0 */
-            // background: -o-linear-gradient(right, #333, transparent) /* Opera 11.1 - 12.0 */
-            // background: -moz-linear-gradient(right, #333, transparent) /* Firefox 3.6 - 15 */
-            // background: linear-gradient(to right, #333, transparent) /* 标准的语法 */
+        .caption {
+            width: 50%
+            display: -webkit-box
+            display: -moz-box
+            display: -ms-flexbox
+            display: -webkit-flex
+            display: flex
+            align-items: center
+            flex-direction: column
+
+            .subhead {
+                align-self: flex-start
+                color: #00b69d
+                font-size: 1.5rem
+            }
+
+            .sign {
+                width: 23rem
+                color: #fff
+                font-size: 4rem
+                border-bottom: 0.1rem solid #fff
+                padding-top: 1.2rem
+                padding-bottom: 1.2rem
+
+                p {
+                    margin-left: 3rem
+                }
+            }
         }
 
-        .sign {
-            width: 13rem
-            color: #fff
-            font-size: 2.5rem
-            cursor: pointer
-            font-family: 'California-Medium'
-            text-shadow: 1px 1px 3rem #fff
-            -webkit-transform: skewY(-11.5deg)
-            transform: skewY(-11.5deg)
-            border-bottom: 0.1rem solid #fff
-            padding-bottom: 1.2rem
+        .illustration {
+            width: 50%
+            height: 100%
+            background: url('../svg/dance_the_music.svg') no-repeat center center / 100% 100%
+        }
+    }
 
-            &:hover {
-                text-shadow: 1px 1px 0px #fff
+    main {
+        .list {
+            box-sizing: border-box
+            display: -webkit-box
+            display: -moz-box
+            display: -ms-flexbox
+            display: -webkit-flex
+            display: flex
+            flex-wrap: wrap
+            justify-content: space-around
+            align-items: center
+
+            .wrap {
+                width: 30rem
+                height: 20rem
+                cursor: pointer
+                position: relative
+                margin-bottom: 5rem
+                box-shadow: 0 7px 20px rgba(0, 0, 0, 0.2)
+
+                .list-date {
+                    position: absolute
+                    right: 0
+                    bottom: 0
+                    z-index: 2
+                    color: #fff
+                    font-size: 5rem
+                }
+
+                figure {
+                    width: 100%
+                    height: 100%
+                    border-radius: 5px
+                    -webkit-filter: grayscale(50%)
+                    filter: grayscale(50%)
+                }
             }
         }
     }
 
     footer {
-        position: absolute
-        left: 0
-        bottom: 0
         width: 100%
         height: 10rem
-        background-color: #fff
     }
 }
