@@ -67,7 +67,6 @@
         display: -webkit-flex
         display: flex
         justify-content: space-between
-        border-bottom-left-radius: 2rem
         transition: -webkit-transform, top, background-color 1s cubic-bezier(0.165, 0.84, 0.44, 1)
         transition: transform, top, background-color 1s cubic-bezier(0.165, 0.84, 0.44, 1)
         transition: transform, top, background-color 1s cubic-bezier(0.165, 0.84, 0.44, 1), -webkit-transform 1s cubic-bezier(0.165, 0.84, 0.44, 1)
@@ -123,21 +122,22 @@
         display: -ms-flexbox
         display: -webkit-flex
         display: flex
-        justify-content: space-between
+        flex-wrap: wrap
+        justify-content: space-around
         width: 100%
-        height: 40rem
+        height: auto
         padding-top: 12rem
         padding-bottom: 5rem
 
         .caption {
-            width: 50%
+            width: 30rem
+            height: 30rem
             display: -webkit-box
             display: -moz-box
             display: -ms-flexbox
             display: -webkit-flex
             display: flex
             align-items: center
-            flex-direction: column
 
             .subhead {
                 align-self: flex-start
@@ -160,9 +160,19 @@
         }
 
         .illustration {
-            width: 50%
-            height: 100%
-            background: url('../svg/dance_the_music.svg') no-repeat center center / 100% 100%
+            width: 30rem
+            height: 30rem
+            text-align: center
+
+            img {
+                width: 100%
+                height: 100%
+                transition: all 0.5s ease-out
+
+                &:hover {
+                    transform: rotate(5deg)
+                }
+            }
         }
     }
 
@@ -174,33 +184,125 @@
             display: -ms-flexbox
             display: -webkit-flex
             display: flex
-            flex-wrap: wrap
-            justify-content: space-around
+            flex-direction: column
             align-items: center
 
             .wrap {
-                width: 30rem
-                height: 20rem
-                cursor: pointer
-                position: relative
+                width: 100%
+                height: 25rem
                 margin-bottom: 5rem
-                box-shadow: 0 7px 20px rgba(0, 0, 0, 0.2)
+                box-sizing: border-box
+                display: -webkit-box
+                display: -moz-box
+                display: -ms-flexbox
+                display: -webkit-flex
+                display: flex
+                flex-wrap: wrap
+                justify-content: center
+                align-items: center
 
-                .list-date {
-                    position: absolute
-                    right: 0
-                    bottom: 0
-                    z-index: 2
-                    color: #fff
-                    font-size: 5rem
+                // transition: all 0.2s cubic-bezier(0.165, 0.84, 0.44, 1)
+                .l {
+                    width: 20rem
+                    height: 100%
+                    position: relative
+
+                    .date {
+                        position: absolute
+                        right: 0
+                        bottom: 0
+                        z-index: 2
+                        color: #fff
+                        font-size: 5rem
+                    }
+
+                    figure {
+                        width: 100%
+                        height: 100%
+                        display: -webkit-box
+                        display: -moz-box
+                        display: -ms-flexbox
+                        display: -webkit-flex
+                        display: flex
+                        flex-direction: column
+                        justify-content: center
+                    }
                 }
 
-                figure {
-                    width: 100%
+                .r {
+                    width: 20rem
                     height: 100%
-                    border-radius: 5px
-                    -webkit-filter: grayscale(50%)
-                    filter: grayscale(50%)
+                    padding-top: 1rem
+                    padding-left: 2.5rem
+                    box-sizing: border-box
+                    display: -webkit-box
+                    display: -moz-box
+                    display: -ms-flexbox
+                    display: -webkit-flex
+                    display: flex
+                    flex-direction: column
+
+                    .title {
+                        color: #fff
+                        font-size: 1.5rem
+                        text-shadow: 0 0 3rem #fff
+                        margin-bottom: 1rem
+                    }
+
+                    .classify {
+                        &::after {
+                            margin-top: 23px
+                            margin-bottom: 23px
+                            margin-left: -17px
+                            height: 1px
+                            width: 25px
+                            content: ''
+                            display: block
+                            background-image: linear-gradient(270deg, #45ffe6, rgba(69, 255, 230, 0))
+                        }
+
+                        .tag-list, .category-list {
+                            display: -webkit-box
+                            display: -moz-box
+                            display: -ms-flexbox
+                            display: -webkit-flex
+                            display: flex
+                            flex-wrap: wrap
+                            margin-bottom: 1rem
+
+                            .tag-list-item, .category-list-item {
+                                margin-right: 1rem
+                            }
+
+                            .tag-list-link, .category-list-link {
+                                color: #00b69d
+                                font-size: 0.8rem
+                            }
+                        }
+                    }
+
+                    .sub {
+                        height: 10rem
+                        line-height: 2
+                        letter-spacing: 0.01em
+                        overflow: hidden
+                        margin-bottom: 3rem
+                        color: rgba(185, 215, 255, 0.5)
+                    }
+
+                    .more {
+                        align-self: flex-end
+
+                        a {
+                            color: #00AF98
+                            font-size: 1.5rem
+                            transition: color 0.5s cubic-bezier(0.165, 0.84, 0.44, 1)
+
+                            &:hover {
+                                color: #fff
+                            }
+                        }
+                    }
                 }
             }
         }
