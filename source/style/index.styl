@@ -1,0 +1,311 @@
+#universe {
+    width: 100%
+    height: 100%
+    position: fixed
+    background: -webkit-linear-gradient(left, #125685, #0A1A3B) /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(right, #125685, #0A1A3B) /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(right, #125685, #0A1A3B) /* Firefox 3.6 - 15 */
+    background: linear-gradient(to right, #125685, #0A1A3B) /* 标准的语法 */
+}
+
+.container {
+    width: 100%
+    min-height: 1000px
+    position: relative
+
+    .hidden {
+        display: none
+    }
+
+    .show-header {
+        transform: translateY(0)
+    }
+
+    .hide-header {
+        transform: translateY(-100%)
+    }
+
+    .hover {
+        text-shadow: 0 0 3rem #fff
+        transition: text-shadow 0.6s ease
+
+        &:hover {
+            text-shadow: 1px 1px 0px #fff
+        }
+    }
+
+    .diagonal {
+        cursor: pointer
+        font-family: 'California-Medium'
+        -webkit-transform: skewY(-11.5deg)
+        transform: skewY(-11.5deg)
+        transition: text-shadow 0.6s cubic-bezier(0.165, 0.84, 0.44, 1)
+    }
+
+    .hover-effect {
+        transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1)
+
+        &:hover {
+            transform: scale(1.02, 1.02)
+        }
+    }
+
+    header {
+        opacity: 0.95
+        position: fixed
+        width: 100%
+        z-index: 999
+        padding-top: 2rem
+        padding-bottom: 2rem
+        display: -webkit-box
+        display: -moz-box
+        display: -ms-flexbox
+        display: -webkit-flex
+        display: flex
+        justify-content: space-between
+        transition: -webkit-transform, top, background-color 1s cubic-bezier(0.165, 0.84, 0.44, 1)
+        transition: transform, top, background-color 1s cubic-bezier(0.165, 0.84, 0.44, 1)
+        transition: transform, top, background-color 1s cubic-bezier(0.165, 0.84, 0.44, 1), -webkit-transform 1s cubic-bezier(0.165, 0.84, 0.44, 1)
+
+        .title {
+            width: 80px
+            color: #fff
+            font-size: 2rem
+            padding: 0 3rem
+        }
+
+        .menu {
+            line-height: 2rem
+
+            ul {
+                display: flex
+
+                li {
+                    height: 2rem
+
+                    a {
+                        color: #fff
+                        font-size: 1rem
+                        font-family: 'Radikal-Bold'
+                        margin: 0 1rem
+                        text-shadow: 0 0 3rem #fff
+                        position: relative
+
+                        &::after {
+                            content: ''
+                            height: 1px
+                            position: absolute
+                            left: 0
+                            bottom: -5px
+                            width: 0
+                            background: #fff
+                            transition: width 0.3s ease-in-out
+                        }
+
+                        &:hover::after {
+                            width: 100%
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .banner {
+        box-sizing: border-box
+        display: -webkit-box
+        display: -moz-box
+        display: -ms-flexbox
+        display: -webkit-flex
+        display: flex
+        flex-wrap: wrap
+        justify-content: space-around
+        width: 100%
+        height: auto
+        padding-top: 12rem
+        padding-bottom: 5rem
+
+        .caption {
+            width: 30rem
+            height: 30rem
+            display: -webkit-box
+            display: -moz-box
+            display: -ms-flexbox
+            display: -webkit-flex
+            display: flex
+            align-items: center
+
+            .subhead {
+                align-self: flex-start
+                color: #00b69d
+                font-size: 1.5rem
+            }
+
+            .sign {
+                width: 23rem
+                color: #fff
+                font-size: 4rem
+                border-bottom: 0.1rem solid #fff
+                padding-top: 1.2rem
+                padding-bottom: 1.2rem
+
+                p {
+                    margin-left: 3rem
+                }
+            }
+        }
+
+        .illustration {
+            width: 30rem
+            height: 30rem
+            text-align: center
+
+            img {
+                width: 100%
+                height: 100%
+                transition: all 0.5s ease-out
+
+                &:hover {
+                    transform: rotate(5deg)
+                }
+            }
+        }
+    }
+
+    main {
+        .list {
+            box-sizing: border-box
+            display: -webkit-box
+            display: -moz-box
+            display: -ms-flexbox
+            display: -webkit-flex
+            display: flex
+            flex-direction: column
+            align-items: center
+
+            .wrap {
+                width: 100%
+                height: 25rem
+                margin-bottom: 5rem
+                box-sizing: border-box
+                display: -webkit-box
+                display: -moz-box
+                display: -ms-flexbox
+                display: -webkit-flex
+                display: flex
+                flex-wrap: wrap
+                justify-content: center
+                align-items: center
+
+                // transition: all 0.2s cubic-bezier(0.165, 0.84, 0.44, 1)
+                .l {
+                    width: 20rem
+                    height: 100%
+                    position: relative
+
+                    .date {
+                        position: absolute
+                        right: 0
+                        bottom: 0
+                        z-index: 2
+                        color: #fff
+                        font-size: 5rem
+                    }
+
+                    figure {
+                        width: 100%
+                        height: 100%
+                        display: -webkit-box
+                        display: -moz-box
+                        display: -ms-flexbox
+                        display: -webkit-flex
+                        display: flex
+                        flex-direction: column
+                        justify-content: center
+                    }
+                }
+
+                .r {
+                    width: 20rem
+                    height: 100%
+                    padding-top: 1rem
+                    padding-left: 2.5rem
+                    box-sizing: border-box
+                    display: -webkit-box
+                    display: -moz-box
+                    display: -ms-flexbox
+                    display: -webkit-flex
+                    display: flex
+                    flex-direction: column
+
+                    .title {
+                        color: #fff
+                        font-size: 1.5rem
+                        text-shadow: 0 0 3rem #fff
+                        margin-bottom: 1rem
+                    }
+
+                    .classify {
+                        &::after {
+                            margin-top: 23px
+                            margin-bottom: 23px
+                            margin-left: -17px
+                            height: 1px
+                            width: 25px
+                            content: ''
+                            display: block
+                            background-image: linear-gradient(270deg, #45ffe6, rgba(69, 255, 230, 0))
+                        }
+
+                        .tag-list, .category-list {
+                            display: -webkit-box
+                            display: -moz-box
+                            display: -ms-flexbox
+                            display: -webkit-flex
+                            display: flex
+                            flex-wrap: wrap
+                            margin-bottom: 1rem
+
+                            .tag-list-item, .category-list-item {
+                                margin-right: 1rem
+                            }
+
+                            .tag-list-link, .category-list-link {
+                                color: #00b69d
+                                font-size: 0.8rem
+                            }
+                        }
+                    }
+
+                    .sub {
+                        height: 10rem
+                        line-height: 2
+                        letter-spacing: 0.01em
+                        overflow: hidden
+                        margin-bottom: 3rem
+                        color: rgba(185, 215, 255, 0.5)
+                    }
+
+                    .more {
+                        align-self: flex-end
+
+                        a {
+                            color: #00AF98
+                            font-size: 1.5rem
+                            transition: color 0.5s cubic-bezier(0.165, 0.84, 0.44, 1)
+
+                            &:hover {
+                                color: #fff
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    footer {
+        width: 100%
+        height: 10rem
+    }
+}

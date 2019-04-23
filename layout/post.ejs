@@ -1,0 +1,37 @@
+<div id="post">
+        <% if (page.link || page.title){ %>
+        <header class="article-header">
+            <h1>
+                <%= page.title %>
+            </h1>
+        </header>
+        <% } %>
+        <div class="post-meta">
+            <time class="post-data" datetime="<%= date_xml(page.date) %>" itemprop="datePublished">
+                <%= date(page.date, null) %>
+            </time>
+            <% if (page.categories && page.categories.length){ %>
+            <%- list_categories(page.categories, {
+                            show_count: true,
+                            class: 'post-category',
+                            depth: '-1'
+                          }) %>
+            <% } %>
+            <% if (page.tags && page.tags.length){ %>
+            <%- list_tags(page.tags, {
+                            show_count: true,
+                            class: 'post-tag'
+                          }) %>
+            <% } %>
+        </div>
+        <% if (page.photos && page.photos.length){ %>
+        <div class="post-photos">
+            <a class="fancybox" href="<%- url_for(page.photos[0]) %>" rel="gallery_<%= page._id %>" target="_blank">
+                <img src="<%- url_for(page  .photos[0]) %>" class="animation-img" itemprop="image">
+            </a>
+        </div>
+        <% } %>
+        <div class="post-entry">
+            <%- page.content %>
+        </div>
+    </div>

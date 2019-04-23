@@ -1,8 +1,11 @@
 <% if (is_home()){ %> <% page.posts.each(function (post, key) { %>
 <section class="list">
   <div class="wrap">
-    <% if (key % 2 === 0){ %>
     <div class="l">
+        <% if (key === 1){ %>
+          <%= console.log(post) %>
+          <% }%>
+        
       <div class="date diagonal"><%- date(post.date, "YYYYMMDD") %></div>
       <a href="<%- url_for(post.path) %>">
         <figure
@@ -20,6 +23,7 @@
         false, class: 'tag' }) %>
       </div>
       <p class="sub">
+        312313
         <%= post.abstract %>
       </p>
       <div class="more diagonal">
@@ -29,11 +33,9 @@
         </a>
       </div>
     </div>
-
-    <% }) %>
   </div>
 </section>
-<% }) %>
+<% })%>
 <div class="paginator">
   <%- paginator({ prev_text: __('prev'), next_text: __('next') }) %>
 </div>
