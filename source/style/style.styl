@@ -1,4 +1,359 @@
 @import 'reset.styl'
 @import 'font.styl'
 @import 'index.styl'
+@import 'variables.styl'
 @import 'highlight.styl'
+
+#universe {
+    width: 100%
+    height: 100%
+    position: fixed
+    background: -webkit-linear-gradient(left, #125685, #0A1A3B) /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(right, #125685, #0A1A3B) /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(right, #125685, #0A1A3B) /* Firefox 3.6 - 15 */
+    background: linear-gradient(to right, #125685, #0A1A3B) /* 标准的语法 */
+}
+
+.header-bg {
+    z-index: 999
+    position: fixed
+    width: 100%
+    height: 4.2rem
+    background-color: #222222
+    transform: translateY(-100%)
+    transition: transform 1s cubic-bezier(0.165, 0.84, 0.44, 1)
+}
+
+header {
+    box-sizing: border-box
+    display: -webkit-box
+    display: -moz-box
+    display: -ms-flexbox
+    display: -webkit-flex
+    display: flex
+    flex-wrap: wrap
+    padding: 1rem 3rem
+    position: fixed
+    width: 100%
+    z-index: 999
+
+    .logo {
+        color: #fff
+        font-size: 1.3rem
+        font-family: 'California-Medium'
+        padding: 0.3rem
+    }
+
+    ul {
+        display: -webkit-box
+        display: -moz-box
+        display: -ms-flexbox
+        display: -webkit-flex
+        display: flex
+        flex-wrap: wrap
+        padding: 0 1rem
+
+        a {
+            color: #adb7be
+            font-size: 0.8rem
+        }
+
+        li {
+            list-style: none
+            padding: 0.5rem 2rem
+
+            &:nth-child(1) {
+                border-right: 1px solid #414141
+            }
+        }
+    }
+}
+
+.banner {
+    width: 100%
+    height: 20rem
+    position: relative
+    background: #232323
+
+    .bg {
+        width: 100%
+        height: 100%
+        background: #232323
+        position: absolute
+        filter: grayscale(100%) brightness(50%)
+        -webkit-filter: grayscale(100%) brightness(50%)
+        opacity: 0.1
+        background-position: center top
+        background-repeat: no-repeat
+        background-size: cover
+        background-image: url('https://images.ui8.net/uploads/hero_1538305860728.jpg') // images.ui8.net/uploads/hero_1538305860728.jpg)}
+    }
+
+    .post-actions {
+        position: absolute
+        right: 0
+        bottom: -1.5rem
+        width: 100%
+        height: 3rem
+        display: -webkit-box
+        display: -moz-box
+        display: -ms-flexbox
+        display: -webkit-flex
+        display: flex
+        justify-content: flex-end
+        margin-right: 3rem
+
+        div {
+            cursor: pointer
+            line-height: 0
+            padding: 1.5rem
+            text-align: center
+            color: #fff
+            font-weight: 600
+            white-space: nowrap
+            text-transform: uppercase
+            border-radius: 4px
+            background: linear-gradient(-180deg, #3db96d 0%, #1b904e 100%)
+        }
+    }
+
+    .post-content {
+        position: absolute
+        left: 3rem
+        bottom: 2rem
+        width: 100%
+
+        .title {
+            color: #fff
+            font-size: 1.6rem
+            font-weight: 300
+
+            .date {
+                margin-top: 1rem
+                color: #adb7be
+                font-size: 1rem
+                font-weight: 300
+            }
+        }
+    }
+}
+
+.container {
+    width: 100%
+    min-height: 1000px
+    position: relative
+    display: -webkit-box
+    display: -moz-box
+    display: -ms-flexbox
+    display: -webkit-flex
+    display: flex
+    flex-wrap: wrap
+    padding: 5rem 3rem
+    box-sizing: border-box
+
+    .card {
+        display: -webkit-box
+        display: -moz-box
+        display: -ms-flexbox
+        display: -webkit-flex
+        display: flex
+        flex-wrap: wrap
+        justify-content: space-around
+
+        .card-wrap {
+            width: 20rem
+            height: 20rem
+
+            .card-img {
+                width: 20rem
+                height: 15rem
+                border-radius: 4px
+                background-size: cover
+                background-position: center center
+                background-color: #222222
+                background-image: url('../images/background.jpg')
+            }
+
+            .card-content {
+                display: -webkit-box
+                display: -moz-box
+                display: -ms-flexbox
+                display: -webkit-flex
+                display: flex
+                flex-wrap: wrap
+                justify-content: space-between
+                align-items: center
+                padding-top: 0.7rem
+                padding-bottom: 0.7rem
+
+                .card-title {
+                    width: 60%
+                    overflow: hidden
+                    text-overflow: ellipsis
+                    white-space: nowrap
+
+                    a {
+                        color: #fff
+                        font-size: 0.9rem
+                    }
+                }
+
+                .card-date {
+                    background: #2a2a2a
+                    padding: 0.7rem
+
+                    a {
+                        font-weight: 600
+                        text-align: center
+                        border-radius: 4px
+                        font-size: 0.7rem
+                        color: #2f8be6
+                    }
+                }
+            }
+        }
+    }
+
+    .paginator {
+        width: 100%
+        display: -webkit-box
+        display: -moz-box
+        display: -ms-flexbox
+        display: -webkit-flex
+        display: flex
+        justify-content: center
+        align-items: center
+        margin: 1rem 0
+
+        .extend {
+            width: 3rem
+            height: 3rem
+            border-radius: 100%
+            background-color: #2A7DCD
+        }
+
+        .extend:hover {
+            border-radius: 50%
+        }
+
+        a {
+            margin: 0 1rem
+            color: #fff
+            font-size: 1.2rem
+        }
+
+        .current {
+            margin: 0 1rem
+            font-weight: 600
+            color: #2A7DCD
+            font-size: 1.7rem
+        }
+    }
+
+    article {
+        width: 100%
+        padding: 1rem 3rem
+        height: 100%
+        background-color: #fff
+        border-radius: 4px
+        position: relative
+    }
+}
+
+footer {
+    padding: 3rem
+    background-color: #222222
+    border-top: 1px solid #343434
+
+    .products {
+        padding: 4rem 0
+        display: -webkit-box
+        display: -moz-box
+        display: -ms-flexbox
+        display: -webkit-flex
+        display: flex
+        flex-wrap: wrap
+
+        .title {
+            color: #fff
+            font-size: 1.4rem
+            font-weight: 300
+        }
+
+        .l {
+            width: 60%
+        }
+
+        .r {
+            flex: 1
+        }
+
+        ul {
+            margin-top: 1rem
+            display: -webkit-box
+            display: -moz-box
+            display: -ms-flexbox
+            display: -webkit-flex
+            display: flex
+            flex-wrap: wrap
+
+            li {
+                padding-right: 4rem
+                padding-top: 3rem
+                padding-buttom: 2rem
+                list-style: none
+
+                a {
+                    color: #adb7be
+                    font-size: 0.8rem
+                }
+            }
+        }
+    }
+
+    .statist {
+        padding: 2rem 0
+        border-top: 2px solid #2d2d2d
+
+        ul {
+            display: -webkit-box
+            display: -moz-box
+            display: -ms-flexbox
+            display: -webkit-flex
+            display: flex
+            flex-wrap: wrap
+
+            li {
+                padding: 0 1rem
+                list-style: none
+
+                div:nth-child(1) {
+                    color: #fff
+                    font-size: 1.2rem
+                }
+
+                div:nth-child(2) {
+                    color: #4E4E4E
+                    font-size: 0.9rem
+                    padding-top: 0.7rem
+                }
+
+                &:nth-child(1) {
+                    padding-left: 0
+                }
+            }
+        }
+    }
+
+    .copyright {
+        display: -webkit-box
+        display: -moz-box
+        display: -ms-flexbox
+        display: -webkit-flex
+        display: flex
+        font-size: 0.7rem
+        color: #4E4E4E
+        padding-top: 1.5rem
+        border-top: 2px solid #2d2d2d
+    }
+}

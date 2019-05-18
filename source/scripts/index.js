@@ -45,7 +45,7 @@ window.onload = (function() {
     if (scrollTop === 0) {
       headerDom.addStyle("backgroundColor", "transparent")
     } else {
-      headerDom.addStyle("backgroundColor", "#0D2041")
+      headerDom.addStyle("backgroundColor", "rgba(30,30,30,.98)")
     }
   }
 

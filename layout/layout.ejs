@@ -13,34 +13,78 @@
     <%- css('style/style') %>
   </head>
   <body>
-    <canvas id="universe" width="100%" height="100%"></canvas>
-    <aside class="left"></aside>
-    <aside class="right"></aside>
+    <div class="header-bg"></div>
+    <header>
+      <div class="logo">utone</div>
+      <ul>
+        <% for (let i in theme.menu) { %>
+        <li><a href="<%- url_for(theme.menu[i]) %>"> <%= __(i) %> </a></li>
+        <% } %>
+      </ul>
+    </header>
+    <div class="banner">
+      <div class="bg"></div>
+      <% if (is_post()){ %>
+      <div class="post-content">
+        <div class="title">
+          <%- page.title %>
+          <div class="date"><%- date(page.date, "YYYY/MM/DD") %></div>
+        </div>
+      </div>
+      <div class="post-actions">
+        <div>12312</div>
+      </div>
+      <% } %>
+    </div>
     <div class="container">
-      <header>
-        <div class="title diagonal hover">utone</div>
-        <div class="menu">
+      <%- body %>
+    </div>
+    <footer>
+      <div class="products">
+        <div class="l">
+          <div class="title">Friendship</div>
           <ul>
-            <li><a href="#" class="hover">Home</a></li>
-            <li><a href="#" class="hover">Archive</a></li>
-            <li><a href="#" class="hover">About</a></li>
-            <li><a href="#" class="hover">Rss</a></li>
-            <li><a href="#" class="hover">Search</a></li>
+            <li><a href="">Wireframe Kits</a></li>
+            <li><a href="">Wireframe Kits</a></li>
+            <li><a href="">Wireframe Kits</a></li>
+            <li><a href="">Wireframe Kits</a></li>
+            <li><a href="">Wireframe Kits</a></li>
+            <li><a href="">Wireframe Kits</a></li>
+            <li><a href="">Wireframe Kits</a></li>
           </ul>
         </div>
-      </header>
-      <div class="banner">
-        <div class="caption">
-          <div>
-            <p class="subhead diagonal hover">huhu like ye</p>
-            <div class="sign diagonal hover">
-              utone
-              <p>personal site</p>
-            </div>
-          </div>
+        <div class="r">
+          <div class="title">Follow me</div>
+          <ul>
+            <li><a href="">Wireframe Kits</a></li>
+            <li><a href="">Wireframe Kits</a></li>
+            <li><a href="">Wireframe Kits</a></li>
+            <li><a href="">Wireframe Kits</a></li>
+            <li><a href="">Wireframe Kits</a></li>
+            <li><a href="">Wireframe Kits</a></li>
+            <li><a href="">Wireframe Kits</a></li>
+          </ul>
         </div>
-        <div class="illustration">
-          <img src="../svg/3.svg" alt="" />
+      </div>
+      <div class="statist">
+        <ul>
+          <li>
+            <div>206,911</div>
+            <div>Members</div>
+          </li>
+          <li>
+            <div>206,911</div>
+            <div>Members</div>
+          </li>
+          <li>
+            <div>206,911</div>
+            <div>Members</div>
+          </li>
+        </ul>
+      </div>
+      <div class="copyright">
+        <div class="l">
+          © 2019, UI8 LLC.
         </div>
       </div>
       <main>
@@ -50,5 +94,5 @@
     </div>
   </body>
 </html>
-<%- js('scripts/index.js') %>
+<%- js('scripts/header.js') %>
 <!-- <script src="http://g.tbcdn.cn/mtb/lib-flexible/0.3.4/??flexible_css.js,flexible.js"></script> -->

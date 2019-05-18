@@ -1,0 +1,21 @@
+#菜单导航
+menu:
+  home: /
+  archives: /archives
+  about: /about
+  RSS: /atom.xml
+
+#logo
+logo: /images/logo.png
+
+# favicon
+favicon: /images/favicon.ico
+
+# site switch
+site_search: true
+
+# rss
+rss: /atom.xml
+
+# search post url
+search_url: /search.xml
