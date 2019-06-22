@@ -1,0 +1,67 @@
+<div class="archive-wrap">
+<span class="archives-title"><%= __('category')  %></span>
+<%- list_categories({show_count: false, depth: '0' }) %>
+<span class="tags-title"><%= __('tags')  %></span>
+<div class="tag-cloud">
+        <%- tagcloud({
+            min_font: 12, 
+            max_font: 24, 
+            amount: 999, 
+            color: true, 
+            start_color: '#bfbfbf', 
+            end_color: '#e6e6e6',
+        }) %>
+</div>
+<h1 class="archive-other">
+    <% if (is_category()){ %>
+    <span class="archive-other-before">の</span>
+    <%= page.category %>
+    <% } %>
+    <% if (is_tag()){ %>
+    <span class="archive-other-before">#</span>
+    <%= page.tag %>
+    <% } %>
+</h1>
+<% var last; %>
+
+<div class="archive-main">
+<% page.posts.each(function(post, i){ %>
+<% var year = post.date.year(); %>
+<% if (last != year){ %>
+<% if (last != null){ %>
+</div>
+</section>
+<% } %>
+<% last = year; %>
+<section class="archive-section">
+    <div class="archive-date">
+        <a href="<%- url_for(config.archive_dir + '/' + year) %>" class="archive-meta">
+            <%= year %>
+        </a>
+    </div>
+    <div class="archive-content">
+        <% } %>
+        <div class="item">
+            <span class="item-point"></span>
+            <span class="item-time">
+                <%- date(post.date, "MM.DD") %>
+            </span>
+            <span class="item-title">
+                <a href="<%- url_for(post.path) %>">
+                    <%= post.title %>
+                </a>
+            </span>
+        </div>
+        <% }) %>
+        <% if (page.posts.length){ %>
+    </div>
+</section>
+<% } %>
+</div>
+<div class="paginator">
+    <%- paginator({
+            prev_text: __('prev'),
+            next_text: __('next')
+        }) %>
+</div>
+</div>

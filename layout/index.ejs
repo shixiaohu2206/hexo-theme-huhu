@@ -2,7 +2,18 @@
 <section class="card">
   <% page.posts.each(function (post, key) { %>
   <div class="card-wrap">
-    <div class="card-img"></div>
+    <div class="card-img" style="background-image: url('/images/2.jpg')">
+      <div class="card-shadow">
+        <div class="btn">
+          <a href="<%- url_for(post.path) %>">
+            <embed src="/svg/eye-fill.svg" class="svg" type="image/svg+xml" />
+          </a>
+        </div>
+
+        <div class="btn">2</div>
+      </div>
+    </div>
+    <a href="<%- url_for(post.path) %>" class="card-img"></a>
     <div class="card-content">
       <div class="card-title">
         <a href="<%- url_for(post.path) %>">

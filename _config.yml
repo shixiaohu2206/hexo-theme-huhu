@@ -19,3 +19,10 @@ rss: /atom.xml
 
 # search post url
 search_url: /search.xml
+
+#ICP
+site_icp: "皖ICP备16021483号-3"
+
+#友情链接
+site_friends:
+  房间里的小猫咪: "http://baidu.com"

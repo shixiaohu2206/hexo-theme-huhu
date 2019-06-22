@@ -24,7 +24,7 @@
     </header>
     <div class="banner">
       <div class="bg"></div>
-      <% if (is_post()){ %>
+      <% if (is_post() || is_current('about')){ %>
       <div class="post-content">
         <div class="title">
           <%- page.title %>
@@ -32,8 +32,25 @@
         </div>
       </div>
       <div class="post-actions">
-        <div>12312</div>
+        <a href="javascript:void(0);">分享</a>
+        <a href="#SOHUCS">评论(<span id="changyan_count_unit"></span>)</a>
       </div>
+      <% } %>
+      <% if (is_archive()){ %>
+        <div class="post-content">
+          <div class="title">
+            <%= __('archives')  %>
+            <div class="date"><%- date(page.date, "YYYY/MM/DD") %></div>
+          </div>
+        </div>
+      <% } %>
+      <% if (is_home()){ %>
+        <div class="post-content">
+          <div class="title">
+            <%= __('home')  %>
+            <div class="date"><%- date(page.date, "YYYY/MM/DD") %></div>
+          </div>
+        </div>
       <% } %>
     </div>
     <div class="container">
@@ -44,25 +61,20 @@
         <div class="l">
           <div class="title">Friendship</div>
           <ul>
-            <li><a href="">Wireframe Kits</a></li>
-            <li><a href="">Wireframe Kits</a></li>
-            <li><a href="">Wireframe Kits</a></li>
-            <li><a href="">Wireframe Kits</a></li>
-            <li><a href="">Wireframe Kits</a></li>
-            <li><a href="">Wireframe Kits</a></li>
-            <li><a href="">Wireframe Kits</a></li>
+              <% for (let i in theme.site_friends) { %>
+                <li><a href="<%- url_for(theme.site_friends[i]) %>" target="_blank"><%= i %></a></<li>
+              <% } %>
           </ul>
         </div>
         <div class="r">
           <div class="title">Follow me</div>
           <ul>
-            <li><a href="">Wireframe Kits</a></li>
-            <li><a href="">Wireframe Kits</a></li>
-            <li><a href="">Wireframe Kits</a></li>
-            <li><a href="">Wireframe Kits</a></li>
-            <li><a href="">Wireframe Kits</a></li>
-            <li><a href="">Wireframe Kits</a></li>
-            <li><a href="">Wireframe Kits</a></li>
+            <li><a href=""><embed src="/svg/github-fill.svg" class="svg" type="image/svg+xml" /></a></li>
+            <li><a href=""><embed src="/svg/weibo-circle-fill.svg" class="svg" type="image/svg+xml" /></a></li>
+            <li><a href=""><embed src="/svg/QQ-circle-fill.svg" class="svg" type="image/svg+xml" /></a></li>
+            <li><a href=""><embed src="/svg/facebook-fill.svg" class="svg" type="image/svg+xml" /></a></li>
+            <li><a href=""><embed src="/svg/dingtalk-circle-fill.svg" class="svg" type="image/svg+xml" /></a></li>
+            <li><a href=""><embed src="/svg/wechat-fill.svg" class="svg" type="image/svg+xml" /></a></li>
           </ul>
         </div>
       </div>
@@ -70,25 +82,23 @@
         <ul>
           <li>
             <div>206,911</div>
-            <div>Members</div>
+            <div>点击量</div>
           </li>
           <li>
             <div>206,911</div>
-            <div>Members</div>
-          </li>
-          <li>
-            <div>206,911</div>
-            <div>Members</div>
+            <div>评论总数</div>
           </li>
         </ul>
       </div>
       <div class="copyright">
         <div class="l">
-          © 2019, UI8 LLC.
+          © <%- date(new Date(), "YYYY") %> <%= theme.site_icp %>
         </div>
       </div>
     </div>
   </body>
 </html>
 <%- js('scripts/header.js') %>
+<script type="text/javascript" src="https://assets.changyan.sohu.com/upload/plugins/plugins.count.js">
+</script>
 <!-- <script src="http://g.tbcdn.cn/mtb/lib-flexible/0.3.4/??flexible_css.js,flexible.js"></script> -->

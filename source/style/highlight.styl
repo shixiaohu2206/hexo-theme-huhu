@@ -131,10 +131,56 @@ $base-style {
 
 .post-entry {
     @extend $base-style
-    max-width: 700px
+    width: 1080px
     height: 100%
     margin: 0 auto
     box-sizing: border-box
+    position: relative
+    display: -webkit-box
+    display: -moz-box
+    display: -ms-flexbox
+    display: -webkit-flex
+    display: flex
+
+    .post-wrap {
+        width: 777px
+        padding: 3rem 3rem
+        margin: 0 auto
+        box-sizing: border-box
+        padding-bottom: 7rem
+        background-color: #fff
+        border-radius: 4px
+        border-bottom: 1px solid #eaecef
+    }
+
+    .post-toc {
+        flex: 1
+
+        .toc {
+            margin-bottom: 0
+            margin-right: 0
+            margin-top: 0
+            margin-left: 2rem
+            padding: 1rem
+            background-color: #fff
+            border-radius: 4px
+        }
+
+        a {
+            color: #999
+            font-size: 0.8rem
+        }
+
+        a:hover {
+            color: #24292e
+        }
+
+        ol, ul {
+            line-height: 1.2rem
+            list-style: none
+            margin-right: 0
+        }
+    }
 
     p, table {
         font-size: 0.875rem
