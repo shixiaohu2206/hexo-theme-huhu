@@ -24,16 +24,16 @@ _$.prototype.addStyle = function(name, value) {
 }
 
 // init domF
-let headerDom = $("header")
+let headerDom = $('header')
 
 // header func
 function showHeader() {
-  headerDom.addClass("show-header")
-  headerDom.removeClass("hide-header")
+  headerDom.addClass('show-header')
+  headerDom.removeClass('hide-header')
 }
 function hideHeader() {
-  headerDom.addClass("hide-header")
-  headerDom.removeClass("show-header")
+  headerDom.addClass('hide-header')
+  headerDom.removeClass('show-header')
 }
 
 // bind event
@@ -43,9 +43,9 @@ window.onload = (function() {
       document.body.scrollTop || document.documentElement.scrollTop
 
     if (scrollTop === 0) {
-      headerDom.addStyle("backgroundColor", "transparent")
+      headerDom.addStyle('backgroundColor', 'transparent')
     } else {
-      headerDom.addStyle("backgroundColor", "rgba(30,30,30,.98)")
+      headerDom.addStyle('backgroundColor', 'rgba(30,30,30,.98)')
     }
   }
 
@@ -71,7 +71,7 @@ window.onload = (function() {
   }
   // //firefox
   if (document.addEventListener) {
-    document.addEventListener("DOMMouseScroll", scrollFunc, false)
+    document.addEventListener('DOMMouseScroll', scrollFunc, false)
   }
   // IE、Chrome
   window.onmousewheel = document.onmousewheel = scrollFunc
@@ -96,14 +96,14 @@ window.onload = (function() {
     // let circleRadius;
     // let circleCenter;
     let first = true
-    let giantColor = "180,184,240"
-    let starColor = "247,247,241"
-    let cometColor = "226,225,224"
-    const canva = document.getElementById("universe")
+    let giantColor = '180,184,240'
+    let starColor = '247,247,241'
+    let cometColor = '226,225,224'
+    const canva = document.getElementById('universe')
     let stars = []
     let universe
     windowResizeHandler()
-    window.addEventListener("resize", windowResizeHandler, false)
+    window.addEventListener('resize', windowResizeHandler, false)
 
     function windowResizeHandler() {
       width = window.innerWidth
@@ -114,14 +114,14 @@ window.onload = (function() {
       //   x: width / 2,
       //   y: height / 2
       // };
-      canva.setAttribute("width", width)
-      canva.setAttribute("height", height)
+      canva.setAttribute('width', width)
+      canva.setAttribute('height', height)
     }
 
     createUniverse()
 
     function createUniverse() {
-      universe = canva.getContext("2d")
+      universe = canva.getContext('2d')
       for (let i = 0; i < starCount; i++) {
         stars[i] = new Star()
         stars[i].reset()
@@ -181,19 +181,19 @@ window.onload = (function() {
       this.draw = function() {
         universe.beginPath()
         if (this.giant) {
-          universe.fillStyle = "rgba(" + giantColor + "," + this.opacity + ")"
+          universe.fillStyle = 'rgba(' + giantColor + ',' + this.opacity + ')'
           universe.arc(this.x, this.y, 2, 0, 2 * Math.PI, false)
         } else if (this.comet) {
-          universe.fillStyle = "rgba(" + cometColor + "," + this.opacity + ")"
+          universe.fillStyle = 'rgba(' + cometColor + ',' + this.opacity + ')'
           universe.arc(this.x, this.y, 1.5, 0, 2 * Math.PI, false)
           // comet tail
           for (let i = 0; i < 30; i++) {
             universe.fillStyle =
-              "rgba(" +
+              'rgba(' +
               cometColor +
-              "," +
+              ',' +
               (this.opacity - (this.opacity / 20) * i) +
-              ")"
+              ')'
             universe.rect(
               this.x - (this.dx / 4) * i,
               this.y - (this.dy / 4) * i - 2,
@@ -203,7 +203,7 @@ window.onload = (function() {
             universe.fill()
           }
         } else {
-          universe.fillStyle = "rgba(" + starColor + "," + this.opacity + ")"
+          universe.fillStyle = 'rgba(' + starColor + ',' + this.opacity + ')'
           universe.rect(this.x, this.y, this.r, this.r)
         }
         universe.closePath()

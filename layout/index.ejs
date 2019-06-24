@@ -1,16 +1,25 @@
-<% if (is_home()){ %>
+<% if (is_home()){ %> <% let array = [1,2,3,4,5,6,7,8,9,10];
+array.sort(function() { return (0.5 - Math.random()); }) %>
 <section class="card">
   <% page.posts.each(function (post, key) { %>
   <div class="card-wrap">
-    <div class="card-img" style="background-image: url('/images/2.jpg')">
+    <div
+      class="card-img"
+      style="background-image: url('/images/<%= array[key] %>.jpg')"
+    >
       <div class="card-shadow">
-        <div class="btn">
-          <a href="<%- url_for(post.path) %>">
-            <embed src="/svg/eye-fill.svg" class="svg" type="image/svg+xml" />
-          </a>
-        </div>
-
-        <div class="btn">2</div>
+        <a href="<%- url_for(post.path) %>" class="btn">
+          <img src="/svg/eye-fill.svg" alt="" class="svg" />
+        </a>
+        <a href="<%- url_for(post.path) %>" class="btn">
+          <img src="/svg/heart-fill.svg" alt="" class="svg" />
+          <!-- <embed
+            class="svg"
+            src="/svg/heart.svg"
+            type="image/svg+xml"
+            pluginspage="http://www.adobe.com/svg/viewer/install/"
+          /> -->
+        </a>
       </div>
     </div>
     <a href="<%- url_for(post.path) %>" class="card-img"></a>
