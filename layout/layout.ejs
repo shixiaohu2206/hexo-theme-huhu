@@ -33,6 +33,7 @@
       </div>
       <div class="post-actions">
         <a href="javascript:void(0);">分享</a>
+        <a href="javascript:void(0);">阅读量(<span id="busuanzi_value_page_pv"></span>)</a>
         <a href="#SOHUCS">评论(<span id="changyan_count_unit"></span>)</a>
       </div>
       <% } %>
@@ -81,12 +82,12 @@
       <div class="statist">
         <ul>
           <li>
-            <div>206,911</div>
-            <div>点击量</div>
+            <div id="busuanzi_value_site_pv"></div>
+            <div>访问量</div>
           </li>
           <li>
-            <div>206,911</div>
-            <div>评论总数</div>
+            <div id="busuanzi_value_site_uv"></div>
+            <div>访客数</div>
           </li>
         </ul>
       </div>
@@ -101,3 +102,4 @@
 <%- js('scripts/header.js') %>
 <script type="text/javascript" src="https://assets.changyan.sohu.com/upload/plugins/plugins.count.js">
 </script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
