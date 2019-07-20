@@ -1,38 +1,38 @@
-<% if (is_home()){ %> <% let array = [1,2,3,4,5,6,7,8,9,10];
-array.sort(function() { return (0.5 - Math.random()); }) %>
-<section class="card">
-  <% page.posts.each(function (post, key) { %>
-  <div class="card-wrap">
-    <div
-      class="card-img"
-      style="background-image: url('/images/<%= array[key] %>.jpg')"
-    >
-      <div class="card-shadow">
-        <a href="<%- url_for(post.path) %>" class="btn">
-          <img src="/svg/eye-fill.svg" alt="" class="svg" />
-        </a>
-        <a href="<%- url_for(post.path) %>" class="btn">
-          <img src="/svg/heart-fill.svg" alt="" class="svg" />
-        </a>
+<% if (is_home()){ %>
+<div class="posts">
+  <% let array = [1,2,3,4,5,6,7,8,9,10]; array.sort(function() { return (0.5 -
+  Math.random()); }) %>
+  <ul>
+    <% page.posts.each(function (post, key) { %>
+    <li class="item">
+      <div
+        class="photo"
+        style="background-image: url('https://blog.zhangruipeng.me/hexo-theme-icarus/gallery/thumbnails/flower.jpg')"
+      ></div>
+      <div class="describe">
+        <div class="title">
+          <a href="<%- url_for(post.path) %>"><%= post.title %></a>
+        </div>
+        <div class="date">
+          <i class="icon-calendar"></i> <%- date(page.date, "YY/MM/DD") %>
+        </div>
+        <div class="excerpt post-wrap"><%- post.excerpt %></div>
+        <div class="more">
+          <div class="l">
+            <i class="icon-share"></i>
+            <i class="icon-comment"></i>
+            <i class="icon-heart"></i>
+          </div>
+          <div class="r">
+            <a href="<%- url_for(post.path) %>">Read More</a>
+          </div>
+        </div>
       </div>
-    </div>
-    <a href="<%- url_for(post.path) %>" class="card-img"></a>
-    <div class="card-content">
-      <div class="card-title">
-        <a href="<%- url_for(post.path) %>">
-          <%= post.title %>
-        </a>
-      </div>
-      <div class="card-date">
-        <a href="<%- url_for(post.path) %>">
-          <%- date(post.date, "YYYY-MM-DD") %>
-        </a>
-      </div>
-    </div>
-  </div>
-  <% })%>
-</section>
+    </li>
+    <% })%>
+  </ul>
+</div>
 <% }%>
 <div class="paginator">
-  <%- paginator({ prev_text: 'Prev', next_text: 'Next' }) %>
+  <%- paginator({ prev_text: '<', next_text: '>', prev_next: false }) %>
 </div>

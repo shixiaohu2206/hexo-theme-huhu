@@ -75,6 +75,14 @@ window.onload = (function() {
   }
   // IE、Chrome
   window.onmousewheel = document.onmousewheel = scrollFunc
+
+
+
+  
+
+
+
+
 })(
   /**
    * created by lvfan

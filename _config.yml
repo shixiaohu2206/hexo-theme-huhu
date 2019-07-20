@@ -3,26 +3,58 @@ menu:
   home: /
   archives: /archives
   about: /about
-  RSS: /atom.xml
 
 #logo
 logo: /images/logo.png
 
-# favicon
+#categories-max
+categories_max: 5
+
+#tags-max
+tags_max: 10
+
+#favicon
 favicon: /images/favicon.ico
 
-# site switch
+#ite switch
 site_search: true
 
-# rss
+#rss
 rss: /atom.xml
 
-# search post url
+#follow 按顺序展示
+#github
+#facebook
+#twitter
+#instagram
+#wechat
+#alipay
+#zhihu
+#QQ
+#weibo
+follow:
+  github: 'https://github.com/shixiaohu2206'
+  facebook: 'https://github.com/shixiaohu2206'
+  # twitter: 'https://github.com/shixiaohu2206'
+  # instagram: 'https://github.com/shixiaohu2206'
+  # wechat: 'https://github.com/shixiaohu2206'
+  # alipay: 'https://github.com/shixiaohu2206'
+  zhihu: 'https://github.com/shixiaohu2206'
+  # QQ: 'https://github.com/shixiaohu2206'
+  # weibo: 'https://github.com/shixiaohu2206'
+
+#search post url
 search_url: /search.xml
 
 #ICP
-site_icp: "皖ICP备16021483号-3"
+site_icp: '皖ICP备16021483号-3'
 
 #友情链接
 site_friends:
-  房间里的小猫咪: "http://baidu.com"
+  房间里的小猫咪: 'http://baidu.com'
+
+#畅言评论
+changyan: false
+
+#不蒜子统计
+busuanzi: false

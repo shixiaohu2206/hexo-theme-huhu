@@ -19,9 +19,9 @@ color-link = #258fb8
 
 $code-block {
     margin: 0
-    padding: 1rem
+    padding: 0.5rem
     border-radius: 3px
-    background-color: #E9EDF2
+    background-color: rgb(245, 245, 245)
     border-width: 1px 0
     overflow: auto
     color: highlight-foreground
@@ -36,27 +36,26 @@ $line-numbers {
 
 $base-style {
     h1, h2, h3, h4, h5, h6 {
-        margin-bottom: 1rem
-        margin-top: 2rem
-        padding-bottom: 0.6rem
+        margin-top: 0.5rem
+        padding-bottom: 0.5rem
         border-bottom: 1px solid #eaecef
         font-weight: bold
     }
 
     h1 {
-        font-size: 2rem
-    }
-
-    h2 {
         font-size: 1.5rem
     }
 
-    h3 {
+    h2 {
         font-size: 1.3rem
     }
 
-    h4 {
+    h3 {
         font-size: 1.2rem
+    }
+
+    h4 {
+        font-size: 1.15rem
     }
 
     h5 {
@@ -129,63 +128,46 @@ $base-style {
     }
 }
 
+.post-wrap {
+}
+
 .post-entry {
-    @extend $base-style
     width: 1080px
     height: 100%
+}
+
+.post-entry, .post-wrap {
+    @extend $base-style
     margin: 0 auto
     box-sizing: border-box
     position: relative
+    width: 100%
     display: -webkit-box
     display: -moz-box
     display: -ms-flexbox
     display: -webkit-flex
     display: flex
+    flex-direction: column
 
-    .post-wrap {
-        width: 777px
-        padding: 3rem 3rem
-        margin: 0 auto
-        box-sizing: border-box
-        padding-bottom: 7rem
-        background-color: #fff
-        border-radius: 4px
-        border-bottom: 1px solid #eaecef
-    }
+    .header {
+        margin-bottom: 2rem
 
-    .post-toc {
-        flex: 1
-
-        .toc {
-            margin-bottom: 0
-            margin-right: 0
-            margin-top: 0
-            margin-left: 2rem
-            padding: 1rem
-            background-color: #fff
-            border-radius: 4px
+        .title {
+            font-size: 2rem
+            margin-bottom: 1rem
         }
 
-        a {
-            color: #999
-            font-size: 0.8rem
-        }
-
-        a:hover {
-            color: #24292e
-        }
-
-        ol, ul {
-            line-height: 1.2rem
-            list-style: none
-            margin-right: 0
+        .date {
+            color: rgb(137, 137, 137)
+            font-family: 'En-demo2'
+            font-size: 1rem
         }
     }
 
     p, table {
         font-size: 0.875rem
         line-height: line-height
-        margin: 1rem 0
+        margin: 0.2rem 0
     }
 
     a {
@@ -237,7 +219,7 @@ $base-style {
         padding: 0.2rem 1rem
         color: #657279
         background-color: #f7f7f7
-        border-left: 7px solid #cbcbcb
+        border-left: 5px solid rgb(254, 148, 145)
 
         footer {
             font-size: 1rem

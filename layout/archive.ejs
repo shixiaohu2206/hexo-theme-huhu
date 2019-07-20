@@ -1,30 +1,31 @@
-<div class="archive-wrap">
-<span class="archives-title"><%= __('category')  %></span>
-<%- list_categories({show_count: false, depth: '0' }) %>
-<span class="tags-title"><%= __('tags')  %></span>
-<div class="tag-cloud">
-        <%- tagcloud({
-            min_font: 12, 
-            max_font: 24, 
-            amount: 999, 
-            color: true, 
-            start_color: '#bfbfbf', 
-            end_color: '#e6e6e6',
-        }) %>
-</div>
-<h1 class="archive-other">
-    <% if (is_category()){ %>
-    <span class="archive-other-before">の</span>
-    <%= page.category %>
-    <% } %>
-    <% if (is_tag()){ %>
-    <span class="archive-other-before">#</span>
-    <%= page.tag %>
-    <% } %>
-</h1>
-<% var last; %>
+<div class="archives">
+    
+          
+                <% if (is_category()) { %> 
+                    <div class="header">
+                    <div class="icon">
+                        <i class="icon-folder"></i>
+                    </div>
 
-<div class="archive-main">
+                    <div class="explain">
+                        <%= page.category %>
+                    </div>
+                </div>
+                <% } %>
+                <% if (is_tag()) { %> 
+                    <div class="header">
+                            <div class="icon">
+                                <i class="icon-tag"></i>
+                            </div>
+        
+                            <div class="explain">
+                                <%= page.tag %>
+                            </div>
+                        </div>
+                <% } %>
+  
+
+<% var last; %>
 <% page.posts.each(function(post, i){ %>
 <% var year = post.date.year(); %>
 <% if (last != year){ %>
@@ -33,35 +34,43 @@
 </section>
 <% } %>
 <% last = year; %>
-<section class="archive-section">
-    <div class="archive-date">
+<section class="wrap">
+    <div class="meta">
         <a href="<%- url_for(config.archive_dir + '/' + year) %>" class="archive-meta">
             <%= year %>
         </a>
     </div>
-    <div class="archive-content">
+    <div class="year">
         <% } %>
-        <div class="item">
-            <span class="item-point"></span>
-            <span class="item-time">
-                <%- date(post.date, "MM.DD") %>
-            </span>
-            <span class="item-title">
-                <a href="<%- url_for(post.path) %>">
-                    <%= post.title %>
-                </a>
-            </span>
-        </div>
+        <article class="item">
+            <div class="photo">
+                <img src="https://blog.zhangruipeng.me/hexo-theme-icarus/gallery/thumbnails/flower.jpg" alt="">
+            </div>
+            <div class="content">
+                <div class="title">
+                    <a  href="<%- url_for(post.path) %>">
+                        <%= post.title %>
+                    </a>
+                </div>
+                <div class="date">
+                    <i class="icon-calendar"></i>
+                    <%- date(post.date, "YYYY-MM-DD") %>
+                </div>
+                <div class="type">
+                        <i class="icon-share"></i>
+                        <i class="icon-comment"></i>
+                        <i class="icon-heart"></i>
+                </div>
+            </div>
+        </article>
         <% }) %>
         <% if (page.posts.length){ %>
     </div>
 </section>
 <% } %>
-</div>
-<div class="paginator">
-    <%- paginator({
-            prev_text: __('prev'),
-            next_text: __('next')
-        }) %>
-</div>
+  
+
+  <div class="paginator">
+        <%- paginator({ prev_text: '<', next_text: '>', prev_next: false }) %>
+  </div>
 </div>

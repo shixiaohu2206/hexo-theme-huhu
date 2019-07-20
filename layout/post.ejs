@@ -1,5 +1,11 @@
 <article class="post-entry">
-  <div class="post-wrap">
+    <div class="header">
+      <div class="title"><%- page.title %></div>
+      <div class="date">
+        <i class="icon-calendar"></i>
+        <%- date(page.date, "YYYY/MM/DD") %>
+      </div>
+    </div>
     <%- page.content %>
      <!--畅言PC和WAP自适应版-->
   <div id="SOHUCS" sid="<%- date(page.date, "YYYY/MM/DD") %>/<%- page.title %>"></div>
@@ -47,10 +53,4 @@
       }
     })()
   </script>
-  </div>
-  <% if (!is_current('about') && toc(page.content, {list_number: false})){ %>
-    <div class="post-toc">
-      <%- toc(page.content, {list_number: false}) %> 
-    </div>
-  <% } %>
 </article>

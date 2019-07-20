@@ -7,99 +7,113 @@
       name="viewport"
       content="width=device-width, initial-scale=1, maximum-scale=1"
     />
-    <meta name="keywords" content="虎虎|博客|个人|utone|Utone|" />
-    <meta name="description" content="骑士恨煎蛋，骑士恨孜然" />
-    <title> </title>
+    <meta name="keywords" content="<%= config.keywords%>" />
+    <meta name="description" content="<%= config.description%>" />
+    <title><%= config.title%></title>
     <%- css('style/style') %>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css"
+    />
   </head>
+
   <body>
-    <div class="header-bg"></div>
-    <header>
-      <div class="logo">utone</div>
-      <ul>
-        <% for (let i in theme.menu) { %>
-        <li><a href="<%- url_for(theme.menu[i]) %>"> <%= __(i) %> </a></li>
+    <div class="head animated tada delay-2s">
+      <% for (var i in theme.menu){ %>
+      <a href="<%- url_for(theme.menu[i]) %>">
+        <%= __(i) %>
+      </a>
+      <% } %>
+    </div>
+    <div id="container">
+      <div id="main">
+        <div class="navbar">
+          <div class="toggle">
+            <i class="icon-align-right"></i>
+          </div>
+          <div class="search">
+            <div class="input-warp">
+              <i class="icon-search"></i>
+              <input type="text" name="" id="" placeholder="Search Keys" />
+            </div>
+          </div>
+        </div>
+        <div class="content">
+          <%- body %>
+        </div>
+      </div>
+      <div id="card">
+        <div class="l-w">
+          <div class="author">
+            <!-- <i class="icon-location"></i> -->
+            Utone
+          </div>
+
+          <div
+            class="logo"
+            style="background-image: url('/images/logo.jpeg')"
+          ></div>
+        </div>
+        <div class="follow">
+          <% for (var f in theme.follow){ %>
+          <a href="<%= theme.follow[f] %>" target="_block"><i class="icon-<%= f %> "></i></a>
+          <% } %> 
+          <% if (theme.rss) { %>
+          <a href="<%= theme.rss %>" target="_block"><i class="icon-rss"></i></a>
+          <% } %>
+        </div>
+        <% if (is_post()) { %>
+        <div class="o-w">
+          <div class="title">
+            <span>Toc</span>
+          </div>
+          <div class="post-toc">
+            <%- toc(page.content, {list_number: false}) %>
+          </div>
+        </div>
         <% } %>
-      </ul>
-    </header>
-    <div class="banner">
-      <div class="bg"></div>
-      <% if (is_post() || is_current('about')){ %>
-      <div class="post-content">
-        <div class="title">
-          <%- page.title %>
-          <div class="date"><%- date(page.date, "YYYY/MM/DD") %></div>
-        </div>
-      </div>
-      <div class="post-actions">
-        <a href="javascript:void(0);">分享</a>
-        <a href="javascript:void(0);">阅读量(<span id="busuanzi_value_page_pv"></span>)</a>
-        <a href="#SOHUCS">评论(<span id="changyan_count_unit"></span>)</a>
-      </div>
-      <% } %>
-      <% if (is_archive()){ %>
-        <div class="post-content">
+
+        <div class="c-w">
           <div class="title">
-            <%= __('archives')  %>
-            <div class="date"><%- date(page.date, "YYYY/MM/DD") %></div>
+            <span>Categories</span>
+            <span><a href="">···</a></span>
+          </div>
+          <div class="list">
+            <ul>
+              <% site.categories.each(function (c, k) { %> <% if ( k <
+              theme.categories_max) { %>
+              <li>
+                <a href="<%- url_for(c.path) %>">
+                  <%= c.name %>
+                </a>
+              </li>
+              <% } %> <% }) %>
+            </ul>
           </div>
         </div>
-      <% } %>
-      <% if (is_home()){ %>
-        <div class="post-content">
+        <div class="t-w">
           <div class="title">
-            <%= __('home')  %>
-            <div class="date"><%- date(page.date, "YYYY/MM/DD") %></div>
+            <span>Tag Cloud</span>
+            <span><a href="">···</a></span>
+          </div>
+          <div class="tag-cloud">
+            <%- tagcloud({ min_font: 13, max_font: 20, amount: 15, color: true,
+            start_color: '#4a4a4a', end_color: '#4a4a4a'}) %>
           </div>
         </div>
-      <% } %>
-    </div>
-    <div class="container">
-      <%- body %>
-    </div>
-    <footer>
-      <div class="products">
-        <div class="l">
-          <div class="title">Friendship</div>
-          <ul>
-              <% for (let i in theme.site_friends) { %>
-                <li><a href="<%- url_for(theme.site_friends[i]) %>" target="_blank"><%= i %></a></<li>
-              <% } %>
-          </ul>
-        </div>
-        <div class="r">
-          <div class="title">Follow me</div>
-          <ul>
-            <li><a href=""><embed src="/svg/github-fill.svg" class="svg" type="image/svg+xml" /></a></li>
-            <li><a href=""><embed src="/svg/weibo-circle-fill.svg" class="svg" type="image/svg+xml" /></a></li>
-            <li><a href=""><embed src="/svg/QQ-circle-fill.svg" class="svg" type="image/svg+xml" /></a></li>
-            <li><a href=""><embed src="/svg/facebook-fill.svg" class="svg" type="image/svg+xml" /></a></li>
-            <li><a href=""><embed src="/svg/dingtalk-circle-fill.svg" class="svg" type="image/svg+xml" /></a></li>
-            <li><a href=""><embed src="/svg/wechat-fill.svg" class="svg" type="image/svg+xml" /></a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="statist">
-        <ul>
-          <li>
-            <div id="busuanzi_value_site_pv"></div>
-            <div>访问量</div>
-          </li>
-          <li>
-            <div id="busuanzi_value_site_uv"></div>
-            <div>访客数</div>
-          </li>
-        </ul>
-      </div>
-      <div class="copyright">
-        <div class="l">
-          © <%- date(new Date(), "YYYY") %> <%= theme.site_icp %>
-        </div>
+        <div class="c-w"></div>
       </div>
     </div>
   </body>
 </html>
-<%- js('scripts/header.js') %>
-<script type="text/javascript" src="https://assets.changyan.sohu.com/upload/plugins/plugins.count.js">
-</script>
-<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<%- js('scripts/header.js') %> <% if (theme.changyan) { %>
+<script
+  type="text/javascript"
+  src="https://assets.changyan.sohu.com/upload/plugins/plugins.count.js"
+></script>
+<% } %> <% if (theme.busuanzi) { %>
+<script
+  async
+  src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"
+></script>
+<% } %>
