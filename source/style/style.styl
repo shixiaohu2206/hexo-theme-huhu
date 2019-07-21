@@ -94,7 +94,7 @@
                         background-color: rgb(248, 248, 248)
                         font-size: 1.1rem
                         font-family: 'En-demo2'
-                        caret-color: rgb(198, 198, 198)
+                        caret-color: #333
                         outline: none
                     }
                 }
@@ -132,7 +132,9 @@
                     border: 1px solid rgba(0, 0, 0, 0.05)
 
                     .photo {
+                        width: 100%
                         height: 17rem
+                        display: inline-block
                         background-size: cover
                         background-position: center center
                         background-color: rgb(201, 198, 193)
@@ -197,9 +199,7 @@
                             a {
                                 color: #333
                                 display: inline-block
-                                width: 5rem
-                                height: 2rem
-                                line-height: 2rem
+                                padding: 0.7rem
                                 text-align: center
                                 border-radius: 0.7rem
                                 font-weight: 600
@@ -290,14 +290,14 @@
 
                         .date {
                             color: #7a7a7a
-                            font-size: 0.7rem
+                            font-size: 0.8rem
                             margin: 0.2rem 0
                         }
 
                         .title {
                             a {
                                 color: #242424
-                                font-size: 0.9rem
+                                font-size: 1.1rem
                             }
 
                             a:hover {
@@ -307,18 +307,18 @@
 
                         .type {
                             i {
-                                font-size: 0.7rem
+                                font-size: 0.9rem
                             }
                         }
                     }
 
                     .item:before {
                         content: ''
-                        width: 0.5rem
-                        height: 0.5rem
+                        width: 0.7rem
+                        height: 0.7rem
                         border-radius: 50%
                         background-color: #dbdbdb
-                        margin-left: -1.3rem
+                        margin-left: -1.4rem
                         margin-right: 2rem
                     }
                 }
@@ -355,13 +355,18 @@
     }
 
     #card {
-        width: 320px
+        width: 33%
         padding: 6rem 3rem 3rem 3rem
         overflow: auto
         box-sizing: border-box
         background-color: rgb(250, 246, 243)
 
-        .follow {
+        .locate-widget {
+            font-size: 2rem
+            margin-bottom: 2rem
+        }
+
+        .follow-widget {
             displayFlex()
             flex-wrap: wrap
             justify-content: space-between
@@ -369,7 +374,7 @@
             border-bottom: 1px solid rgb(201, 198, 193)
 
             a {
-                width: 25%   
+                width: 25%
             }
 
             i {
@@ -384,14 +389,14 @@
             }
         }
 
-        .l-w {
+        .logo-widget {
             displayFlex()
             align-items: center
             justify-content: space-between
             font-family: 'En-demo'
             font-size: 1.5rem
             font-weight: 600
-            margin-bottom: 3.8rem
+            margin-bottom: 2rem
 
             .author {
                 font-size: 1.8rem
@@ -408,7 +413,7 @@
             }
         }
 
-        .c-w, .t-w, .o-w {
+        .category-widget, .tag-widget, .toc-widget {
             displayFlex()
             flex-direction: column
             margin: 1.5rem 0
@@ -416,7 +421,7 @@
 
             .title {
                 font-size: 1.1rem
-                font-weight: 300
+                font-weight: 500
                 displayFlex()
                 justify-content: space-between
                 align-items: center
@@ -454,7 +459,7 @@
             }
         }
 
-        .o-w {
+        .toc-widget {
             .post-toc {
                 flex: 1
 
@@ -476,7 +481,7 @@
             }
         }
 
-        .c-w {
+        .category-widget {
             .list {
                 a {
                     width: 100%

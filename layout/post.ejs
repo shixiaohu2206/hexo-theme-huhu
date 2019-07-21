@@ -8,6 +8,7 @@
     </div>
     <%- page.content %>
      <!--畅言PC和WAP自适应版-->
+  <% if (theme.changyan) { %>
   <div id="SOHUCS" sid="<%- date(page.date, "YYYY/MM/DD") %>/<%- page.title %>"></div>
   <script type="text/javascript">
     ;(function() {
@@ -53,4 +54,5 @@
       }
     })()
   </script>
+  <% } %>
 </article>

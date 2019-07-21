@@ -10,15 +10,19 @@
     <meta name="keywords" content="<%= config.keywords%>" />
     <meta name="description" content="<%= config.description%>" />
     <title><%= config.title%></title>
-    <%- css('style/style') %>
+    <%- css('style/style') %> <%- css('style/viewer.css') %>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/viewerjs/1.3.6/viewer.min.css"
+    />
   </head>
 
   <body>
-    <div class="head animated tada delay-2s">
+    <div class="head">
       <% for (var i in theme.menu){ %>
       <a href="<%- url_for(theme.menu[i]) %>">
         <%= __(i) %>
@@ -43,27 +47,31 @@
         </div>
       </div>
       <div id="card">
-        <div class="l-w">
+        <div class="logo-widget">
           <div class="author">
-            <!-- <i class="icon-location"></i> -->
             Utone
           </div>
-
           <div
             class="logo"
             style="background-image: url('/images/logo.jpeg')"
           ></div>
         </div>
-        <div class="follow">
+        <div class="locate-widget">
+          <i class="icon-location"></i>
+        </div>
+        <div class="follow-widget">
           <% for (var f in theme.follow){ %>
-          <a href="<%= theme.follow[f] %>" target="_block"><i class="icon-<%= f %> "></i></a>
-          <% } %> 
-          <% if (theme.rss) { %>
-          <a href="<%= theme.rss %>" target="_block"><i class="icon-rss"></i></a>
+          <a href="<%= theme.follow[f] %>" target="_block"
+            ><i class="icon-<%= f %> "></i
+          ></a>
+          <% } %> <% if (theme.rss) { %>
+          <a href="<%= theme.rss %>" target="_block"
+            ><i class="icon-rss"></i
+          ></a>
           <% } %>
         </div>
         <% if (is_post()) { %>
-        <div class="o-w">
+        <div class="toc-widget">
           <div class="title">
             <span>Toc</span>
           </div>
@@ -72,11 +80,10 @@
           </div>
         </div>
         <% } %>
-
-        <div class="c-w">
+        <div class="category-widget">
           <div class="title">
             <span>Categories</span>
-            <span><a href="">···</a></span>
+            <span><a href="/archives">···</a></span>
           </div>
           <div class="list">
             <ul>
@@ -91,7 +98,7 @@
             </ul>
           </div>
         </div>
-        <div class="t-w">
+        <div class="tag-widget">
           <div class="title">
             <span>Tag Cloud</span>
             <span><a href="">···</a></span>
@@ -101,19 +108,17 @@
             start_color: '#4a4a4a', end_color: '#4a4a4a'}) %>
           </div>
         </div>
-        <div class="c-w"></div>
       </div>
     </div>
   </body>
 </html>
-<%- js('scripts/header.js') %> <% if (theme.changyan) { %>
-<script
-  type="text/javascript"
-  src="https://assets.changyan.sohu.com/upload/plugins/plugins.count.js"
-></script>
-<% } %> <% if (theme.busuanzi) { %>
+<% if (theme.busuanzi) { %>
 <script
   async
   src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"
 ></script>
 <% } %>
+<script src="https://www.tianqiapi.com/api/?version=v6&callback=weathCb"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/viewerjs/1.3.6/viewer.js"></script>
+<%- js('scripts/viewer.js') %>
+<%-js('scripts/index.js') %>

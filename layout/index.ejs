@@ -1,14 +1,17 @@
 <% if (is_home()){ %>
 <div class="posts">
-  <% let array = [1,2,3,4,5,6,7,8,9,10]; array.sort(function() { return (0.5 -
-  Math.random()); }) %>
   <ul>
-    <% page.posts.each(function (post, key) { %>
+    <% page.posts.each(function (post, key) { %> <% let bg = post.photos &&
+    post.photos[0] || ''%>
     <li class="item">
-      <div
+      <% if (bg) { %>
+      <a
+        href="<%- url_for(post.path) %>"
         class="photo"
-        style="background-image: url('https://blog.zhangruipeng.me/hexo-theme-icarus/gallery/thumbnails/flower.jpg')"
-      ></div>
+        title="<%= post.title %>"
+        style="background-image: url( <%= bg %> )"
+      ></a>
+      <% }%>
       <div class="describe">
         <div class="title">
           <a href="<%- url_for(post.path) %>"><%= post.title %></a>
@@ -16,7 +19,9 @@
         <div class="date">
           <i class="icon-calendar"></i> <%- date(page.date, "YY/MM/DD") %>
         </div>
+        <% if (post.excerpt) { %>
         <div class="excerpt post-wrap"><%- post.excerpt %></div>
+        <% }%>
         <div class="more">
           <div class="l">
             <i class="icon-share"></i>
