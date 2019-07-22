@@ -1,104 +1,102 @@
-// // init $
-// function $(dom) {
-//   return new _$(dom)
-// }
+// 天气接口
+function getWeath() {
+  let weathKey = 'WEATH'
+  let weathData = localStorage.get(weathKey)
 
-// function _$(query) {
-//   this.dom = document.querySelector(query)
-//   return this
-// }
-
-// _$.prototype.addClass = function(...className) {
-//   this.dom.classList.add(...className)
-//   return this
-// }
-
-// _$.prototype.removeClass = function(...className) {
-//   this.dom.classList.remove(...className)
-//   return this
-// }
-
-// _$.prototype.addStyle = function(name, value) {
-//   this.dom.style[name] = value
-//   return this
-// }
-
-// // init domF
-// let headerDom = $('header')
-
-// // header func
-// function showHeader() {
-//   headerDom.addClass('show-header')
-//   headerDom.removeClass('hide-header')
-// }
-// function hideHeader() {
-//   headerDom.addClass('hide-header')
-//   headerDom.removeClass('show-header')
-// }
-
-window.weathCb = function(data) {
-  console.log(data)
+  if (weathData) {
+    return Promise.resolve(weathData)
+  } else {
+    return new Promise((resolve, reject) => {
+      fetch('https://www.tianqiapi.com/api/').then(
+        data => {
+          if (data.ok) {
+            data.json().then(resp => {
+              if (resp) {
+                localStorage.set('WEATH', resp)
+                return resolve(resp)
+              } else {
+                return reject()
+              }
+            })
+          } else {
+            return reject()
+          }
+        },
+        e => {
+          return reject(e)
+        }
+      )
+    })
+  }
 }
 
-// 天气接口回调
-function getWeathCb() {
-  fetch('https://www.tianqiapi.com/api/', {}).then(
-    data => {
-      if (data.ok) {
-        console.log(data)
-        console.log(data.body)
-        console.log(data.json())
+// 缓存
+let localStorage = (function() {
+  let storage = window.localStorage
+  let expire = 3 * 60 * 60 * 1000 // 默认过期时间3小时
+
+  function get(key) {
+    let value
+    try {
+      value = JSON.parse(storage.getItem(key))
+
+      if (value) {
+        let now = getNow()
+        if (value.expireTime < now) {
+          value = {}
+        }
       }
-    },
-    () => {}
-  )
+    } catch (e) {
+      console.warn(e)
+      value = {}
+    }
+
+    return value
+  }
+
+  function set(key, value) {
+    value = value || {}
+    key = key && key.toLocaleUpperCase()
+
+    if (value) {
+      let now = getNow()
+      value.setTime = now
+      value.expireTime = now + expire
+
+      try {
+        value = JSON.stringify(value)
+      } catch (e) {
+        value = ''
+      }
+
+      storage.setItem(key, value)
+    } else {
+      return false
+    }
+  }
+
+  function remove() {}
+
+  return {
+    get,
+    set,
+    remove
+  }
+})()
+
+function getNow() {
+  return new Date().getTime()
 }
 
-// bind event
-window.onload = function() {
-  // getWeathCb()
+$(document).ready(function() {
+  // 天气接口
+  getWeath().then(data => {
+    console.log(data)
+  })
 
-  let imagesDom = document.getElementsByTagName('img')
+  let imagesDom = $('img')
 
   for (let i = 0; i < imagesDom.length; i++) {
     new Viewer(imagesDom[i])
   }
-
-  window.onscroll = function() {
-    var scrollTop =
-      document.body.scrollTop || document.documentElement.scrollTop
-
-    if (scrollTop === 0) {
-      headerDom.addStyle('backgroundColor', 'transparent')
-    } else {
-      headerDom.addStyle('backgroundColor', 'rgba(30,30,30,.98)')
-    }
-  }
-
-  let scrollFunc = function(e) {
-    e = e || window.event
-    if (e.wheelDelta) {
-      // IE、Chrome
-      if (e.wheelDelta > 0) {
-        showHeader()
-      }
-      if (e.wheelDelta < 0) {
-        hideHeader()
-      }
-    } else if (e.detail) {
-      // Firefox
-      if (e.detail > 0) {
-        showHeader()
-      }
-      if (e.detail < 0) {
-        hideHeader()
-      }
-    }
-  }
-  // //firefox
-  // if (document.addEventListener) {
-  //   document.addEventListener('DOMMouseScroll', scrollFunc, false)
-  // }
-  // // IE、Chrome
-  // window.onmousewheel = document.onmousewheel = scrollFunc
-}
+})
