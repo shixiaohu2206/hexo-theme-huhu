@@ -94,9 +94,14 @@ $(document).ready(function() {
     console.log(data)
   })
 
+  // 图片预览
   let imagesDom = $('img')
-
   for (let i = 0; i < imagesDom.length; i++) {
     new Viewer(imagesDom[i])
   }
+
+  // 左侧滑块
+  $(document).on('click', '.icon-align-right', function() {
+    $('#card').toggle('1000')
+  })
 })
