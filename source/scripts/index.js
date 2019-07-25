@@ -43,12 +43,12 @@ let localStorage = (function() {
       if (value) {
         let now = getNow()
         if (value.expireTime < now) {
-          value = {}
+          value = null
         }
       }
     } catch (e) {
       console.warn(e)
-      value = {}
+      value = null
     }
 
     return value

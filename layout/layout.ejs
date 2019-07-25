@@ -10,21 +10,17 @@
     <meta name="keywords" content="<%= config.keywords%>" />
     <meta name="description" content="<%= config.description%>" />
     <title><%= config.title%></title>
+    <link rel="shortcut icon" href="<%= theme.favicon%>" type="image/x-icon" />
     <%- css('style/style') %> <%- css('style/viewer.css') %>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/viewerjs/1.3.6/viewer.min.css"
-    />
   </head>
 
   <body>
     <div class="head">
       <% for (var i in theme.menu){ %>
-      <a href="<%- url_for(theme.menu[i]) %>">
+      <a
+        href="<%- url_for(theme.menu[i]) %>"
+        class="<%= is_current(theme.menu[i]) ? 'current' : '' %>"
+      >
         <%= __(i) %>
       </a>
       <% } %>
@@ -45,6 +41,16 @@
         <div class="content">
           <%- body %>
         </div>
+        <footer>
+          <div class="copyright">
+            ©2019 <%= config.author %>. Powered by Hexo & <a href="https://github.com/shixiaohu2206/hexo-theme-huhu">hexo-theme-huhu</a>
+          </div>
+          <% if (theme.site_icp) { %>
+          <div class="icp">
+            <%= theme.site_icp %>
+          </div>
+          <% } %>
+        </footer>
       </div>
       <div id="card">
         <div class="logo-widget">
@@ -119,7 +125,5 @@
   async
   src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"
 ></script>
-<% } %>
-<!-- <script src="https://www.tianqiapi.com/api/?version=v6&callback=weathCb"></script> -->
-<%- js('scripts/jquery.js') %> <%- js('scripts/viewer.js') %>
+<% } %> <%- js('scripts/jquery.js') %> <%- js('scripts/viewer.js') %>
 <%-js('scripts/index.js') %>

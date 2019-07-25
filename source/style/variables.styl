@@ -1,4 +1,4 @@
-displayFlex() {
+display-flex() {
     display: -webkit-box
     display: -moz-box
     display: -ms-flexbox
@@ -6,14 +6,46 @@ displayFlex() {
     display: flex
 }
 
+justify-content($content = center) {
+    -moz-justify-content: $content
+    -webkit-justify-content: $content
+    justify-content: $content
+}
+
+align-items($align = center) {
+    -moz-align-items: $align
+    -webkit-align-items: $align
+    align-items: $align
+}
+
+flex-direction($direction = row) {
+    -ms-flex-flow: $direction
+    -webkit-flex-flow: $direction
+    flex-flow: $direction
+}
+
+flex-wrap($wrap = wrap) {
+    -ms-flex-wrap: $wrap
+    -moz-flex-wrap: $wrap
+    -webkit-flex-wrap: $wrap
+    flex-wrap: $wrap
+}
+
+// 水平垂直居中
 center() {
-    display: -webkit-box
-    display: -moz-box
-    display: -ms-flexbox
-    display: -webkit-flex
-    display: flex
-    justify-content: center
-    align-items: center
+    display-flex()
+    justify-content()
+    align-items()
+}
+
+level-center() {
+    display-flex()
+    justify-content()
+}
+
+vertical-center() {
+    display-flex()
+    align-items()
 }
 
 .a {

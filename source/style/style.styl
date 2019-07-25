@@ -15,16 +15,21 @@
     border-bottom-left-radius: 1rem
     border-bottom-right-radius: 1rem
     background-color: rgb(250, 246, 243)
-    displayFlex()
-    justify-content: flex-start
-    align-items: center
-    box-shadow: 0 0px 5px 5px rgb(233, 233, 233)
+    display-flex()
+    align-items()
+    justify-content(flex-start)
+    border: 1px solid rgb(222, 222, 222)
 
     a {
-        color: #333
-        padding: 1.3rem
-        font-size: 0.9rem
+        color: #7a7a7a
+        padding: 0 1rem
+        font-size: 0.8rem
+        font-weight: 600
         font-family: 'En-demo'
+
+        &.current {
+            color: #3273dc
+        }
     }
 
     a:hover {
@@ -36,26 +41,27 @@
     width: 980px
     height: 100%
     overflow: hidden
-    box-shadow: 0 0px 20px 20px rgb(233, 233, 233)
+    box-shadow: 0 0px 5px 5px rgb(233, 233, 233)
     background-color: rgb(255, 255, 255)
-    displayFlex()
+    display-flex()
 
     #main {
         flex: 1
+        flex-direction(column)
         overflow: auto
-        padding: 3.8rem 2rem 2rem 2rem
+        padding: 3rem 2rem 0 2rem
 
         .navbar {
             width: 100%
             height: 8rem
-            displayFlex()
-            flex-wrap: wrap
+            display-flex()
+            flex-wrap(wrap)
 
             .toggle {
                 width: 30%
-                displayFlex()
-                justify-content: flex-start
-                align-items: center
+                display-flex()
+                align-items()
+                justify-content(flex-start)
 
                 .icon-align-right {
                     cursor: pointer
@@ -66,9 +72,9 @@
 
             .search {
                 flex: 1
-                displayFlex()
-                justify-content: center
-                align-items: center
+                display-flex()
+                justify-content()
+                align-items()
 
                 .input-warp {
                     width: 100%
@@ -76,7 +82,7 @@
                     border-radius: 1rem
                     padding: 1rem
                     background-color: rgb(248, 248, 248)
-                    displayFlex()
+                    display-flex()
                     justify-content: center
                     align-items: center
 
@@ -123,12 +129,12 @@
                 }
 
                 .item {
+                    display-flex()
+                    flex-direction(column)
                     width: 100%
                     min-height: 10rem
                     border-radius: 0.5rem
                     margin-bottom: 2rem
-                    displayFlex()
-                    flex-direction: column
                     border: 1px solid rgba(0, 0, 0, 0.05)
 
                     .photo {
@@ -142,6 +148,7 @@
 
                     .describe {
                         flex: 1
+                        flex-direction(column)
                         padding: 1rem
                         font-size: 0.8rem
 
@@ -169,23 +176,21 @@
                     }
 
                     .more {
-                        displayFlex()
+                        display-flex()
+                        flex-wrap(wrap)
+                        justify-content(space-between)
                         margin-top: 1rem
-                        flex-wrap: wrap
-                        justify-content: space-between
 
                         .l {
-                            displayFlex()
+                            display-flex()
 
                             i {
+                                center()
                                 cursor: pointer
                                 color: #7a7a7a
                                 font-size: 1.35rem
                                 margin-right: 0.5rem
                                 transition: all 0.2rem
-                                displayFlex()
-                                justify-content: center
-                                align-items: center
                                 transition: all 0.3s
                             }
 
@@ -218,26 +223,17 @@
             }
 
             .archives {
-                font-family: 'En-demo'
-
-                a {
-                    font-family: 'En-demo'
-                }
-
                 .header {
+                    display-flex()
+                    align-items()
+                    justify-content(space-between)
                     width: 80%
                     height: 4rem
-                    margin-top: 1rem
-                    margin-left: auto
-                    margin-right: auto
-                    margin-bottom: 3rem
+                    margin: 1rem auto 3rem
                     border-radius: 1rem
                     box-sizing: border-box
                     padding-left: 2rem
                     padding-right: 2rem
-                    displayFlex()
-                    align-items: center
-                    justify-content: space-between
                     background-color: rgb(116, 127, 255)
 
                     .icon {
@@ -273,7 +269,7 @@
                     .item {
                         padding: 1rem
                         border-left: 1px solid #dbdbdb
-                        displayFlex()
+                        display-flex()
 
                         .photo {
                             width: 3.5rem
@@ -297,7 +293,8 @@
                         .title {
                             a {
                                 color: #242424
-                                font-size: 1.1rem
+                                font-size: 1rem
+                                font-weight: 600
                             }
 
                             a:hover {
@@ -325,9 +322,7 @@
             }
 
             .paginator {
-                displayFlex()
-                align-items: center
-                justify-content: center
+                center()
 
                 .current {
                     background-color: #3273dc !important
@@ -336,6 +331,7 @@
                 }
 
                 .page-number {
+                    center()
                     width: 2rem
                     height: 2rem
                     margin: 0.3rem
@@ -346,10 +342,26 @@
                     background-color: rgb(247, 247, 247)
                     border-color: #3273dc
                     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15)
-                    displayFlex()
-                    justify-content: center
-                    align-items: center
                 }
+            }
+        }
+
+        footer {
+            center()
+            flex-direction(column)
+            height: 6rem
+
+            .copyright, .icp {
+                color: #7a7a7a
+                font-size: 0.7rem
+            }
+
+            a {
+                color: RGB(50, 115, 220)
+            }
+
+            a:hover {
+                color: RGB(30, 105, 210)
             }
         }
     }
@@ -367,9 +379,9 @@
         }
 
         .follow-widget {
-            displayFlex()
-            flex-wrap: wrap
-            justify-content: space-between
+            display-flex()
+            flex-wrap(wrap)
+            justify-content(space-between)
             padding-bottom: 1rem
             border-bottom: 1px solid rgb(201, 198, 193)
 
@@ -390,9 +402,9 @@
         }
 
         .logo-widget {
-            displayFlex()
-            align-items: center
-            justify-content: space-between
+            display-flex()
+            flex-wrap(wrap)
+            justify-content(space-between)
             font-family: 'En-demo'
             font-size: 1.5rem
             font-weight: 600
@@ -414,22 +426,21 @@
         }
 
         .category-widget, .tag-widget, .toc-widget {
-            displayFlex()
-            flex-direction: column
+            display-flex()
+            flex-direction(column)
             margin: 1.5rem 0
             font-family: 'En-demo'
 
             .title {
                 font-size: 1.1rem
-                font-weight: 500
-                displayFlex()
-                justify-content: space-between
-                align-items: center
+                font-weight: 600
+                display-flex()
+                align-items(center)
+                justify-content(space-between)
 
                 a {
                     padding: 0 0.5rem
                     font-size: 1.5rem
-                    font-weight: 600
                 }
             }
 
@@ -445,6 +456,7 @@
             a {
                 color: #4a4a4a
                 font-size: 0.85rem
+                font-weight: 600
                 padding: 0.2rem
                 border-radius: 3px
                 display: inline-block

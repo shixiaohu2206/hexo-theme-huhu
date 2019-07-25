@@ -23,15 +23,6 @@ site_search: true
 rss: /atom.xml
 
 #follow 按顺序展示
-#github
-#facebook
-#twitter
-#instagram
-#wechat
-#alipay
-#zhihu
-#QQ
-#weibo
 follow:
   github: 'https://github.com/shixiaohu2206'
   # facebook: 'https://github.com/shixiaohu2206'
@@ -46,15 +37,15 @@ follow:
 #search post url
 search_url: /search.xml
 
-#ICP
-site_icp: '皖ICP备16021483号-3'
+#ICP 皖ICP备16021483号-3
+site_icp: ''
 
 #友情链接
 site_friends:
   房间里的小猫咪: 'http://baidu.com'
 
 #畅言评论
-changyan: false
+changyan: true
 
 #不蒜子统计
 busuanzi: false
