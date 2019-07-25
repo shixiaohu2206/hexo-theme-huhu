@@ -17,16 +17,25 @@
           <a href="<%- url_for(post.path) %>"><%= post.title %></a>
         </div>
         <div class="date">
-          <i class="icon-calendar"></i> <%- date(page.date, "YY/MM/DD") %>
+          <svg class="icon" aria-hidden="true">
+            <use xlink:href="#icon-calendar"></use>
+          </svg>
+          <%- date(page.date, "YY/MM/DD") %>
         </div>
         <% if (post.excerpt) { %>
         <div class="excerpt post-wrap"><%- post.excerpt %></div>
         <% }%>
         <div class="more">
           <div class="l">
-            <i class="icon-share"></i>
-            <i class="icon-comment"></i>
-            <i class="icon-heart"></i>
+            <svg class="icon" aria-hidden="true">
+              <use xlink:href="#icon-share"></use>
+            </svg>
+            <svg class="icon" aria-hidden="true">
+              <use xlink:href="#icon-comment"></use>
+            </svg>
+            <svg class="icon" aria-hidden="true">
+              <use xlink:href="#icon-heart"></use>
+            </svg>
           </div>
           <div class="r">
             <a href="<%- url_for(post.path) %>">Read More</a>

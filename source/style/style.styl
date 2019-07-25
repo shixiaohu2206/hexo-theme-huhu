@@ -63,10 +63,9 @@
                 align-items()
                 justify-content(flex-start)
 
-                .icon-align-right {
+                .toggle-icon {
                     cursor: pointer
                     color: rgb(12, 8, 7)
-                    font-size: 2rem
                 }
             }
 
@@ -86,9 +85,7 @@
                     justify-content: center
                     align-items: center
 
-                    .icon-search {
-                        font-weight: 600
-                        font-size: 1.4rem
+                    .icon {
                         color: rgb(38, 38, 38)
                     }
 
@@ -166,8 +163,13 @@
                         .date {
                             color: #7a7a7a
                             font-size: 0.8rem
-                            margin-top: 0.3rem
+                            margin-top: 0.6rem
                             margin-bottom: 1rem
+
+                            .icon {
+                                width: 1.4rem
+                                height: 1.4rem
+                            }
                         }
 
                         .excerpt {
@@ -184,19 +186,20 @@
                         .l {
                             display-flex()
 
-                            i {
+                            .icon {
                                 center()
                                 cursor: pointer
                                 color: #7a7a7a
-                                font-size: 1.35rem
+                                width: 1.4rem
+                                height: 1.4rem
                                 margin-right: 0.5rem
                                 transition: all 0.2rem
                                 transition: all 0.3s
-                            }
 
-                            i:hover {
-                                color: #333
-                                transform: scale(1.1, 1.1)
+                                &:hover {
+                                    color: #333
+                                    transform: scale(1.1, 1.1)
+                                }
                             }
                         }
 
@@ -237,10 +240,9 @@
                     background-color: rgb(116, 127, 255)
 
                     .icon {
-                        i {
-                            color: #fff
-                            font-size: 1.7rem
-                        }
+                        color: #fff
+                        width: 1.5rem
+                        height: 1.5rem
                     }
 
                     .explain {
@@ -288,6 +290,12 @@
                             color: #7a7a7a
                             font-size: 0.8rem
                             margin: 0.2rem 0
+
+                            .icon {
+                                width: 1rem
+                                height: 1rem
+                                vertical-align: -0.15rem
+                            }
                         }
 
                         .title {
@@ -299,12 +307,6 @@
 
                             a:hover {
                                 color: #3273dc
-                            }
-                        }
-
-                        .type {
-                            i {
-                                font-size: 0.9rem
                             }
                         }
                     }
@@ -374,8 +376,36 @@
         background-color: rgb(250, 246, 243)
 
         .locate-widget {
+            display-flex()
+            align-items(center)
+            justify-content(space-between)
             font-size: 1.5rem
             margin-bottom: 2rem
+            height: 5rem
+            line-height: 5rem
+
+            div {
+                width: 50%
+                overflow: hidden
+                text-overflow: ellipsis
+                white-space: nowrap
+            }
+
+            #weather-img {
+                text-align: right
+            }
+
+            .location {
+                color: #6a737d
+                width: 1.5rem
+                height: 1.5rem
+            }
+
+            .weather {
+                flex: 1
+                width: 5rem
+                height: 5rem
+            }
         }
 
         .follow-widget {
@@ -387,17 +417,11 @@
 
             a {
                 width: 25%
-            }
+                text-align: center
 
-            i {
-                cursor: pointer
-                color: rgb(120, 120, 120)
-                font-size: 1.7rem
-                transition: color 0.2s
-            }
-
-            i:hover {
-                color: rgb(30, 30, 30)
+                &:hover > .icon {
+                    color: #333
+                }
             }
         }
 

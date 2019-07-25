@@ -29,11 +29,15 @@
       <div id="main">
         <div class="navbar">
           <div class="toggle">
-            <i class="icon-align-right"></i>
+            <svg class="icon toggle-icon" aria-hidden="true">
+              <use xlink:href="#icon-align-left"></use>
+            </svg>
           </div>
           <div class="search">
             <div class="input-warp">
-              <i class="icon-search"></i>
+              <svg class="icon" aria-hidden="true">
+                <use xlink:href="#icon-search"></use>
+              </svg>
               <input type="text" name="" id="" placeholder="Search Keys" />
             </div>
           </div>
@@ -43,7 +47,10 @@
         </div>
         <footer>
           <div class="copyright">
-            ©2019 <%= config.author %>. Powered by Hexo & <a href="https://github.com/shixiaohu2206/hexo-theme-huhu">hexo-theme-huhu</a>
+            ©2019 <%= config.author %>. Powered by Hexo &
+            <a href="https://github.com/shixiaohu2206/hexo-theme-huhu"
+              >hexo-theme-huhu</a
+            >
           </div>
           <% if (theme.site_icp) { %>
           <div class="icp">
@@ -63,30 +70,44 @@
           ></div>
         </div>
         <div class="locate-widget">
-          <i class="icon-location"></i>
-          <span>上海</span>
-          <span>多云</span>
+          <div>
+            <svg class="icon location" aria-hidden="true">
+              <use xlink:href="#icon-location"></use>
+            </svg>
+            <span id="city-name"></span>
+          </div>
+          <div id="weather-img">
+            <svg class="icon weather" aria-hidden="true">
+              <use xlink:href="#icon-qingjiafeng"></use>
+            </svg>
+          </div>
         </div>
         <div class="follow-widget">
           <% for (var f in theme.follow){ %>
-          <a href="<%= theme.follow[f] %>" target="_block"
-            ><i class="icon-<%= f %> "></i
-          ></a>
+          <a href="<%= theme.follow[f] %>" target="_block">
+            <svg class="icon font" aria-hidden="true">
+              <use xlink:href="#icon-<%= f %>"></use>
+            </svg>
+          </a>
           <% } %> <% if (theme.rss) { %>
-          <a href="<%= theme.rss %>" target="_block"
-            ><i class="icon-rss"></i
-          ></a>
+          <a href="<%= theme.rss %>" target="_block">
+            <svg class="icon font" aria-hidden="true">
+              <use xlink:href="#icon-rss"></use>
+            </svg>
+          </a>
           <% } %>
         </div>
         <% if (is_post()) { %>
-        <div class="toc-widget">
-          <div class="title">
-            <span>Toc</span>
-          </div>
-          <div class="post-toc">
-            <%- toc(page.content, {list_number: false}) %>
-          </div>
-        </div>
+          <% if (toc(page.content, {list_number: false})) { %>
+            <div class="toc-widget">
+              <div class="title">
+                <span>Toc</span>
+              </div>
+              <div class="post-toc">
+                <%- toc(page.content, {list_number: false}) %>
+              </div>
+            </div>
+          <% } %>
         <% } %>
         <div class="category-widget">
           <div class="title">
@@ -126,4 +147,4 @@
   src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"
 ></script>
 <% } %> <%- js('scripts/jquery.js') %> <%- js('scripts/viewer.js') %>
-<%-js('scripts/index.js') %>
+<%-js('scripts/index.js') %> <%-js('scripts/iconfont.js') %>

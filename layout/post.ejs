@@ -2,7 +2,9 @@
     <div class="header">
       <div class="title"><%- page.title %></div>
       <div class="date">
-        <i class="icon-calendar"></i>
+          <svg class="icon" aria-hidden="true">
+            <use xlink:href="#icon-calendar"></use>
+          </svg>
         <%- date(page.date, "YYYY/MM/DD") %>
       </div>
     </div>

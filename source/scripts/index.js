@@ -88,10 +88,35 @@ function getNow() {
   return new Date().getTime()
 }
 
+let IMG_ARRAY = {
+  xue: 'daxue',
+  lei: 'leidian',
+  shachen: 'shachenbao',
+  wu: 'wu',
+  bingbao: 'bingbao',
+  yun: 'duoyun',
+  yu: 'dayu',
+  yin: 'yintian',
+  qing: 'qingtian'
+}
+
 $(document).ready(function() {
   // 天气接口
-  getWeath().then(data => {
-    console.log(data)
+  getWeath().then(resp => {
+    if (resp) {
+      let city_name = resp.city || '上海' // 默认上海
+      let today = (resp.data && resp.data[0]) || {}
+      let wea_img = today.wea_img || 'qingtian' // 默认晴天图标
+      let wea = today.wea // 当前天气
+      let tem = today.tem // 当前温度
+
+      $('#city-name').text(city_name)
+      $('#weather-img').html(
+        `<svg class="icon weather" aria-hidden="true">
+            <use xlink:href="#icon-${IMG_ARRAY[wea_img] || 'qingtian'}"></use>
+        </svg>`
+      )
+    }
   })
 
   // 图片预览
@@ -101,7 +126,7 @@ $(document).ready(function() {
   }
 
   // 左侧滑块
-  $(document).on('click', '.icon-align-right', function() {
+  $(document).on('click', '.toggle-icon', function() {
     $('#card').toggle('1000')
   })
 })
