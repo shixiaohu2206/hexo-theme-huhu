@@ -1,35 +1,3 @@
-// 天气接口
-function getWeath() {
-  let weathKey = 'WEATH'
-  let weathData = localStorage.get(weathKey)
-
-  if (weathData) {
-    return Promise.resolve(weathData)
-  } else {
-    return new Promise((resolve, reject) => {
-      fetch('https://www.tianqiapi.com/api/').then(
-        data => {
-          if (data.ok) {
-            data.json().then(resp => {
-              if (resp) {
-                localStorage.set('WEATH', resp)
-                return resolve(resp)
-              } else {
-                return reject()
-              }
-            })
-          } else {
-            return reject()
-          }
-        },
-        e => {
-          return reject(e)
-        }
-      )
-    })
-  }
-}
-
 // 缓存
 let localStorage = (function() {
   let storage = window.localStorage
@@ -84,6 +52,38 @@ let localStorage = (function() {
   }
 })()
 
+// 天气接口
+function getWeath() {
+  let weathKey = 'WEATH'
+  let weathData = localStorage.get(weathKey)
+
+  if (weathData) {
+    return Promise.resolve(weathData)
+  } else {
+    return new Promise((resolve, reject) => {
+      fetch('https://www.tianqiapi.com/api/').then(
+        data => {
+          if (data.ok) {
+            data.json().then(resp => {
+              if (resp) {
+                localStorage.set('WEATH', resp)
+                return resolve(resp)
+              } else {
+                return reject()
+              }
+            })
+          } else {
+            return reject()
+          }
+        },
+        e => {
+          return reject(e)
+        }
+      )
+    })
+  }
+}
+
 function getNow() {
   return new Date().getTime()
 }
@@ -111,6 +111,7 @@ $(document).ready(function() {
       let tem = today.tem // 当前温度
 
       $('#city-name').text(city_name)
+      $('#weather-detail').text(`${wea}/${tem}`)
       $('#weather-img').html(
         `<svg class="icon weather" aria-hidden="true">
             <use xlink:href="#icon-${IMG_ARRAY[wea_img] || 'qingtian'}"></use>
@@ -128,5 +129,42 @@ $(document).ready(function() {
   // 左侧滑块
   $(document).on('click', '.toggle-icon', function() {
     $('#card').toggle('1000')
+  })
+
+  let DISLOG_TEMP = `<div id="dialog">
+  <div class="bg"></div>
+  <div class="wrap">
+    <div class="title">{TITLE}</div>
+    <div class="content">{CONTENT}</div>
+    <div class="button">{BUTTON}</div>
+  </div>
+</div>`
+
+  $.extend({
+    dialog: function(options) {
+      options = options || {}
+      let html = DISLOG_TEMP.replace(/{TITLE}/g, options.title || 'Title')
+        .replace(/{CONTENT}/g, options.content || 'content')
+        .replace(/{BUTTON}/g, options.button || 'button')
+
+      $('body').append(html)
+    },
+    hideDialog: function() {
+      $('#dialog').remove()
+    }
+  })
+
+  $(document).on('click', '#dialog > .wrap', function(e) {
+    e.stopPropagation()
+  })
+
+  // $(document).on('click', function() {
+  //   $.hideDialog()
+  // })
+
+  $(document).on('click', '.share', function() {
+    $.dialog({
+      title: '分享'
+    })
   })
 })

@@ -27,15 +27,21 @@
         <% }%>
         <div class="more">
           <div class="l">
-            <svg class="icon" aria-hidden="true">
-              <use xlink:href="#icon-share"></use>
-            </svg>
-            <svg class="icon" aria-hidden="true">
-              <use xlink:href="#icon-comment"></use>
-            </svg>
-            <svg class="icon" aria-hidden="true">
-              <use xlink:href="#icon-heart"></use>
-            </svg>
+            <div class="share">
+              <svg class="icon" aria-hidden="true">
+                <use xlink:href="#icon-share"></use>
+              </svg>
+            </div>
+            <div class="comment">
+              <svg class="icon" aria-hidden="true">
+                <use xlink:href="#icon-comment"></use>
+              </svg>
+            </div>
+            <div class="heart">
+              <svg class="icon" aria-hidden="true">
+                <use xlink:href="#icon-heart"></use>
+              </svg>
+            </div>
           </div>
           <div class="r">
             <a href="<%- url_for(post.path) %>">Read More</a>

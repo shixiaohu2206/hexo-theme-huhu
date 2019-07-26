@@ -1,14 +1,14 @@
 @import 'variables.styl'
 @import 'reset.styl'
 @import 'font.styl'
-// @import 'index.styl'
 @import 'highlight.styl'
 @import 'media.styl'
+@import 'dialog.styl'
 
 .head {
     top: 0
     position: fixed
-    width: 90%
+    width: 95%
     max-width: 1200px
     height: 3.8rem
     z-index: 999
@@ -22,7 +22,7 @@
 
     a {
         color: #7a7a7a
-        padding: 0 1rem
+        padding: 1rem
         font-size: 0.8rem
         font-weight: 600
         font-family: 'En-demo'
@@ -49,7 +49,7 @@
         flex: 1
         flex-direction(column)
         overflow: auto
-        padding: 3rem 2rem 0 2rem
+        padding: 3rem 1rem 2rem
 
         .navbar {
             width: 100%
@@ -382,17 +382,11 @@
             font-size: 1.5rem
             margin-bottom: 2rem
             height: 5rem
-            line-height: 5rem
 
-            div {
+            // line-height: 5rem
+            .city-wrap {
                 width: 50%
-                overflow: hidden
-                text-overflow: ellipsis
-                white-space: nowrap
-            }
-
-            #weather-img {
-                text-align: right
+                ellipsis()
             }
 
             .location {
@@ -401,10 +395,22 @@
                 height: 1.5rem
             }
 
-            .weather {
+            .weather-wrap {
                 flex: 1
-                width: 5rem
-                height: 5rem
+                overflow: hidden
+                text-align: center
+
+                .weather {
+                    width: 5rem
+                    height: 5rem
+                }
+
+                #weather-detail {
+                    width: 100%
+                    ellipsis()
+                    color: #6a737d
+                    font-size: 0.5rem
+                }
             }
         }
 
@@ -417,6 +423,7 @@
 
             a {
                 width: 25%
+                margin: 0.3rem 0
                 text-align: center
 
                 &:hover > .icon {

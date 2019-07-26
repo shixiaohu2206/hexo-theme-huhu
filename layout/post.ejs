@@ -9,13 +9,13 @@
       </div>
     </div>
     <%- page.content %>
-     <!--畅言PC和WAP自适应版-->
-  <% if (theme.changyan) { %>
+  <!--畅言PC和WAP自适应版-->
+  <% if (theme.changyan.appid && theme.changyan.conf) { %>
   <div id="SOHUCS" sid="<%- date(page.date, "YYYY/MM/DD") %>/<%- page.title %>"></div>
   <script type="text/javascript">
     ;(function() {
-      var appid = "cytOueKrt"
-      var conf = "prod_0650a81510b1c16dd4c6b8d447948595"
+      var appid = "<%= theme.changyan.appid %>"
+      var conf = "<%= theme.changyan.conf %>"
       var width = window.innerWidth || document.documentElement.clientWidth
       if (width < 960) {
         window.document.write(

@@ -25,19 +25,19 @@ rss: /atom.xml
 #follow 按顺序展示
 follow:
   github: 'https://github.com/shixiaohu2206'
-  # facebook: 'https://github.com/shixiaohu2206'
+  facebook: 'https://www.facebook.com/shi.xiaohu.5'
   # twitter: 'https://github.com/shixiaohu2206'
-  # instagram: 'https://github.com/shixiaohu2206'
-  weixin: 'https://github.com/shixiaohu2206'
+  instagram: 'https://www.instagram.com/shi_xiaohu/'
+  # weixin: 'https://github.com/shixiaohu2206'
   # alipay: 'https://github.com/shixiaohu2206'
   # zhihu: 'https://github.com/shixiaohu2206'
-  QQ: 'https://github.com/shixiaohu2206'
+  # QQ: 'https://github.com/shixiaohu2206'
   # weibo: 'https://github.com/shixiaohu2206'
 
 #search post url
 search_url: /search.xml
 
-#ICP 皖ICP备16021483号-3
+#ICP 皖ICP备16021483号
 site_icp: ''
 
 #友情链接
@@ -45,7 +45,9 @@ site_friends:
   房间里的小猫咪: 'http://baidu.com'
 
 #畅言评论
-changyan: true
+changyan:
+  appid: 'cytOueKrt'
+  conf: 'prod_0650a81510b1c16dd4c6b8d447948595'
 
 #不蒜子统计
-busuanzi: false
+busuanzi: true
