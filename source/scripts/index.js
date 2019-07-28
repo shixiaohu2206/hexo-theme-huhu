@@ -1,15 +1,17 @@
+'use strict'
+
 // 缓存
-let localStorage = (function() {
-  let storage = window.localStorage
-  let expire = 3 * 60 * 60 * 1000 // 默认过期时间3小时
+var LOCALSTORAGE = (function() {
+  var storage = window.localStorage
+  var expire = 3 * 60 * 60 * 1000 // 默认过期时间3小时
 
   function get(key) {
-    let value
+    var value
     try {
       value = JSON.parse(storage.getItem(key))
 
       if (value) {
-        let now = getNow()
+        var now = getNow()
         if (value.expireTime < now) {
           value = null
         }
@@ -27,7 +29,7 @@ let localStorage = (function() {
     key = key && key.toLocaleUpperCase()
 
     if (value) {
-      let now = getNow()
+      var now = getNow()
       value.setTime = now
       value.expireTime = now + expire
 
@@ -46,16 +48,16 @@ let localStorage = (function() {
   function remove() {}
 
   return {
-    get,
-    set,
-    remove
+    get: get,
+    set: set,
+    remove: remove
   }
 })()
 
 // 天气接口
 function getWeath() {
-  let weathKey = 'WEATH'
-  let weathData = localStorage.get(weathKey)
+  var weathKey = 'WEATH'
+  var weathData = LOCALSTORAGE.get(weathKey)
 
   if (weathData) {
     return Promise.resolve(weathData)
@@ -66,7 +68,7 @@ function getWeath() {
           if (data.ok) {
             data.json().then(resp => {
               if (resp) {
-                localStorage.set('WEATH', resp)
+                LOCALSTORAGE.set('WEATH', resp)
                 return resolve(resp)
               } else {
                 return reject()
@@ -88,7 +90,12 @@ function getNow() {
   return new Date().getTime()
 }
 
-let IMG_ARRAY = {
+// 阻止冒泡
+function stopPropagation(e) {
+  e.stopPropagation ? e.stopPropagation() : (e.cancelBubble = true)
+}
+
+var IMG_ARRAY = {
   xue: 'daxue',
   lei: 'leidian',
   shachen: 'shachenbao',
@@ -104,11 +111,11 @@ $(document).ready(function() {
   // 天气接口
   getWeath().then(resp => {
     if (resp) {
-      let city_name = resp.city || '上海' // 默认上海
-      let today = (resp.data && resp.data[0]) || {}
-      let wea_img = today.wea_img || 'qingtian' // 默认晴天图标
-      let wea = today.wea // 当前天气
-      let tem = today.tem // 当前温度
+      var city_name = resp.city || '上海' // 默认上海
+      var today = (resp.data && resp.data[0]) || {}
+      var wea_img = today.wea_img || 'qingtian' // 默认晴天图标
+      var wea = today.wea // 当前天气
+      var tem = today.tem // 当前温度
 
       $('#city-name').text(city_name)
       $('#weather-detail').text(`${wea}/${tem}`)
@@ -121,50 +128,33 @@ $(document).ready(function() {
   })
 
   // 图片预览
-  let imagesDom = $('img')
-  for (let i = 0; i < imagesDom.length; i++) {
-    new Viewer(imagesDom[i])
-  }
-
-  // 左侧滑块
-  $(document).on('click', '.toggle-icon', function() {
-    $('#card').toggle('1000')
+  $('.post-entry > img').each(function(k, v) {
+    var src = $(v)[0].src
+    var title = $(v)[0].title
+    $(v).after(
+      `<a href="${src}" data-caption="${title}" data-fancybox="images"><img src="${src}" alt="${title}"></a>`
+    )
+    $(v).remove()
   })
-
-  let DISLOG_TEMP = `<div id="dialog">
-  <div class="bg"></div>
-  <div class="wrap">
-    <div class="title">{TITLE}</div>
-    <div class="content">{CONTENT}</div>
-    <div class="button">{BUTTON}</div>
-  </div>
-</div>`
-
-  $.extend({
-    dialog: function(options) {
-      options = options || {}
-      let html = DISLOG_TEMP.replace(/{TITLE}/g, options.title || 'Title')
-        .replace(/{CONTENT}/g, options.content || 'content')
-        .replace(/{BUTTON}/g, options.button || 'button')
-
-      $('body').append(html)
-    },
-    hideDialog: function() {
-      $('#dialog').remove()
+  $('[data-fancybox="images"]').fancybox({
+    loop: true, // 相册循环浏览
+    thumbs: {
+      autoStart: true
     }
   })
 
-  $(document).on('click', '#dialog > .wrap', function(e) {
-    e.stopPropagation()
+  // 左侧滑块
+  $(document).on('click', '.toggle-icon', function() {
+    $('#card-wrap').toggle('1000')
   })
 
-  // $(document).on('click', function() {
-  //   $.hideDialog()
-  // })
-
-  $(document).on('click', '.share', function() {
-    $.dialog({
-      title: '分享'
+  // 分享
+  $(document).on('click', '.share', function(e) {
+    var that = $(this)
+    $().share({
+      url: `${location.origin}${that.data('url')}` || location.href,
+      sites: SHARE_ARRAY
     })
+    stopPropagation(e)
   })
 })

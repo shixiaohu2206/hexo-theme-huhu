@@ -1,8 +1,7 @@
 <% if (is_home()){ %>
 <div class="posts">
   <ul>
-    <% page.posts.each(function (post, key) { %> <% let bg = post.photos &&
-    post.photos[0] || ''%>
+    <% page.posts.each(function (post, key) { %> <% let bg = post.photos && post.photos[0] || ''%>
     <li class="item">
       <% if (bg) { %>
       <a
@@ -27,19 +26,20 @@
         <% }%>
         <div class="more">
           <div class="l">
-            <div class="share">
+            <div class="heart">
               <svg class="icon" aria-hidden="true">
-                <use xlink:href="#icon-share"></use>
+                <use xlink:href="#icon-heart"></use>
               </svg>
             </div>
+
             <div class="comment">
               <svg class="icon" aria-hidden="true">
                 <use xlink:href="#icon-comment"></use>
               </svg>
             </div>
-            <div class="heart">
+            <div class="share" data-url="<%- url_for(post.path) %>">
               <svg class="icon" aria-hidden="true">
-                <use xlink:href="#icon-heart"></use>
+                <use xlink:href="#icon-share"></use>
               </svg>
             </div>
           </div>

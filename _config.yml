@@ -33,6 +33,9 @@ follow:
   # zhihu: 'https://github.com/shixiaohu2206'
   # QQ: 'https://github.com/shixiaohu2206'
   # weibo: 'https://github.com/shixiaohu2206'
+  # douban: 'https://github.com/shixiaohu2206'
+  # qqkongjian: 'https://github.com/shixiaohu2206'
+  # google: 'https://github.com/shixiaohu2206'
 
 #search post url
 search_url: /search.xml
@@ -46,8 +49,20 @@ site_friends:
 
 #畅言评论
 changyan:
-  appid: 'cytOueKrt'
-  conf: 'prod_0650a81510b1c16dd4c6b8d447948595'
+  # appid: 'cytOueKrt'
+  # conf: 'prod_0650a81510b1c16dd4c6b8d447948595'
+  appid: ''
+  conf: ''
 
 #不蒜子统计
 busuanzi: true
+
+share:
+  - weibo
+  - weixin
+  - qqkongjian
+  - QQ
+  - douban
+  - facebook
+  - twitter
+  - google

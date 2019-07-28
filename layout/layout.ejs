@@ -3,15 +3,12 @@
   <head>
     <meta charset="utf-8" />
     <meta name="baidu-site-verification" content="vvVgSQUzPU" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, maximum-scale=1"
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta name="keywords" content="<%= config.keywords%>" />
     <meta name="description" content="<%= config.description%>" />
     <title><%= config.title%></title>
     <link rel="shortcut icon" href="<%= theme.favicon%>" type="image/x-icon" />
-    <%- css('style/style') %> <%- css('style/viewer.css') %>
+    <%- css('style/style') %> <%- css('style/fancybox.css') %> <%- css('style/confirm.css') %>
   </head>
 
   <body>
@@ -48,9 +45,7 @@
         <footer>
           <div class="copyright">
             ©2019 <%= config.author %>. Powered by Hexo &
-            <a href="https://github.com/shixiaohu2206/hexo-theme-huhu"
-              >hexo-theme-huhu</a
-            >
+            <a href="https://github.com/shixiaohu2206/hexo-theme-huhu">hexo-theme-huhu</a>
           </div>
           <% if (theme.site_icp) { %>
           <div class="icp">
@@ -59,107 +54,139 @@
           <% } %>
         </footer>
       </div>
-      <div id="card">
-        <div class="logo-widget">
-          <div class="author">
-            Utone
-          </div>
-          <div
-            class="logo"
-            style="background-image: url('/images/logo.jpeg')"
-          ></div>
-        </div>
-        <div class="locate-widget">
-          <div class="city-wrap">
-            <svg class="icon location" aria-hidden="true">
-              <use xlink:href="#icon-location"></use>
-            </svg>
-            <span id="city-name"></span>
-          </div>
-          <div class="weather-wrap">
-            <div id="weather-img">
-              <svg class="icon weather" aria-hidden="true">
-                <use xlink:href="#icon-qingjiafeng"></use>
-              </svg>
+      <div id="card-wrap">
+        <div class="card">
+          <div class="logo-widget">
+            <div class="author">
+              Utone
             </div>
-            <div id="weather-detail"></div>
+            <div class="logo" style="background-image: url('/images/logo.jpeg')"></div>
           </div>
-        </div>
-        <div class="follow-widget">
-          <% for (var f in theme.follow){ %>
-          <a href="<%= theme.follow[f] %>" target="_block">
-            <svg class="icon font" aria-hidden="true">
-              <use xlink:href="#icon-<%= f %>"></use>
-            </svg>
-          </a>
-          <% } %> <% if (theme.rss) { %>
-          <a href="<%= theme.rss %>" target="_block">
-            <svg class="icon font" aria-hidden="true">
-              <use xlink:href="#icon-rss"></use>
-            </svg>
-          </a>
-          <% } %>
-        </div>
-        <% if (is_post()) { %> <% if (toc(page.content, {list_number: false})) {
-        %>
-        <div class="toc-widget">
-          <div class="title">
-            <span>Toc</span>
+          <div class="locate-widget">
+            <div class="city-wrap">
+              <svg class="icon location" aria-hidden="true">
+                <use xlink:href="#icon-location"></use>
+              </svg>
+              <span id="city-name"></span>
+            </div>
+            <div class="weather-wrap">
+              <div id="weather-img">
+                <svg class="icon weather" aria-hidden="true">
+                  <use xlink:href="#icon-qingjiafeng"></use>
+                </svg>
+              </div>
+              <div id="weather-detail"></div>
+            </div>
           </div>
-          <div class="post-toc">
-            <%- toc(page.content, {list_number: false}) %>
+          <div class="follow-widget">
+            <% for (var f in theme.follow){ %>
+            <a href="<%= theme.follow[f] %>" target="_block">
+              <svg class="icon font" aria-hidden="true">
+                <use xlink:href="#icon-<%= f %>"></use>
+              </svg>
+            </a>
+            <% } %> <% if (theme.rss) { %>
+            <a href="<%= theme.rss %>" target="_block">
+              <svg class="icon font" aria-hidden="true">
+                <use xlink:href="#icon-rss"></use>
+              </svg>
+            </a>
+            <% } %>
           </div>
-        </div>
-        <% } %> <% } %>
-        <div class="category-widget">
-          <div class="title">
-            <span>Categories</span>
-            <span><a href="/archives">···</a></span>
+          <% if (is_post()) { %> <% if (toc(page.content, {list_number: false})) { %>
+          <div class="toc-widget">
+            <div class="title">
+              <span>Toc</span>
+            </div>
+            <div class="post-toc">
+              <%- toc(page.content, {list_number: false}) %>
+            </div>
           </div>
-          <div class="list">
-            <ul>
-              <% site.categories.each(function (c, k) { %> <% if ( k <
-              theme.categories_max) { %>
-              <li>
-                <a href="<%- url_for(c.path) %>">
-                  <%= c.name %>
-                </a>
-              </li>
-              <% } %> <% }) %>
-            </ul>
+          <% } %> <% } %>
+          <div class="category-widget">
+            <div class="title">
+              <span>Categories</span>
+              <span><a href="/archives">···</a></span>
+            </div>
+            <div class="list">
+              <ul>
+                <% site.categories.each(function (c, k) { %> <% if ( k < theme.categories_max) { %>
+                <li>
+                  <a href="<%- url_for(c.path) %>">
+                    <%= c.name %>
+                  </a>
+                </li>
+                <% } %> <% }) %>
+              </ul>
+            </div>
           </div>
-        </div>
-        <div class="tag-widget">
-          <div class="title">
-            <span>Tag Cloud</span>
-            <span><a href="">···</a></span>
-          </div>
-          <div class="tag-cloud">
-            <%- tagcloud({ min_font: 13, max_font: 20, amount: 15, color: true,
-            start_color: '#4a4a4a', end_color: '#4a4a4a'}) %>
+          <div class="tag-widget">
+            <div class="title">
+              <span>Tag Cloud</span>
+              <span><a href="">···</a></span>
+            </div>
+            <div class="tag-cloud">
+              <%- tagcloud({ min_font: 13, max_font: 20, amount: 15, color: true, start_color:
+              '#4a4a4a', end_color: '#4a4a4a'}) %>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </body>
 </html>
-
-<% if (theme.busuanzi) { %>
-<script
-  async
-  src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"
-></script>
-<% } %> <%- js('scripts/jquery.js') %> %> <%- js('scripts/viewer.js') %>
-<%-js('scripts/index.js') %> <%-js('scripts/iconfont.js') %>
-
-<!-- 百度统计 -->
 <script>
-  var _hmt = _hmt || []
+  var SHARE_ARRAY = JSON.parse('<%- JSON.stringify(theme.share) %>')
+</script>
+<% if (theme.busuanzi) { %>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<% } %> <%- js('scripts/jquery.js') %> <%- js('scripts/fancybox.js') %> <%-
+js('scripts/iconfont.js') %> <%- js('scripts/confirm.js') %> <%- js('scripts/share.js') %> <%-
+js('scripts/index.js') %>
+
+<!-- 畅言 -->
+<% if (theme.changyan.appid && theme.changyan.conf) { %>
+<script type="text/javascript">
   ;(function() {
-    var hm = document.createElement('script')
-    hm.src = 'https://hm.baidu.com/hm.js?5a0acc897fd96474a2c8f4deac84611a'
-    var s = document.getElementsByTagName('script')[0]
-    s.parentNode.insertBefore(hm, s)
+    var appid = '<%= theme.changyan.appid %>'
+    var conf = '<%= theme.changyan.conf %>'
+    var width = window.innerWidth || document.documentElement.clientWidth
+    if (width < 960) {
+      window.document.write(
+        '<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' +
+          appid +
+          '&conf=' +
+          conf +
+          '"><\/script>'
+      )
+    } else {
+      var loadJs = function(d, a) {
+        var c =
+          document.getElementsByTagName('head')[0] || document.head || document.documentElement
+        var b = document.createElement('script')
+        b.setAttribute('type', 'text/javascript')
+        b.setAttribute('charset', 'UTF-8')
+        b.setAttribute('src', d)
+        if (typeof a === 'function') {
+          if (window.attachEvent) {
+            b.onreadystatechange = function() {
+              var e = b.readyState
+              if (e === 'loaded' || e === 'complete') {
+                b.onreadystatechange = null
+                a()
+              }
+            }
+          } else {
+            b.onload = a
+          }
+        }
+        c.appendChild(b)
+      }
+      loadJs('https://changyan.sohu.com/upload/changyan.js', function() {
+        window.changyan.api.config({ appid: appid, conf: conf })
+      })
+    }
   })()
 </script>
-<!-- 百度统计 -->
+<% } %>
+<!-- 畅言 -->

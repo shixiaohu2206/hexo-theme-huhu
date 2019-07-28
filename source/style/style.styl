@@ -3,23 +3,24 @@
 @import 'font.styl'
 @import 'highlight.styl'
 @import 'media.styl'
-@import 'dialog.styl'
 
+// @import 'dialog.styl'
 .head {
     top: 0
     position: fixed
     width: 95%
     max-width: 1200px
-    height: 3.8rem
+    height: 3rem
     z-index: 999
-    border-bottom-left-radius: 1rem
-    border-bottom-right-radius: 1rem
-    background-color: rgb(250, 246, 243)
     display-flex()
     align-items()
     justify-content(flex-start)
-    border: 1px solid rgb(222, 222, 222)
+    border-bottom-left-radius: 1rem
+    border-bottom-right-radius: 1rem
+    background-color: #fff
+    border: 1px solid rgba(0, 0, 0, 0.1)
 
+    // box-shadow: 0 0px 5px 5px #CACACA
     a {
         color: #7a7a7a
         padding: 1rem
@@ -37,19 +38,34 @@
     }
 }
 
+#share {
+    display-flex()
+    flex-wrap(wrap)
+    justify-content(space-around)
+    padding: 0.3rem
+
+    a {
+        padding: 0.5rem
+        border-radius: 0.2rem
+        display: inline-block
+
+        &:hover {
+            background-color: #FFF0F9
+        }
+    }
+}
+
 #container {
     width: 980px
-    height: 100%
     overflow: hidden
-    box-shadow: 0 0px 5px 5px rgb(233, 233, 233)
-    background-color: rgb(255, 255, 255)
     display-flex()
 
     #main {
         flex: 1
         flex-direction(column)
         overflow: auto
-        padding: 3rem 1rem 2rem
+        margin-top: 3rem
+        padding: 0 1rem 0
 
         .navbar {
             width: 100%
@@ -368,152 +384,59 @@
         }
     }
 
-    #card {
-        width: 33%
-        padding: 6rem 3rem 3rem 3rem
-        overflow: auto
+    #card-wrap {
+        width: 20rem
+        min-height: 10rem
+        margin-top: 5rem
         box-sizing: border-box
-        background-color: rgb(250, 246, 243)
+        position: relative
 
-        .locate-widget {
-            display-flex()
-            align-items(center)
-            justify-content(space-between)
-            font-size: 1.5rem
-            margin-bottom: 2rem
-            height: 5rem
+        .card {
+            width: 17rem
+            height: 50rem
+            position: fixed
+            padding: 2rem
+            overflow: auto
+            border-radius: 1rem
+            border: 1px solid rgba(0, 0, 0, 0.1)
 
-            // line-height: 5rem
-            .city-wrap {
-                width: 50%
-                ellipsis()
+            /* 滚动条整体样式 */
+            /* 宽分别对应竖滚动条的尺寸 */
+            /* 高分别对应横滚动条的尺寸 */
+            &::-webkit-scrollbar {
+                width: 0.4rem
+                height: 0.4rem
             }
 
-            .location {
-                color: #6a737d
-                width: 1.5rem
-                height: 1.5rem
+            /* 滚动条里面轨道 */
+            &::-webkit-scrollbar-track {
+                background-color: RGB(255, 255, 255)
             }
 
-            .weather-wrap {
-                flex: 1
-                overflow: hidden
-                text-align: center
-
-                .weather {
-                    width: 5rem
-                    height: 5rem
-                }
-
-                #weather-detail {
-                    width: 100%
-                    ellipsis()
-                    color: #6a737d
-                    font-size: 0.5rem
-                }
-            }
-        }
-
-        .follow-widget {
-            display-flex()
-            flex-wrap(wrap)
-            justify-content(space-between)
-            padding-bottom: 1rem
-            border-bottom: 1px solid rgb(201, 198, 193)
-
-            a {
-                width: 25%
-                margin: 0.3rem 0
-                text-align: center
-
-                &:hover > .icon {
-                    color: #333
-                }
-            }
-        }
-
-        .logo-widget {
-            display-flex()
-            flex-wrap(wrap)
-            justify-content(space-between)
-            font-family: 'En-demo'
-            font-size: 1.5rem
-            font-weight: 600
-            margin-bottom: 2rem
-
-            .author {
-                font-size: 1.8rem
+            /* 滚动条里面小方块 */
+            &::-webkit-scrollbar-thumb {
+                opacity: 0.5
+                border-radius: 2rem
+                background-color: RGB(171, 174, 180)
             }
 
-            .logo {
-                width: 3rem
-                height: 3rem
-                margin-left: 1rem
-                border-radius: 1rem
-                background-size: cover
-                background-position: center center
-                background-color: rgb(201, 198, 193)
-            }
-        }
-
-        .category-widget, .tag-widget, .toc-widget {
-            display-flex()
-            flex-direction(column)
-            margin: 1.5rem 0
-            font-family: 'En-demo'
-
-            .title {
-                font-size: 1.1rem
-                font-weight: 600
+            .category-widget, .tag-widget, .toc-widget {
                 display-flex()
-                align-items(center)
-                justify-content(space-between)
+                flex-direction(column)
+                margin: 1rem 0
+                font-family: 'En-demo'
 
-                a {
-                    padding: 0 0.5rem
-                    font-size: 1.5rem
-                }
-            }
+                .title {
+                    height: 2rem
+                    font-size: 1.1rem
+                    font-weight: 600
+                    display-flex()
+                    align-items(center)
+                    justify-content(space-between)
 
-            .tag-cloud, .list {
-                margin-top: 0.5rem
-                margin-left: 1rem
-            }
-
-            ul {
-                list-style: none
-            }
-
-            a {
-                color: #4a4a4a
-                font-size: 0.85rem
-                font-weight: 600
-                padding: 0.2rem
-                border-radius: 3px
-                display: inline-block
-                overflow: hidden
-                text-overflow: ellipsis
-                white-space: nowrap
-            }
-
-            a:hover {
-                color: rgb(255, 255, 255) !important
-                background-color: rgb(180, 180, 180) !important
-            }
-        }
-
-        .toc-widget {
-            .post-toc {
-                flex: 1
-
-                .toc {
-                    margin-top: 0.5rem
-                    margin-left: 1rem
-                }
-
-                a {
-                    width: 100%
-                    height: 100%
+                    a {
+                        font-size: 1.5rem
+                    }
                 }
 
                 ol, ul {
@@ -521,14 +444,131 @@
                     list-style: none
                     margin-left: 1rem
                 }
-            }
-        }
 
-        .category-widget {
-            .list {
                 a {
-                    width: 100%
-                    height: 100%
+                    color: #4a4a4a
+                    font-size: 0.85rem
+                    font-weight: 600
+                    padding: 0.2rem
+                    border-radius: 3px
+                    display: inline-block
+                    overflow: hidden
+                    text-overflow: ellipsis
+                    white-space: nowrap
+                }
+
+                a:hover {
+                    color: rgb(255, 255, 255) !important
+                    background-color: rgb(180, 180, 180) !important
+                }
+            }
+
+            .locate-widget {
+                display-flex()
+                align-items(center)
+                justify-content(space-between)
+                font-size: 1.5rem
+                margin-bottom: 2rem
+                height: 5rem
+
+                .city-wrap {
+                    width: 50%
+                    ellipsis()
+                }
+
+                .location {
+                    color: #6a737d
+                    width: 1.5rem
+                    height: 1.5rem
+                }
+
+                .weather-wrap {
+                    flex: 1
+                    overflow: hidden
+                    text-align: center
+
+                    .weather {
+                        width: 5rem
+                        height: 5rem
+                    }
+
+                    #weather-detail {
+                        width: 100%
+                        ellipsis()
+                        color: #6a737d
+                        font-size: 0.5rem
+                    }
+                }
+            }
+
+            .follow-widget {
+                display-flex()
+                flex-wrap(wrap)
+                justify-content(space-between)
+                padding-bottom: 1rem
+                border-bottom: 1px solid rgb(201, 198, 193)
+
+                a {
+                    width: 25%
+                    margin: 0.3rem 0
+                    text-align: center
+
+                    &:hover > .icon {
+                        color: #333
+                    }
+                }
+            }
+
+            .logo-widget {
+                display-flex()
+                flex-wrap(wrap)
+                justify-content(space-between)
+                font-family: 'En-demo'
+                font-size: 1.5rem
+                font-weight: 600
+                margin-bottom: 2rem
+
+                .author {
+                    font-size: 1.8rem
+                }
+
+                .logo {
+                    width: 3rem
+                    height: 3rem
+                    border-radius: 1rem
+                    background-size: cover
+                    background-position: center center
+                    background-color: rgb(201, 198, 193)
+                }
+            }
+
+            .toc-widget {
+                .post-toc {
+                    flex: 1
+
+                    a {
+                        width: 80%
+                    }
+
+                    li {
+                        ellipsis()
+                    }
+                }
+            }
+
+            .category-widget {
+                .list {
+                    a {
+                        width: 100%
+                        height: 100%
+                    }
+                }
+            }
+
+            .tag-widget {
+                .tag-cloud {
+                    margin-top: 0.3rem
+                    margin-left: 1rem
                 }
             }
         }

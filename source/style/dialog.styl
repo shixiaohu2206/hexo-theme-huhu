@@ -21,9 +21,9 @@
   .wrap {
     display-flex()
     flex-direction(column)
-    width: 17rem
+    width: 13rem
     min-height: 5rem
-    padding: 1rem
+    padding: 0.5rem 1rem
     z-index: 1
     overflow: hidden
     border-radius: 0.3rem
@@ -40,13 +40,27 @@
     }
 
     .content {
-      padding: 1rem
       text-align: center
     }
 
     .button {
-      padding: 1rem 1rem 0 1rem
+      align-self: flex-end
+      padding: 0.5rem
       text-align: right
+
+      span {
+        cursor: pointer
+        padding: 0.5rem
+        font-size: 0.8rem
+        font-weight: 600
+        border-radius: 0.2rem
+        margin-left: 0.2rem
+        background-color: #ECF0F1
+
+        &:hover {
+          background-color: #FFF0F9
+        }
+      }
     }
   }
 }

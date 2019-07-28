@@ -32,32 +32,14 @@ table {
 html, body {
     width: 100%
     height: 100%
-    center()
-    flex-wrap: wrap
+    display-flex()
+    align-items(flex-start)
+    justify-content(center)
     font-family: 'PingFang SC YouYuan Microsoft Yahei'
     -webkit-text-size-adjust: 100%
     -ms-text-size-adjust: 100%
     box-sizing: border-box
-
-    /* 滚动条整体样式 */
-    /* 宽分别对应竖滚动条的尺寸 */
-    /* 高分别对应横滚动条的尺寸 */
-    ::-webkit-scrollbar {
-        width: 0.4rem
-        height: 0.4rem
-    }
-
-    /* 滚动条里面轨道 */
-    ::-webkit-scrollbar-track {
-        background-color: RGB(255, 255, 255)
-    }
-
-    /* 滚动条里面小方块 */
-    ::-webkit-scrollbar-thumb {
-        opacity: 0.5
-        border-radius: 2rem
-        background-color: RGB(171, 174, 180)
-    }
+    // background-color: #F4F4F4
 }
 
 a {
@@ -84,15 +66,14 @@ a {
     -webkit-overflow-scrolling: touch
 }
 
-
 .icon {
     width: 2rem
     height: 2rem
-    vertical-align: -0.3rem;
+    vertical-align: -0.3rem
     fill: currentColor
     overflow: hidden
 
     &.font {
-        color:#787878
+        color: #787878
     }
 }
