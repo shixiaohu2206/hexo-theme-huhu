@@ -54,9 +54,15 @@ changyan:
   appid: ''
   conf: ''
 
+#valine评论
+valine: 
+  API_ID: FjXColpwTL0BsrjJIN8Pmnn0-gzGzoHsz
+  API_KEY: 'Ar7tucPRn3KV7UOidQxESoys'
+
 #不蒜子统计
 busuanzi: true
 
+#分享
 share:
   - weibo
   - weixin

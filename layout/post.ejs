@@ -7,6 +7,11 @@
           </svg>
         <%- date(page.date, "YYYY/MM/DD") %>
       </div>
+      <!-- id 将作为查询条件 -->
+      <span id="<Your/Path/Name>" class="leancloud-visitors" data-flag-title="<%- page.title %>">
+        <span class="post-meta-item-text">阅读量 </span>
+        <i class="leancloud-visitors-count"></i>
+      </span>
     </div>
     <%- page.content %>
 
@@ -16,4 +21,6 @@
       <div id="SOHUCS" sid="<%- date(page.date, "YYYY/MM/DD") %>/<%- page.title %>"></div>
     </div>
   <% } %>
+
+  <div id="comment"></div>
 </article>
