@@ -1,33 +1,63 @@
 'use strict'
 
 require.config({
-  baseUrl: './',
   paths: {
-    jquery: [
-      'https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js',
-      'cdn/jquery.min'
-    ],
-    valine: ['https://valine.js.org/script/Valine.min.js', 'cdn/Valine.min.js'],
+    // site
+    iconfont: 'iconfont',
+    hodgepodge: 'hodgepodge',
+
+    // cdn
+    jquery: ['https://cdn.bootcss.com/jquery/3.4.1/jquery.min', 'cdn/jquery.min'],
+    valine: ['https://valine.js.org/script/Valine.min', 'cdn/Valine.min'],
     busuanzi: [
-      'http://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js',
+      'http://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini',
       'cdn/busuanzi.pure.mini'
     ],
     confirm: [
-      'https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min.js',
+      'https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min',
       'cdn/jquery-confirm.min'
     ],
     fancybox: [
-      'https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.js',
+      'https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min',
       'cdn/jquery.fancybox.min'
     ],
-    hodgepodge: 'hodgepodge'
+    valine: ['https://valine.js.org/script/Valine.min', 'cdn/Valine.min']
+    // av_min: ['https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min'],
+    // gio: ['http://assets.growingio.com/2.1/gio']
   },
-  shim: {},
-  waitSeconds: 15 // 加载超时
+
+  shim: {
+    valine: {
+      // deps: ['jquery'],
+      exports: 'Valine'
+    }
+  },
+
+  // 加载超时
+  waitSeconds: 5
 })
 
-define(['jquery', 'hodgepodge'], function($, _H) {
-  'use strict'
+define([
+  'jquery',
+  'hodgepodge',
+  'valine',
+  // 'av_min',
+  // 'gio',
+  'fancybox',
+  'confirm',
+  'iconfont'
+], function($, $H, Valine) {
+  console.log(Valine)
+
+  new Valine({
+    el: '#comment',
+    appId: 'FjXColpwTL0BsrjJIN8Pmnn0-gzGzoHsz',
+    appKey: 'Ar7tucPRn3KV7UOidQxESoys',
+    notify: false,
+    visitor: true, // 阅读量统计
+    avatar: 'mp',
+    placeholder: '骑士很煎蛋、骑士很孜然'
+  })
 
   // 阻止冒泡
   function stopPropagation(e) {
@@ -48,7 +78,7 @@ define(['jquery', 'hodgepodge'], function($, _H) {
 
   // bind events
   $(document).ready(function() {
-    _H.WEATH.getWeath().then(resp => {
+    $H.WEATH.getWeath().then(resp => {
       if (resp) {
         var city_name = resp.city || '上海' // 默认上海
         var today = (resp.data && resp.data[0]) || {}

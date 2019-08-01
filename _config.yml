@@ -55,8 +55,8 @@ changyan:
   conf: ''
 
 #valine评论
-valine: 
-  API_ID: FjXColpwTL0BsrjJIN8Pmnn0-gzGzoHsz
+valine:
+  API_ID: 'FjXColpwTL0BsrjJIN8Pmnn0-gzGzoHsz'
   API_KEY: 'Ar7tucPRn3KV7UOidQxESoys'
 
 #不蒜子统计
