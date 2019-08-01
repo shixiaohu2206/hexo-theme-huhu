@@ -139,13 +139,17 @@
   var SHARE_ARRAY = JSON.parse('<%- JSON.stringify(theme.share) %>')
 </script>
 <script async src="https://valine.js.org/script/Valine.min.js"></script>
-<script data-main="/scripts/app" src="<%= theme.module.require %>"></script>
- Stashed changes
+<script data-main="<%- url_for('/scripts/app') %>" src="<%= theme.module.require %>"></script>
+
 <% if (theme.busuanzi) { %>
 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-<% } %> <%- js('scripts/jquery.js') %> <%- js('scripts/fancybox.js') %> <%-
-js('scripts/iconfont.js') %> <%- js('scripts/confirm.js') %> <%- js('scripts/share.js') %> <%-
-js('scripts/index.js') %>
+<% } %> 
+<%- js('scripts/jquery.js') %> 
+<%- js('scripts/fancybox.js') %> 
+<%- js('scripts/iconfont.js') %> 
+<%- js('scripts/confirm.js') %> 
+<%- js('scripts/share.js') %> 
+<%- js('scripts/index.js') %>
 
 <!-- valine -->
 <% if (theme.valine.API_ID && theme.valine.API_KEY) { %>
