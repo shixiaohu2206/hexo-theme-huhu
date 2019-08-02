@@ -7,7 +7,10 @@ require.config({
     hodgepodge: 'hodgepodge',
 
     // cdn
-    jquery: ['https://cdn.bootcss.com/jquery/3.4.1/jquery.min', 'cdn/jquery.min'],
+    jquery: [
+      'https://cdn.bootcss.com/jquery/3.4.1/jquery.min',
+      'cdn/jquery.min'
+    ],
     valine: ['https://valine.js.org/script/Valine.min', 'cdn/Valine.min'],
     busuanzi: [
       'http://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini',
@@ -21,43 +24,50 @@ require.config({
       'https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min',
       'cdn/jquery.fancybox.min'
     ],
-    valine: ['https://valine.js.org/script/Valine.min', 'cdn/Valine.min']
-    // av_min: ['https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min'],
-    // gio: ['http://assets.growingio.com/2.1/gio']
+    // valine: [
+    //   'cdn/Valine.min',
+    //   'https://unpkg.com/valine@1.3.9/dist/Valine.min.js'
+    // ]
+  },
+
+  map: {
+    '*': {
+      css: 'https://cdn.bootcss.com/require-css/0.1.10/css.min.js'
+    }
   },
 
   shim: {
-    valine: {
-      // deps: ['jquery'],
-      exports: 'Valine'
+    fancybox: {
+      deps: ['css!../style/fancybox']
+    },
+    confirm: {
+      deps: ['css!../style/confirm']
     }
   },
 
   // 加载超时
-  waitSeconds: 5
+  waitSeconds: 3
 })
 
 define([
   'jquery',
   'hodgepodge',
   'valine',
-  // 'av_min',
-  // 'gio',
   'fancybox',
   'confirm',
   'iconfont'
-], function($, $H, Valine) {
-  console.log(Valine)
-
-  new Valine({
-    el: '#comment',
-    appId: 'FjXColpwTL0BsrjJIN8Pmnn0-gzGzoHsz',
-    appKey: 'Ar7tucPRn3KV7UOidQxESoys',
-    notify: false,
-    visitor: true, // 阅读量统计
-    avatar: 'mp',
-    placeholder: '骑士很煎蛋、骑士很孜然'
-  })
+], function($, $H) {
+  // console.log(
+  //   new valine({
+  //     el: '#comment',
+  //     appId: 'FjXColpwTL0BsrjJIN8Pmnn0-gzGzoHsz',
+  //     appKey: 'Ar7tucPRn3KV7UOidQxESoys',
+  //     notify: false,
+  //     visitor: true, // 阅读量统计
+  //     avatar: 'mp',
+  //     placeholder: '骑士很煎蛋、骑士很孜然'
+  //   })
+  // )
 
   // 阻止冒泡
   function stopPropagation(e) {

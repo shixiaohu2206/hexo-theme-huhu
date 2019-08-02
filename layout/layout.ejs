@@ -3,12 +3,16 @@
   <head>
     <meta charset="utf-8" />
     <meta name="baidu-site-verification" content="vvVgSQUzPU" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1"
+    />
     <meta name="keywords" content="<%= config.keywords%>" />
     <meta name="description" content="<%= config.description%>" />
     <title><%= config.title%></title>
     <link rel="shortcut icon" href="<%= theme.favicon%>" type="image/x-icon" />
-    <%- css('style/style') %> <%- css('style/fancybox.css') %> <%- css('style/confirm.css') %>
+    <%- css('style/style') %>
+    <!-- <%- css('style/fancybox.css') %> <%- css('style/confirm.css') %> -->
   </head>
 
   <body>
@@ -45,7 +49,9 @@
         <footer>
           <div class="copyright">
             ©2019 <%= config.author %>. Powered by Hexo &
-            <a href="https://github.com/shixiaohu2206/hexo-theme-huhu">hexo-theme-huhu</a>
+            <a href="https://github.com/shixiaohu2206/hexo-theme-huhu"
+              >hexo-theme-huhu</a
+            >
           </div>
           <% if (theme.site_icp) { %>
           <div class="icp">
@@ -60,7 +66,10 @@
             <div class="author">
               Utone
             </div>
-            <div class="logo" style="background-image: url('/images/logo.jpeg')"></div>
+            <div
+              class="logo"
+              style="background-image: url('/images/logo.jpeg')"
+            ></div>
           </div>
           <div class="locate-widget">
             <div class="city-wrap">
@@ -93,7 +102,8 @@
             </a>
             <% } %>
           </div>
-          <% if (is_post()) { %> <% if (toc(page.content, {list_number: false})) { %>
+          <% if (is_post()) { %> <% if (toc(page.content, {list_number: false}))
+          { %>
           <div class="toc-widget">
             <div class="title">
               <span>Toc</span>
@@ -110,7 +120,8 @@
             </div>
             <div class="list">
               <ul>
-                <% site.categories.each(function (c, k) { %> <% if ( k < theme.categories_max) { %>
+                <% site.categories.each(function (c, k) { %> <% if ( k <
+                theme.categories_max) { %>
                 <li>
                   <a href="<%- url_for(c.path) %>">
                     <%= c.name %>
@@ -126,8 +137,8 @@
               <span><a href="">···</a></span>
             </div>
             <div class="tag-cloud">
-              <%- tagcloud({ min_font: 13, max_font: 20, amount: 15, color: true, start_color:
-              '#4a4a4a', end_color: '#4a4a4a'}) %>
+              <%- tagcloud({ min_font: 13, max_font: 20, amount: 15, color:
+              true, start_color: '#4a4a4a', end_color: '#4a4a4a'}) %>
             </div>
           </div>
         </div>
@@ -138,9 +149,30 @@
 <script>
   var SHARE_ARRAY = JSON.parse('<%- JSON.stringify(theme.share) %>')
 </script>
-<script data-main="<%- url_for('/scripts/app') %>" src="<%= theme.module.require %>"></script>
+<!-- <script data-main="<%- url_for('/scripts/app') %>" src="<%= theme.module.require %>" defer async="true"></script> -->
+<script src="https://cdn.bootcss.com/seajs/3.0.3/sea.js"></script>
 
-<!-- <script src="https://valine.js.org/script/Valine.min.js"></script> -->
+<script>
+  // Set configuration
+  seajs.config({
+    base: '/scripts',
+    paths: {
+      jquery: 'https://cdn.bootcss.com/jquery/3.4.1/jquery.min'
+    },
+    alias: {
+      jquery: 'https://cdn.bootcss.com/jquery/3.4.1/jquery.min'
+    }
+  })
+  // For development
+  if (location.href.indexOf('?dev') > 0) {
+    seajs.use('/scripts/main.js')
+  }
+  // For production
+  else {
+    seajs.use('/scripts/main.js')
+  }
+</script>
+
 <!-- <% if (theme.busuanzi) { %>
 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <% } %> -->
@@ -150,19 +182,23 @@
 <%- js('scripts/confirm.js') %> 
 <%- js('scripts/share.js') %> 
 <%- js('scripts/index.js') %> -->
-
+<div id="comment"></div>
 <!-- valine -->
 <!-- <% if (theme.valine.API_ID && theme.valine.API_KEY) { %>
+<script src="https://unpkg.com/valine"></script>
 <script>
-  new Valine({
-    el: '#comment',
-    appId: 'FjXColpwTL0BsrjJIN8Pmnn0-gzGzoHsz',
-    appKey: 'Ar7tucPRn3KV7UOidQxESoys',
-    notify: false,
-    visitor: true, // 阅读量统计
-    avatar: 'mp',
-    placeholder: '骑士很煎蛋、骑士很孜然'
-  })
+  console.log(Valine)
+  console.log(
+    new Valine({
+      el: '#comment',
+      appId: 'FjXColpwTL0BsrjJIN8Pmnn0-gzGzoHsz',
+      appKey: 'Ar7tucPRn3KV7UOidQxESoys',
+      notify: false,
+      visitor: true, // 阅读量统计
+      avatar: 'mp',
+      placeholder: '骑士很煎蛋、骑士很孜然'
+    })
+  )
 </script>
 <% } %> -->
 <!-- valine -->
@@ -185,7 +221,9 @@
     } else {
       var loadJs = function(d, a) {
         var c =
-          document.getElementsByTagName('head')[0] || document.head || document.documentElement
+          document.getElementsByTagName('head')[0] ||
+          document.head ||
+          document.documentElement
         var b = document.createElement('script')
         b.setAttribute('type', 'text/javascript')
         b.setAttribute('charset', 'UTF-8')
