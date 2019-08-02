@@ -11,7 +11,6 @@ require.config({
       'https://cdn.bootcss.com/jquery/3.4.1/jquery.min',
       'cdn/jquery.min'
     ],
-    valine: ['https://valine.js.org/script/Valine.min', 'cdn/Valine.min'],
     busuanzi: [
       'http://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini',
       'cdn/busuanzi.pure.mini'
@@ -24,10 +23,10 @@ require.config({
       'https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min',
       'cdn/jquery.fancybox.min'
     ],
-    // valine: [
-    //   'cdn/Valine.min',
-    //   'https://unpkg.com/valine@1.3.9/dist/Valine.min.js'
-    // ]
+    valine: [
+      'https://unpkg.com/valine@1.3.9/dist/Valine.min',
+      'cdn/Valine.min'
+    ]
   },
 
   map: {
@@ -56,7 +55,8 @@ define([
   'fancybox',
   'confirm',
   'iconfont'
-], function($, $H) {
+], function($, $H, valine) {
+  console.log(valine)
   // console.log(
   //   new valine({
   //     el: '#comment',

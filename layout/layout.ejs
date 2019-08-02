@@ -149,10 +149,10 @@
 <script>
   var SHARE_ARRAY = JSON.parse('<%- JSON.stringify(theme.share) %>')
 </script>
-<!-- <script data-main="<%- url_for('/scripts/app') %>" src="<%= theme.module.require %>" defer async="true"></script> -->
-<script src="https://cdn.bootcss.com/seajs/3.0.3/sea.js"></script>
+<script data-main="<%- url_for('/scripts/app') %>" src="<%= theme.module.require %>" defer async="true"></script>
+<!-- <script src="https://cdn.bootcss.com/seajs/3.0.3/sea.js"></script> -->
 
-<script>
+<!-- <script>
   // Set configuration
   seajs.config({
     base: '/scripts',
@@ -171,7 +171,7 @@
   else {
     seajs.use('/scripts/main.js')
   }
-</script>
+</script> -->
 
 <!-- <% if (theme.busuanzi) { %>
 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
