@@ -1,4 +1,6 @@
-;(function($) {
+define(['jquery', 'confirm'], function($) {
+  'use strict'
+
   var DEFAULT_SITES = ['weibo', 'qq', 'wechat', 'douban', 'qzone', 'facebook', 'twitter', 'google']
 
   var TEMP = {
@@ -78,4 +80,4 @@
       }
     })
   }
-})(jQuery)
+})

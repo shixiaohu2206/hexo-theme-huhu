@@ -4,7 +4,7 @@
 define('hodgepodge', [], function() {
   'use strict'
 
-  //
+  var WEATH_KEY = 'WEATH'
   var STORAGE_INSTANCE = undefined
 
   /**
@@ -18,8 +18,9 @@ define('hodgepodge', [], function() {
       if (type === 'session' && STORAGE_INSTANCE !== window.sessionStorage) {
         STORAGE_INSTANCE = window.sessionStorage
       } else if (STORAGE_INSTANCE !== window.localStorage) {
-        STORAGE_INSTANCE = window.sessionStorage
+        STORAGE_INSTANCE = window.localStorage
       }
+
       return this
     }
 
@@ -82,8 +83,7 @@ define('hodgepodge', [], function() {
    */
   var WEATH = (function() {
     function getWeath() {
-      var weathKey = 'WEATH'
-      var weathData = STORAGE.getInstance().get(weathKey)
+      var weathData = STORAGE.getInstance().get(WEATH_KEY)
 
       if (weathData) {
         return Promise.resolve(weathData)
@@ -93,8 +93,9 @@ define('hodgepodge', [], function() {
             data => {
               if (data.ok) {
                 data.json().then(resp => {
+                  console.log(resp)
                   if (resp) {
-                    STORAGE.getInstance().set('WEATH', resp)
+                    STORAGE.getInstance().set(WEATH_KEY, resp)
                     return resolve(resp)
                   } else {
                     return reject()

@@ -3,10 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="baidu-site-verification" content="vvVgSQUzPU" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, maximum-scale=1"
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta name="keywords" content="<%= config.keywords%>" />
     <meta name="description" content="<%= config.description%>" />
     <title><%= config.title%></title>
@@ -49,9 +46,7 @@
         <footer>
           <div class="copyright">
             ©2019 <%= config.author %>. Powered by Hexo &
-            <a href="https://github.com/shixiaohu2206/hexo-theme-huhu"
-              >hexo-theme-huhu</a
-            >
+            <a href="https://github.com/shixiaohu2206/hexo-theme-huhu">hexo-theme-huhu</a>
           </div>
           <% if (theme.site_icp) { %>
           <div class="icp">
@@ -66,10 +61,7 @@
             <div class="author">
               Utone
             </div>
-            <div
-              class="logo"
-              style="background-image: url('/images/logo.jpeg')"
-            ></div>
+            <div class="logo" style="background-image: url('/images/logo.jpeg')"></div>
           </div>
           <div class="locate-widget">
             <div class="city-wrap">
@@ -102,8 +94,7 @@
             </a>
             <% } %>
           </div>
-          <% if (is_post()) { %> <% if (toc(page.content, {list_number: false}))
-          { %>
+          <% if (is_post()) { %> <% if (toc(page.content, {list_number: false})) { %>
           <div class="toc-widget">
             <div class="title">
               <span>Toc</span>
@@ -120,8 +111,7 @@
             </div>
             <div class="list">
               <ul>
-                <% site.categories.each(function (c, k) { %> <% if ( k <
-                theme.categories_max) { %>
+                <% site.categories.each(function (c, k) { %> <% if ( k < theme.categories_max) { %>
                 <li>
                   <a href="<%- url_for(c.path) %>">
                     <%= c.name %>
@@ -137,8 +127,8 @@
               <span><a href="">···</a></span>
             </div>
             <div class="tag-cloud">
-              <%- tagcloud({ min_font: 13, max_font: 20, amount: 15, color:
-              true, start_color: '#4a4a4a', end_color: '#4a4a4a'}) %>
+              <%- tagcloud({ min_font: 13, max_font: 20, amount: 15, color: true, start_color:
+              '#4a4a4a', end_color: '#4a4a4a'}) %>
             </div>
           </div>
         </div>
@@ -146,108 +136,72 @@
     </div>
   </body>
 </html>
-<script>
-  var SHARE_ARRAY = JSON.parse('<%- JSON.stringify(theme.share) %>')
-</script>
-<script data-main="<%- url_for('/scripts/app') %>" src="<%= theme.module.require %>" defer async="true"></script>
-<!-- <script src="https://cdn.bootcss.com/seajs/3.0.3/sea.js"></script> -->
 
-<!-- <script>
-  // Set configuration
-  seajs.config({
-    base: '/scripts',
-    paths: {
-      jquery: 'https://cdn.bootcss.com/jquery/3.4.1/jquery.min'
-    },
-    alias: {
-      jquery: 'https://cdn.bootcss.com/jquery/3.4.1/jquery.min'
-    }
-  })
-  // For development
-  if (location.href.indexOf('?dev') > 0) {
-    seajs.use('/scripts/main.js')
-  }
-  // For production
-  else {
-    seajs.use('/scripts/main.js')
-  }
-</script> -->
-
-<!-- <% if (theme.busuanzi) { %>
-<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-<% } %> -->
-<!-- <%- js('scripts/jquery.js') %> 
-<%- js('scripts/fancybox.js') %> 
-<%- js('scripts/iconfont.js') %> 
-<%- js('scripts/confirm.js') %> 
-<%- js('scripts/share.js') %> 
-<%- js('scripts/index.js') %> -->
-<div id="comment"></div>
-<!-- valine -->
-<!-- <% if (theme.valine.API_ID && theme.valine.API_KEY) { %>
-<script src="https://unpkg.com/valine"></script>
-<script>
-  console.log(Valine)
-  console.log(
-    new Valine({
-      el: '#comment',
-      appId: 'FjXColpwTL0BsrjJIN8Pmnn0-gzGzoHsz',
-      appKey: 'Ar7tucPRn3KV7UOidQxESoys',
-      notify: false,
-      visitor: true, // 阅读量统计
-      avatar: 'mp',
-      placeholder: '骑士很煎蛋、骑士很孜然'
-    })
-  )
-</script>
-<% } %> -->
-<!-- valine -->
-
-<!-- 畅言 -->
-<% if (theme.changyan.appid && theme.changyan.conf) { %>
 <script type="text/javascript">
-  ;(function() {
-    var appid = '<%= theme.changyan.appid %>'
-    var conf = '<%= theme.changyan.conf %>'
-    var width = window.innerWidth || document.documentElement.clientWidth
-    if (width < 960) {
-      window.document.write(
-        '<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' +
-          appid +
-          '&conf=' +
-          conf +
-          '"><\/script>'
-      )
-    } else {
-      var loadJs = function(d, a) {
-        var c =
-          document.getElementsByTagName('head')[0] ||
-          document.head ||
-          document.documentElement
-        var b = document.createElement('script')
-        b.setAttribute('type', 'text/javascript')
-        b.setAttribute('charset', 'UTF-8')
-        b.setAttribute('src', d)
-        if (typeof a === 'function') {
-          if (window.attachEvent) {
-            b.onreadystatechange = function() {
-              var e = b.readyState
-              if (e === 'loaded' || e === 'complete') {
-                b.onreadystatechange = null
-                a()
-              }
-            }
-          } else {
-            b.onload = a
+  'use strict'
+
+  window.THEME_CONFIG = JSON.parse('<%- JSON.stringify(theme) %>')
+  window.loadJs = function(d, m, a) {
+    var c = document.getElementsByTagName('head')[0] || document.head || document.documentElement
+    var b = document.createElement('script')
+
+    b.defer = true
+    b.setAttribute('type', 'text/javascript')
+    b.setAttribute('charset', 'UTF-8')
+    b.setAttribute('async', 'true')
+    b.setAttribute('src', d)
+    m && b.setAttribute('data-main', '<%- url_for("/scripts/app") %>')
+
+    if (typeof a === 'function') {
+      if (window.attachEvent) {
+        b.onreadystatechange = function() {
+          var e = b.readyState
+          if (e === 'loaded' || e === 'complete') {
+            b.onreadystatechange = null
+            a()
           }
         }
-        c.appendChild(b)
+      } else {
+        b.onload = a
       }
-      loadJs('https://changyan.sohu.com/upload/changyan.js', function() {
-        window.changyan.api.config({ appid: appid, conf: conf })
-      })
     }
-  })()
+    c.appendChild(b)
+  }
+
+  loadJs('<%- url_for("/scripts/cdn/require.min.js") %>', true, function() {
+    require.config({
+      paths: {
+        // site
+        share: 'share',
+        iconfont: 'iconfont',
+        hodgepodge: 'hodgepodge',
+
+        // cdn
+        av: 'cdn/av-min',
+        jquery: 'cdn/jquery.min',
+        valine: 'cdn/Valine.min',
+        busuanzi: 'cdn/busuanzi.pure.mini',
+        confirm: 'cdn/jquery.confirm.min',
+        fancybox: 'cdn/jquery.fancybox.min'
+      },
+
+      map: {
+        '*': {
+          css: '/scripts/cdn/css-min.js'
+        }
+      },
+
+      shim: {
+        fancybox: {
+          deps: ['css!../style/fancybox']
+        },
+        confirm: {
+          deps: ['css!../style/confirm']
+        }
+      },
+
+      // 加载超时
+      waitSeconds: 3
+    })
+  })
 </script>
-<% } %>
-<!-- 畅言 -->

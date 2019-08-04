@@ -1,73 +1,44 @@
-'use strict'
+define(['jquery', 'hodgepodge', 'valine', 'fancybox', 'confirm', 'iconfont', 'share'], function(
+  $,
+  $H,
+  valine
+) {
+  'use strict'
 
-require.config({
-  paths: {
-    // site
-    iconfont: 'iconfont',
-    hodgepodge: 'hodgepodge',
+  // valine评论
+  var API_ID = (THEME_CONFIG.valine && THEME_CONFIG.valine.API_ID) || ''
+  var API_KEY = (THEME_CONFIG.valine && THEME_CONFIG.valine.API_KEY) || ''
+  if (API_ID && API_KEY) {
+    new valine({
+      el: '#comment',
+      appId: 'FjXColpwTL0BsrjJIN8Pmnn0-gzGzoHsz',
+      appKey: 'Ar7tucPRn3KV7UOidQxESoys',
+      notify: false,
+      visitor: true, // 阅读量统计
+      avatar: 'mp',
+      placeholder: '骑士很煎蛋、骑士很孜然'
+    })
+  }
 
-    // cdn
-    jquery: [
-      'https://cdn.bootcss.com/jquery/3.4.1/jquery.min',
-      'cdn/jquery.min'
-    ],
-    busuanzi: [
-      'http://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini',
-      'cdn/busuanzi.pure.mini'
-    ],
-    confirm: [
-      'https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min',
-      'cdn/jquery-confirm.min'
-    ],
-    fancybox: [
-      'https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min',
-      'cdn/jquery.fancybox.min'
-    ],
-    valine: [
-      'https://unpkg.com/valine@1.3.9/dist/Valine.min',
-      'cdn/Valine.min'
-    ]
-  },
-
-  map: {
-    '*': {
-      css: 'https://cdn.bootcss.com/require-css/0.1.10/css.min.js'
+  // 畅言
+  var appid = (THEME_CONFIG.changyan && THEME_CONFIG.changyan.appid) || ''
+  var conf = (THEME_CONFIG.changyan && THEME_CONFIG.changyan.conf) || ''
+  if (appid && conf) {
+    var width = window.innerWidth || document.documentElement.clientWidth
+    if (width < 960) {
+      window.document.write(
+        '<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' +
+          appid +
+          '&conf=' +
+          conf +
+          '"></script>'
+      )
+    } else {
+      loadJs('https://changyan.sohu.com/upload/changyan.js', false, function() {
+        window.changyan.api.config({ appid: appid, conf: conf })
+      })
     }
-  },
-
-  shim: {
-    fancybox: {
-      deps: ['css!../style/fancybox']
-    },
-    confirm: {
-      deps: ['css!../style/confirm']
-    }
-  },
-
-  // 加载超时
-  waitSeconds: 3
-})
-
-define([
-  'jquery',
-  'hodgepodge',
-  'valine',
-  'fancybox',
-  'confirm',
-  'iconfont'
-], function($, $H, valine) {
-  console.log(valine)
-  // console.log(
-  //   new valine({
-  //     el: '#comment',
-  //     appId: 'FjXColpwTL0BsrjJIN8Pmnn0-gzGzoHsz',
-  //     appKey: 'Ar7tucPRn3KV7UOidQxESoys',
-  //     notify: false,
-  //     visitor: true, // 阅读量统计
-  //     avatar: 'mp',
-  //     placeholder: '骑士很煎蛋、骑士很孜然'
-  //   })
-  // )
+  }
 
   // 阻止冒泡
   function stopPropagation(e) {
@@ -132,7 +103,7 @@ define([
       var that = $(this)
       $().share({
         url: `${location.origin}${that.data('url')}` || location.href,
-        sites: SHARE_ARRAY
+        sites: THEME_CONFIG.share
       })
       stopPropagation(e)
     })
