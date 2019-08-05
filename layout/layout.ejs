@@ -175,28 +175,31 @@
         share: 'share',
         iconfont: 'iconfont',
         hodgepodge: 'hodgepodge',
+        valine: ['cdn/Valine.min'],
 
         // cdn
-        av: 'cdn/av-min',
-        jquery: 'cdn/jquery.min',
-        valine: 'cdn/Valine.min',
-        busuanzi: 'cdn/busuanzi.pure.mini',
-        confirm: 'cdn/jquery.confirm.min',
-        fancybox: 'cdn/jquery.fancybox.min'
+        av: ['<%- theme.cdn_module.av_min %>', 'cdn/av-min'],
+        jquery: ['<%- theme.cdn_module.jquery %>', 'cdn/jquery.min'],
+        busuanzi: ['<%- theme.cdn_module.busuanzi %>', 'cdn/busuanzi.pure.mini'],
+        confirm: ['<%- theme.cdn_module.confirm %>', 'cdn/jquery.confirm.min'],
+        fancybox: ['<%- theme.cdn_module.fancybox %>', 'cdn/jquery.fancybox.min']
       },
 
       map: {
         '*': {
-          css: '/scripts/cdn/css-min.js'
+          // css: '/scripts/cdn/css-min.js'
+          css: 'https://cdn.bootcss.com/require-css/0.1.10/css.min.js'
         }
       },
 
       shim: {
         fancybox: {
-          deps: ['css!../style/fancybox']
+          // deps: ['css!../style/fancybox']
+          deps: ['css!https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.css']
         },
         confirm: {
-          deps: ['css!../style/confirm']
+          // deps: ['css!../style/confirm']
+          deps: ['css!https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min.css']
         }
       },
 
