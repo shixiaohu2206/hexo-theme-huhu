@@ -86,3 +86,6 @@ google_site_verification: 'VQowHv5lAVVWJxjKI9bnAWT7NGdOrfS5KnLF07-B7w0'
 
 #google gtm
 gtm_id: 'GTM-WJ7P5KL'
+
+#baidu push
+baidu_push: true
