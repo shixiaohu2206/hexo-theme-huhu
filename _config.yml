@@ -80,3 +80,9 @@ cdn_module:
   busuanzi: '//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini'
   confirm: 'https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min'
   fancybox: 'https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min'
+
+#google-site-verification
+google_site_verification: 'VQowHv5lAVVWJxjKI9bnAWT7NGdOrfS5KnLF07-B7w0'
+
+#google gtm
+gtm_id: 'GTM-WJ7P5KL'

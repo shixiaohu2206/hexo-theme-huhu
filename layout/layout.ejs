@@ -1,17 +1,34 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <% if (theme.gtm_id) { %>
+    <!-- Google Tag Manager -->
+    <script>
+      ;(function(w, d, s, l, i) {
+        w[l] = w[l] || []
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' })
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : ''
+        j.async = true
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl
+        f.parentNode.insertBefore(j, f)
+      })(window, document, 'script', 'dataLayer', '<%= theme.gtm_id %>')
+    </script>
+    <!-- End Google Tag Manager -->
+    <% } %>
     <meta charset="utf-8" />
     <meta name="baidu-site-verification" content="vvVgSQUzPU" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta name="keywords" content="<%= config.keywords%>" />
+    <% if (theme.google_site_verification) { %>
+    <meta name="google-site-verification" content="<%= theme.google_site_verification %>" />
+    <% } %>
     <meta name="description" content="<%= config.description%>" />
-    <title><%= config.title%></title>
+    <title><%= config.title %> - <%= config.subtitle %></title>
     <link rel="shortcut icon" href="<%= theme.favicon%>" type="image/x-icon" />
     <%- css('style/style') %>
-    <!-- <%- css('style/fancybox.css') %> <%- css('style/confirm.css') %> -->
   </head>
-
   <body>
     <div class="head">
       <% for (var i in theme.menu){ %>
@@ -135,23 +152,30 @@
       </div>
     </div>
   </body>
+  <% if (theme.gtm_id) { %>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript
+    ><iframe
+      src="https://www.googletagmanager.com/ns.html?id=<%= theme.gtm_id %>"
+      height="0"
+      width="0"
+      style="display:none;visibility:hidden"
+    ></iframe
+  ></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  <% } %>
 </html>
-
 <script type="text/javascript">
-  'use strict'
-
   window.THEME_CONFIG = JSON.parse('<%- JSON.stringify(theme) %>')
   window.loadJs = function(d, m, a) {
     var c = document.getElementsByTagName('head')[0] || document.head || document.documentElement
     var b = document.createElement('script')
-
     b.defer = true
     b.setAttribute('type', 'text/javascript')
     b.setAttribute('charset', 'UTF-8')
     b.setAttribute('async', 'true')
     b.setAttribute('src', d)
     m && b.setAttribute('data-main', '<%- url_for("/scripts/app") %>')
-
     if (typeof a === 'function') {
       if (window.attachEvent) {
         b.onreadystatechange = function() {
@@ -167,7 +191,6 @@
     }
     c.appendChild(b)
   }
-
   loadJs('<%- url_for("/scripts/cdn/require.min.js") %>', true, function() {
     require.config({
       paths: {
