@@ -16,9 +16,6 @@
           <a href="<%- url_for(post.path) %>"><%= post.title %></a>
         </div>
         <div class="date">
-          <svg class="icon" aria-hidden="true">
-            <use xlink:href="#icon-calendar"></use>
-          </svg>
           <%- date(page.date, "YY/MM/DD") %>
         </div>
         <% if (post.excerpt) { %>
@@ -28,18 +25,18 @@
           <div class="l">
             <div class="heart">
               <svg class="icon" aria-hidden="true">
-                <use xlink:href="#icon-heart"></use>
+                <use xlink:href="#icon-jushoucang"></use>
               </svg>
             </div>
 
             <div class="comment">
               <svg class="icon" aria-hidden="true">
-                <use xlink:href="#icon-comment"></use>
+                <use xlink:href="#icon-wodefankui"></use>
               </svg>
             </div>
             <div class="share" data-url="<%- url_for(post.path) %>">
               <svg class="icon" aria-hidden="true">
-                <use xlink:href="#icon-share"></use>
+                <use xlink:href="#icon-zhuanfaxing"></use>
               </svg>
             </div>
           </div>
