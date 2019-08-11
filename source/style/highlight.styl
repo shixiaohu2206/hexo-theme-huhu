@@ -15,7 +15,7 @@ article-padding = 20px
 highlight-font-family = Consolas, Monaco, Menlo, Consolas, monospace
 color-border = #ddd
 line-height = 1.6rem
-color-link = RGB(50, 115, 220)
+color-link = rgb(50, 115, 220)
 
 $code-block {
     margin: 0
@@ -147,21 +147,96 @@ $base-style {
     flex-direction: column
 
     .header {
-        margin-bottom: 2rem
+        margin-bottom: 1rem
 
         .title {
             font-size: 2rem
             margin-bottom: 1rem
         }
 
-        .date {
+        .meta {
+            display-flex()
+            flex-wrap(wrap)
+            justify-content(space-between)
             color: rgb(137, 137, 137)
             font-family: 'En-demo2'
-            font-size: 1rem
+            font-size: 0.9rem
+
+            a {
+                color: rgb(137, 137, 137)
+            }
+
+            span {
+                width: 8rem
+                margin-right: 1rem
+                margin-bottom: 1rem
+            }
 
             .icon {
-                width: 1.3rem
-                height: 1.3rem
+                width: 1.2rem
+                height: 1.2rem
+                margin-right: 0.2rem
+            }
+        }
+    }
+
+    .post-copyright {
+        font-size: 0.85rem
+        color: #31708f
+        border-radius: 0.2rem
+        background-color: #C7E4F3
+        text-align: left
+        padding: 0.5rem 1rem
+
+        div {
+            padding: 0.3rem
+        }
+    }
+
+    .post-reward {
+        margin: 2rem
+        display-flex()
+        align-items()
+        flex-direction(column)
+
+        #reward-button {
+            cursor: pointer
+            color: #333
+            padding: 0.7rem
+            font-size: 0.9rem
+            border-radius: 0.7rem
+            font-weight: 600
+            transition: all 0.4s
+            background-color: #fed336
+
+            &:hover {
+                color: #fff
+                transform: scale(1.1, 1.1)
+            }
+        }
+
+        #qr {
+            margin: 1rem
+            display: none
+
+            .wrap {
+                display-flex()
+
+                .bg-wrap {
+                    text-align: center
+                    font-size: 0.8rem
+                }
+
+                .bg {
+                    width: 10rem
+                    height: 10rem
+                    margin: 0.2rem 1rem
+                    display: block
+                    border-radius: 0.2rem
+                    background-size: cover
+                    background-position: center center
+                    background-color: #c9c6c1
+                }
             }
         }
     }
@@ -178,15 +253,6 @@ $base-style {
         font-size: 0.875rem
         line-height: line-height
         margin: 0.2rem 0
-    }
-
-    a {
-        color: color-link
-        text-decoration: none
-
-        &:hover {
-            text-decoration: underline
-        }
     }
 
     ul, ol, dl {
@@ -364,15 +430,6 @@ $base-style {
                 padding: 0
                 margin-top: 1rem
                 margin-left: article-padding
-
-                a {
-                    color: color-link
-                    font-weight: normal
-
-                    &:hover {
-                        text-decoration: underline
-                    }
-                }
             }
         }
     }

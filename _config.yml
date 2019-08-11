@@ -89,3 +89,8 @@ gtm_id: 'GTM-WJ7P5KL'
 
 #baidu push
 baidu_push: true
+
+#reward
+reward:
+  weixin: 'images/weixin.png'
+  zhifubao: 'images/zhifubao.png'

@@ -87,10 +87,7 @@ define(['jquery', 'hodgepodge', 'valine', 'fancybox', 'confirm', 'iconfont', 'sh
       $(v).remove()
     })
     $('[data-fancybox="images"]').fancybox({
-      loop: true, // 相册循环浏览
-      thumbs: {
-        autoStart: true
-      }
+      loop: true // 相册循环浏览
     })
 
     // 左侧滑块
@@ -106,6 +103,29 @@ define(['jquery', 'hodgepodge', 'valine', 'fancybox', 'confirm', 'iconfont', 'sh
         sites: THEME_CONFIG.share
       })
       stopPropagation(e)
+    })
+
+    // 咖啡
+    $(document).on('click', '#reward-button', function(e) {
+      $('#qr').toggle('1000')
+    })
+
+    // 顶部滚动进度条
+    $(window).scroll(function(e) {
+      var pageHeight = document.body.scrollHeight || document.documentElement.scrollHeight // 页面总高度
+      var windowHeight = document.documentElement.clientHeight || document.body.clientHeight // 浏览器视口高度
+      var scrollAvail = pageHeight - windowHeight // 可滚动的高度
+      var scrollTop = document.documentElement.scrollTop || document.body.scrollTop // 获取滚动条的高度
+      var ratio = (scrollTop / scrollAvail) * 100 + '%'
+      $('#progress > .line').css('width', ratio)
+    })
+
+    // fiexed menu
+    $(document).on('click', '#fixed-menu', function() {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      })
     })
   })
 })

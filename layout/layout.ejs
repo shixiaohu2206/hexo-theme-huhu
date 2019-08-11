@@ -43,7 +43,17 @@
     <%- css('style/style') %>
   </head>
   <body>
-    <div class="head">
+    <div id="fixed-menu">
+      <div class="up">
+        <svg class="icon" aria-hidden="true">
+          <use xlink:href="#icon-fenzu7"></use>
+        </svg>
+      </div>
+    </div>
+    <div id="progress">
+      <div class="line"></div>
+    </div>
+    <div id="head">
       <% for (var i in theme.menu){ %>
       <a
         href="<%- url_for(theme.menu[i]) %>"
@@ -58,13 +68,13 @@
         <div class="navbar">
           <div class="toggle">
             <svg class="icon toggle-icon" aria-hidden="true">
-              <use xlink:href="#icon-menu"></use>
+              <use xlink:href="#icon-fenzu3"></use>
             </svg>
           </div>
           <div class="search">
             <div class="input-warp">
               <svg class="icon" aria-hidden="true">
-                <use xlink:href="#icon-search"></use>
+                <use xlink:href="#icon-fenzu"></use>
               </svg>
               <input type="text" name="" id="" placeholder="Search Keys" />
             </div>
@@ -75,7 +85,7 @@
         </div>
         <footer>
           <div class="copyright">
-            ©2019 <%= config.author %>. Powered by Hexo &
+            ©2019 <a href="<%= config.url %>"><%= config.author %></a>. Powered by Hexo &
             <a href="https://github.com/shixiaohu2206/hexo-theme-huhu">hexo-theme-huhu</a>
           </div>
           <% if (theme.site_icp) { %>
@@ -96,7 +106,7 @@
           <div class="locate-widget">
             <div class="city-wrap">
               <svg class="icon location" aria-hidden="true">
-                <use xlink:href="#icon-sey-Location"></use>
+                <use xlink:href="#icon-fenzu9"></use>
               </svg>
               <span id="city-name"></span>
             </div>

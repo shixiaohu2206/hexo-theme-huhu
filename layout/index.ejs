@@ -16,29 +16,57 @@
           <a href="<%- url_for(post.path) %>"><%= post.title %></a>
         </div>
         <div class="date">
-          <%- date(page.date, "YY/MM/DD") %>
+          <svg class="icon" aria-hidden="true">
+            <use xlink:href="#icon-fenzu4"></use>
+          </svg>
+          <%- date(post.date, "YY/MM/DD") %>
         </div>
         <% if (post.excerpt) { %>
         <div class="excerpt post-wrap"><%- post.excerpt %></div>
         <% }%>
-        <div class="more">
+        <div class="meta">
           <div class="l">
-            <div class="heart">
-              <svg class="icon" aria-hidden="true">
-                <use xlink:href="#icon-jushoucang"></use>
-              </svg>
-            </div>
-
-            <div class="comment">
-              <svg class="icon" aria-hidden="true">
-                <use xlink:href="#icon-wodefankui"></use>
-              </svg>
-            </div>
-            <div class="share" data-url="<%- url_for(post.path) %>">
-              <svg class="icon" aria-hidden="true">
-                <use xlink:href="#icon-zhuanfaxing"></use>
-              </svg>
-            </div>
+              <div class="warp">
+                  <svg class="icon" aria-hidden="true">
+                    <use xlink:href="#icon-fenzu14"></use>
+                  </svg>
+                  <span class="desp">
+                      <% if (post.categories) { %> 
+                        <% for (var j=0; j < post.categories.data.length; j++) { %>
+                          <% if (post.categories.data[j] && post.categories.data[j].name) { %>
+                            <a href="/categories/<%- post.categories.data[j].name %>"><%- post.categories.data[j].name %></a>
+                          <% } %>
+                        <% } %>
+                      <% } %>
+                  </span>
+              </div>          
+              <div class="warp">
+                  <svg class="icon" aria-hidden="true">
+                    <use xlink:href="#icon-fenzu15"></use>
+                  </svg>
+                  <span class="desp">
+                      <% if (post.tags) { %> 
+                        <% for (var i=0; i < post.tags.data.length; i++) { %>
+                          <% if (post.tags.data[i] && post.tags.data[i].name) { %>
+                            <a href="/tags/<%- post.tags.data[i].name %>"><%- post.tags.data[i].name %></a>
+                          <% } %>
+                        <% } %>
+                      <% } %>
+                  </span>
+              </div>          
+              <!-- <div class="warp">
+                <svg class="icon" aria-hidden="true">
+                  <use xlink:href="#icon-fenzu6"></use>
+                </svg>
+                <span class="desp"></span>
+              </div> -->
+              <div class="warp">
+                <div class="share" data-url="<%- url_for(post.path) %>">
+                  <svg class="icon" aria-hidden="true">
+                    <use xlink:href="#icon-fenzu2"></use>
+                  </svg>
+                </div>
+              </div>
           </div>
           <div class="r">
             <a href="<%- url_for(post.path) %>">Read More</a>
