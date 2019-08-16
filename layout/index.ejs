@@ -16,9 +16,7 @@
           <a href="<%- url_for(post.path) %>"><%= post.title %></a>
         </div>
         <div class="date">
-          <svg class="icon" aria-hidden="true">
-            <use xlink:href="#icon-fenzu4"></use>
-          </svg>
+          <span class="iconfont icon-shijian"></span>
           <%- date(post.date, "YY/MM/DD") %>
         </div>
         <% if (post.excerpt) { %>
@@ -27,9 +25,7 @@
         <div class="meta">
           <div class="l">
               <div class="warp">
-                  <svg class="icon" aria-hidden="true">
-                    <use xlink:href="#icon-fenzu14"></use>
-                  </svg>
+                  <span class="iconfont icon-iconset0196"></span>
                   <span class="desp">
                       <% if (post.categories) { %> 
                         <% for (var j=0; j < post.categories.data.length; j++) { %>
@@ -41,9 +37,7 @@
                   </span>
               </div>          
               <div class="warp">
-                  <svg class="icon" aria-hidden="true">
-                    <use xlink:href="#icon-fenzu15"></use>
-                  </svg>
+                  <span class="iconfont icon-tag"></span>
                   <span class="desp">
                       <% if (post.tags) { %> 
                         <% for (var i=0; i < post.tags.data.length; i++) { %>
@@ -54,17 +48,12 @@
                       <% } %>
                   </span>
               </div>          
-              <!-- <div class="warp">
-                <svg class="icon" aria-hidden="true">
-                  <use xlink:href="#icon-fenzu6"></use>
-                </svg>
-                <span class="desp"></span>
-              </div> -->
               <div class="warp">
                 <div class="share" data-url="<%- url_for(post.path) %>">
-                  <svg class="icon" aria-hidden="true">
-                    <use xlink:href="#icon-fenzu2"></use>
-                  </svg>
+                  <span class="iconfont icon-icon-test"></span>
+                </div>
+                <div class="desp">
+                  <a href="">分享</a>
                 </div>
               </div>
           </div>
