@@ -16,8 +16,8 @@
           <a href="<%- url_for(post.path) %>"><%= post.title %></a>
         </div>
         <div class="date">
-          <span class="iconfont icon-shijian"></span>
-          <%- date(post.date, "YY/MM/DD") %>
+          <span class="iconfont icon-time-circle"></span>
+          <span><%- date(post.date, "YY/MM/DD") %></span>
         </div>
         <% if (post.excerpt) { %>
         <div class="excerpt post-wrap"><%- post.excerpt %></div>
@@ -25,35 +25,36 @@
         <div class="meta">
           <div class="l">
               <div class="warp">
-                  <span class="iconfont icon-iconset0196"></span>
+                 <% if (post.categories) { %> 
+                  <span class="iconfont icon-folder"></span>
                   <span class="desp">
-                      <% if (post.categories) { %> 
                         <% for (var j=0; j < post.categories.data.length; j++) { %>
                           <% if (post.categories.data[j] && post.categories.data[j].name) { %>
                             <a href="/categories/<%- post.categories.data[j].name %>"><%- post.categories.data[j].name %></a>
                           <% } %>
                         <% } %>
-                      <% } %>
                   </span>
+                  <% } %>
               </div>          
+
+              <% if (post.tags) { %> 
               <div class="warp">
-                  <span class="iconfont icon-tag"></span>
+                  <span class="iconfont icon-tag1"></span>
                   <span class="desp">
-                      <% if (post.tags) { %> 
                         <% for (var i=0; i < post.tags.data.length; i++) { %>
                           <% if (post.tags.data[i] && post.tags.data[i].name) { %>
                             <a href="/tags/<%- post.tags.data[i].name %>"><%- post.tags.data[i].name %></a>
                           <% } %>
                         <% } %>
-                      <% } %>
                   </span>
-              </div>          
+              </div>  
+              <% } %>        
               <div class="warp">
                 <div class="share" data-url="<%- url_for(post.path) %>">
-                  <span class="iconfont icon-icon-test"></span>
+                  <span class="iconfont icon-share"></span>
                 </div>
-                <div class="desp">
-                  <a href="">分享</a>
+                <div class="desp share" data-url="<%- url_for(post.path) %>">
+                  <a href="javascript:void(0);">分享</a>
                 </div>
               </div>
           </div>

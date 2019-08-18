@@ -2,44 +2,38 @@
     <div class="header">
       <div class="title"><%- page.title %></div>
       <div class="meta">
-        <span>
-          <svg class="icon" aria-hidden="true">
-            <use xlink:href="#icon-fenzu4"></use>
-          </svg>
-          <%- date(page.date, "YYYY/MM/DD") %>
+        <span class="item">
+          <span class="iconfont icon-time-circle"></span>
+          <span><%- date(page.date, "YYYY/MM/DD") %></span>
         </span>
-        <span>
-          <svg class="icon" aria-hidden="true">
-            <use xlink:href="#icon-fenzu14"></use>
-          </svg>
+
+        <% if (page.categories) { %> 
+        <span class="item">
+          <span class="iconfont icon-folder"></span>
           <span>
-            <% if (page.categories) { %> 
               <% for (var j=0; j < page.categories.data.length; j++) { %>
                 <% if (page.categories.data[j] && page.categories.data[j].name) { %>
                   <a href="/categories/<%- page.categories.data[j].name %>"><%- page.categories.data[j].name %></a>
                 <% } %>
               <% } %>
-            <% } %>
           </span>
         </span>
-        <span>
-          <svg class="icon" aria-hidden="true">
-            <use xlink:href="#icon-fenzu15"></use>
-          </svg>
-          <span>
-            <% if (page.tags) { %> 
-              <% for (var j=0; j < page.tags.data.length; j++) { %>
-                <% if (page.tags.data[j] && page.tags.data[j].name) { %>
-                  <a href="/tags/<%- page.tags.data[j].name %>"><%- page.tags.data[j].name %></a>
+        <% } %>
+        
+        <% if (page.tags) { %> 
+          <span class="item">
+            <span class="iconfont icon-tag1"></span>
+            <span>
+                <% for (var j=0; j < page.tags.data.length; j++) { %>
+                  <% if (page.tags.data[j] && page.tags.data[j].name) { %>
+                    <a href="/tags/<%- page.tags.data[j].name %>"><%- page.tags.data[j].name %></a>
+                  <% } %>
                 <% } %>
-              <% } %>
-            <% } %>
+            </span>
           </span>
-        </span>
-        <span class="leancloud-visitors" id="<%- url_for(config.url) %><%- url_for(page.path) %>" data-flag-title="<%- page.title %>">
-          <svg class="icon" aria-hidden="true">
-            <use xlink:href="#icon-fenzu6"></use>
-          </svg>
+         <% } %>
+        <span class="item leancloud-visitors" id="<%- url_for(config.url) %><%- url_for(page.path) %>" data-flag-title="<%- page.title %>">
+          <span class="iconfont icon-eye1"></span>
           <span class="leancloud-visitors-count"></span>
         </span>
       </div>

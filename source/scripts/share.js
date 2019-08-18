@@ -56,10 +56,7 @@ define(['jquery', 'confirm'], function($) {
     var site_temp = ''
     options.sites.map(function(v) {
       site_temp += `<a href="${handleHref(v, options)}" target="_blank">
-                      <span>
-                        <svg class="icon font" aria-hidden="true">
-                          <use xlink:href="#icon-${v}"></use>
-                        </svg></span>
+                      <span class="iconfont icon-${v}"></span> 
                     </a>`
     })
 

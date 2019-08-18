@@ -1,10 +1,7 @@
 <div class="archives">
     <% if (is_category()) { %> 
         <div class="header">
-        <div class="icon">
-            <i class="icon-folder"></i>
-        </div>
-
+        <span class="iconfont icon-folder"></span>
         <div class="explain">
             <%= page.category %>
         </div>
@@ -12,14 +9,11 @@
     <% } %>
     <% if (is_tag()) { %> 
         <div class="header">
-                <div class="icon">
-                    <i class="icon-tag"></i>
-                </div>
-    
-                <div class="explain">
-                    <%= page.tag %>
-                </div>
-            </div>
+        <span class="iconfont icon-tag1"></span>
+        <div class="explain">
+            <%= page.tag %>
+        </div>
+        </div>
     <% } %>
 <% var last; %>
 <% page.posts.each(function(post, i){ %>
@@ -39,21 +33,54 @@
     <div class="year">
         <% } %>
         <article class="item">
-
-            <!-- <div class="photo">
-                <img src="https://blog.zhangruipeng.me/hexo-theme-icarus/gallery/thumbnails/flower.jpg" alt="">
-            </div> -->
+            <% let bg = post.photos && post.photos[0] || ''%>
+            <% if (bg) { %>
+            <div class="photo">
+                <a
+                    href="<%- url_for(post.path) %>"
+                    class="photo"
+                    title="<%= post.title %>"
+                    style="background-image: url( '<%= bg %>' )"
+                ></a>
+            </div>
+            <% }%>
             <div class="content">
                 <div class="title">
                     <a  href="<%- url_for(post.path) %>">
                         <%= post.title %>
                     </a>
                 </div>
-                <div class="date">
-                    <svg class="icon" aria-hidden="true">
-                        <use xlink:href="#icon-calendar"></use>
-                    </svg>
-                    <%- date(post.date, "YYYY-MM-DD") %>
+                <div class="meta">
+                    <span class="meta-item">
+                        <span class="iconfont icon-time-circle"></span>
+                        <span><%- date(page.date, "YYYY/MM/DD") %></span>
+                    </span>
+                    <% if (page.categories) { %> 
+                    <span class="meta-item">
+                        <span class="iconfont icon-folder"></span>
+                        <span>
+                            <% for (var j=0; j < page.categories.data.length; j++) { %>
+                                <% if (page.categories.data[j] && page.categories.data[j].name) { %>
+                                <a href="/categories/<%- page.categories.data[j].name %>"><%- page.categories.data[j].name %></a>
+                                <% } %>
+                            <% } %>
+                        </span>
+                    </span>
+                    <% } %>
+
+                    <% if (page.tags) { %> 
+                    <span class="meta-item">
+                        <span class="iconfont icon-tag1"></span>
+                        <span>
+                            <% for (var j=0; j < page.tags.data.length; j++) { %>
+                                <% if (page.tags.data[j] && page.tags.data[j].name) { %>
+                                <a href="/tags/<%- page.tags.data[j].name %>"><%- page.tags.data[j].name %></a>
+                                <% } %>
+                            <% } %>
+                            
+                        </span>
+                    </span>
+                    <% } %>
                 </div>
             </div>
         </article>

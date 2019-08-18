@@ -44,11 +44,7 @@
   </head>
   <body>
     <div id="fixed-menu">
-      <div class="up">
-        <svg class="icon" aria-hidden="true">
-          <use xlink:href="#icon-fenzu7"></use>
-        </svg>
-      </div>
+      <span class="iconfont icon-arrowup"></span>
     </div>
     <div id="progress">
       <div class="line"></div>
@@ -67,9 +63,7 @@
       <div id="main">
         <div class="navbar">
           <div class="toggle">
-            <svg class="icon toggle-icon" aria-hidden="true">
-              <use xlink:href="#icon-fenzu3"></use>
-            </svg>
+            <span class="iconfont icon-menu toggle-icon"></span>
           </div>
           <div class="search">
             <div class="input-warp">
@@ -105,9 +99,7 @@
           </div>
           <div class="locate-widget">
             <div class="city-wrap">
-              <svg class="icon location" aria-hidden="true">
-                <use xlink:href="#icon-fenzu9"></use>
-              </svg>
+              <span class="iconfont icon-dangdi"></span>
               <span id="city-name"></span>
             </div>
             <div class="weather-wrap">
@@ -122,15 +114,11 @@
           <div class="follow-widget">
             <% for (var f in theme.follow){ %>
             <a href="<%= theme.follow[f] %>" target="_block">
-              <svg class="icon font" aria-hidden="true">
-                <use xlink:href="#icon-<%= f %>"></use>
-              </svg>
+              <span class="iconfont icon-<%= f %>"></span>
             </a>
             <% } %> <% if (theme.rss) { %>
             <a href="<%= theme.rss %>" target="_block">
-              <svg class="icon font" aria-hidden="true">
-                <use xlink:href="#icon-rss"></use>
-              </svg>
+              <span class="iconfont icon-rss"></span>
             </a>
             <% } %>
           </div>
