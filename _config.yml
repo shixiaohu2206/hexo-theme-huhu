@@ -47,18 +47,6 @@ site_icp: ''
 site_friends:
   房间里的小猫咪: 'http://baidu.com'
 
-#畅言评论
-changyan:
-  # appid: 'cytOueKrt'
-  # conf: 'prod_0650a81510b1c16dd4c6b8d447948595'
-  appid: ''
-  conf: ''
-
-#valine评论
-valine:
-  API_ID: 'FjXColpwTL0BsrjJIN8Pmnn0-gzGzoHsz'
-  API_KEY: 'Ar7tucPRn3KV7UOidQxESoys'
-
 #不蒜子统计
 busuanzi: true
 
@@ -80,12 +68,6 @@ cdn_module:
   busuanzi: '//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini'
   confirm: 'https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min'
   fancybox: 'https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min'
-
-#google-site-verification
-google_site_verification: 'VQowHv5lAVVWJxjKI9bnAWT7NGdOrfS5KnLF07-B7w0'
-
-#google gtm
-gtm_id: 'GTM-WJ7P5KL'
 
 #baidu push
 baidu_push: true
