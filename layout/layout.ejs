@@ -17,6 +17,18 @@
     </script>
     <!-- End Google Tag Manager -->
 
+    <!-- Google Adsense -->
+    <% if (theme.google_ad_client) { %>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+      ;(adsbygoogle = window.adsbygoogle || []).push({
+        google_ad_client: '<%= theme.google_ad_client %>',
+        enable_page_level_ads: true
+      })
+    </script>
+    <% } %>
+    <!-- Google Adsense -->
+
     <!-- 百度统计 -->
     <script>
       var _hmt = _hmt || []
@@ -67,9 +79,7 @@
           </div>
           <div class="search">
             <div class="input-warp">
-              <svg class="icon" aria-hidden="true">
-                <use xlink:href="#icon-fenzu"></use>
-              </svg>
+              <span class="iconfont icon-sousuo"></span>
               <input type="text" name="" id="" placeholder="Search Keys" />
             </div>
           </div>
