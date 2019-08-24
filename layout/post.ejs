@@ -42,7 +42,7 @@
     </div>
     <%- page.content %>
 
-  <% if (theme.changyan.appid && theme.changyan.conf) { %>
+  <% if (theme.changyan && theme.changyan.appid && theme.changyan.conf) { %>
     <!--畅言PC和WAP自适应版-->
     <div class="changyan">
       <div id="SOHUCS" sid="<%- date(page.date, "YYYY/MM/DD") %>/<%- page.title %>"></div>
