@@ -33,7 +33,8 @@ google_ad_client: ''
 
 ## valine 评论
 
-[valine 官网教程]('https://valine.js.org/')
+[valine 官网教程](https://valine.js.org)
+
 在根目录配置\_config.yml 中添加
 
 ```yml
@@ -45,7 +46,8 @@ valine:
 
 ## 畅言评论
 
-[畅言官网]('http://changyan.kuaizhan.com/')
+[畅言官网](http://changyan.kuaizhan.com)
+
 在根目录配置\_config.yml 中添加
 
 ```yml
