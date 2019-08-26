@@ -7,7 +7,7 @@
           <span><%- date(page.date, "YYYY/MM/DD") %></span>
         </span>
 
-        <% if (page.categories) { %> 
+        <% if (page.categories && page.categories.data && page.categories.data.length > 0) { %> 
         <span class="item">
           <span class="iconfont icon-folder"></span>
           <span>
@@ -20,7 +20,7 @@
         </span>
         <% } %>
         
-        <% if (page.tags) { %> 
+        <% if (page.tags && page.tags.data && page.tags.data.length > 0) { %> 
           <span class="item">
             <span class="iconfont icon-tag1"></span>
             <span>
@@ -32,7 +32,7 @@
             </span>
           </span>
          <% } %>
-        <span class="item leancloud-visitors" id="<%- url_for(config.url) %><%- url_for(page.path) %>" data-flag-title="<%- page.title %>">
+        <span class="item leancloud-visitors" id="<%- url_for(page.path) %>" data-flag-title="<%- page.title %>">
           <span class="iconfont icon-eye1"></span>
           <span class="leancloud-visitors-count"></span>
         </span>

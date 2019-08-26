@@ -11,12 +11,13 @@ define(['jquery', 'hodgepodge', 'valine', 'fancybox', 'confirm', 'iconfont', 'sh
   if (API_ID && API_KEY) {
     new valine({
       el: '#comment',
-      appId: 'FjXColpwTL0BsrjJIN8Pmnn0-gzGzoHsz',
-      appKey: 'Ar7tucPRn3KV7UOidQxESoys',
+      appId: THEME_CONFIG.valine.API_ID,
+      appKey: THEME_CONFIG.valine.API_KEY,
       notify: false,
       visitor: true, // 阅读量统计
+      recordIP: true,
       avatar: 'mp',
-      placeholder: '骑士很煎蛋、骑士很孜然'
+      placeholder: ''
     })
   }
 
