@@ -49,6 +49,9 @@
     <% if (theme.google_site_verification) { %>
     <meta name="google-site-verification" content="<%= theme.google_site_verification %>" />
     <% } %>
+    <% if (theme.baidu_union_verify) { %>
+    <meta name="baidu_union_verify" content="<%= theme.baidu_union_verify %>" />
+    <% } %>
     <meta name="description" content="<%= config.description%>" />
     <title><%= config.title %> - <%= config.subtitle %></title>
     <link rel="shortcut icon" href="<%= theme.favicon%>" type="image/x-icon" />
