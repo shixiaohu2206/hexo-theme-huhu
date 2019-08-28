@@ -17,7 +17,7 @@ define(['jquery', 'hodgepodge', 'valine', 'fancybox', 'confirm', 'iconfont', 'sh
       visitor: true, // 阅读量统计
       recordIP: true,
       avatar: 'mp',
-      placeholder: ''
+      placeholder: '骑士很煎蛋、骑士很孜然'
     })
   }
 

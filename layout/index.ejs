@@ -6,7 +6,7 @@
     <ins
       class="adsbygoogle"
       style="display:block"
-      data-ad-client="ca-pub-9618079338040236"
+      data-ad-client="<%= theme.google_ad_client %>"
       data-ad-slot="4801886491"
       data-ad-format="auto"
       data-full-width-responsive="true"
@@ -15,12 +15,14 @@
     || ''%>
     <li class="item">
       <% if (bg) { %>
-      <a
-        href="<%- url_for(post.path) %>"
-        class="photo"
-        title="<%= post.title %>"
-        style="background-image: url( <%= bg %> )"
-      ></a>
+      <div class="bg">
+        <a
+          href="<%- url_for(post.path) %>"
+          class="photo"
+          title="<%= post.title %>"
+          style="background-image: url( <%= bg %> )"
+        ></a>
+      </div>
       <% }%>
       <div class="describe">
         <div class="title">
