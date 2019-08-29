@@ -104,10 +104,11 @@
         <div class="card">
           <div class="logo-widget">
             <div class="author">
-              Utone
+              <%= theme.author%>
             </div>
             <div class="logo" style="background-image: url('/images/logo.jpeg')"></div>
           </div>
+          <% if (theme.weather && theme.weather.appid && theme.weather.appsecret) { %>
           <div class="locate-widget">
             <div class="city-wrap">
               <span class="iconfont icon-dangdi"></span>
@@ -122,6 +123,7 @@
               <div id="weather-detail"></div>
             </div>
           </div>
+          <% } %>
           <div class="follow-widget">
             <% for (var f in theme.follow){ %>
             <a href="<%= theme.follow[f] %>" target="_block">
@@ -145,24 +147,20 @@
           <% } %> <% } %>
           <div class="category-widget">
             <div class="title">
-              <span>Categories</span>
+              <span><%= __('category') %></span>
               <span><a href="/archives">···</a></span>
             </div>
             <div class="list">
-              <ul>
-                <% site.categories.each(function (c, k) { %> <% if ( k < theme.categories_max) { %>
-                <li>
-                  <a href="<%- url_for(c.path) %>">
-                    <%= c.name %>
-                  </a>
-                </li>
-                <% } %> <% }) %>
-              </ul>
+              <% site.categories.each(function (c, k) { %> <% if ( k < theme.categories_max) { %>
+              <a href="<%- url_for(c.path) %>">
+                <%= c.name %>
+              </a>
+              <% } %> <% }) %>
             </div>
           </div>
           <div class="tag-widget">
             <div class="title">
-              <span>Tag Cloud</span>
+              <span><%= __('tag_cloud') %></span>
               <span><a href="">···</a></span>
             </div>
             <div class="tag-cloud">
@@ -171,6 +169,26 @@
             </div>
           </div>
         </div>
+        <% if (theme.google_ad_client) { %>
+        <div class="ads-widget">
+          <script
+            async
+            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
+          ></script>
+          <!-- 右侧广告 -->
+          <ins
+            class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-9618079338040236"
+            data-ad-slot="4996014531"
+            data-ad-format="auto"
+            data-full-width-responsive="true"
+          ></ins>
+          <script>
+            ;(adsbygoogle = window.adsbygoogle || []).push({})
+          </script>
+        </div>
+        <% } %>
       </div>
     </div>
   </body>

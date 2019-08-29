@@ -69,7 +69,7 @@ define(['jquery', 'hodgepodge', 'valine', 'fancybox', 'confirm', 'iconfont', 'sh
         var tem = today.tem // 当前温度
 
         $('#city-name').text(city_name)
-        $('#weather-detail').text(`${wea}/${tem}`)
+        $('#weather-detail').text((wea || tem) && `${wea}/${tem}`)
         $('#weather-img').html(
           `<svg class="icon weather" aria-hidden="true">
             <use xlink:href="#icon-${IMG_ARRAY[wea_img] || 'qingtian'}"></use>

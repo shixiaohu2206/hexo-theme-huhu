@@ -1,8 +1,9 @@
-home: Home
-archives: Archives
-about: About
-tags: Tags
-category: Categories
+home: 首页
+archives: 归档
+about: 关于
+tags: 标签
+tag_cloud: 标签云
+category: 分类
 search: Search
 prev: PREV
 next: NEXT

@@ -85,11 +85,16 @@ define('hodgepodge', [], function() {
     function getWeath() {
       var weathData = STORAGE.getInstance().get(WEATH_KEY)
 
+      var appid = (THEME_CONFIG.weather && THEME_CONFIG.weather.appid) || undefined
+      var appsecret = (THEME_CONFIG.weather && THEME_CONFIG.weather.appsecret) || undefined
+
       if (weathData) {
         return Promise.resolve(weathData)
-      } else {
+      } else if (appid && appsecret) {
         return new Promise((resolve, reject) => {
-          fetch('https://www.tianqiapi.com/api/').then(
+          fetch(
+            `https://www.tianqiapi.com/api/?appid=${appid}&appsecret=${appsecret}&version=v1`
+          ).then(
             data => {
               if (data.ok) {
                 data.json().then(resp => {

@@ -32,10 +32,13 @@
             </span>
           </span>
          <% } %>
-        <span class="item leancloud-visitors" id="<%- url_for(page.path) %>" data-flag-title="<%- page.title %>">
-          <span class="iconfont icon-eye1"></span>
-          <span class="leancloud-visitors-count"></span>
-        </span>
+
+        <% if (!is_current('about')) {%>
+          <span class="item leancloud-visitors" id="<%- url_for(page.path) %>" data-flag-title="<%- page.title %>">
+            <span class="iconfont icon-eye1"></span>
+            <span class="leancloud-visitors-count"></span>
+          </span>
+        <% } %>
       </div>
       <div>
       </div>
@@ -69,8 +72,22 @@
       </div>
     </div>
     <% } %>
-
   </div>
+
+  <% if (theme.google_ad_client) { %>
+  <div class="google-ads">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <ins class="adsbygoogle"
+        style="display:block"
+        data-ad-format="fluid"
+        data-ad-layout-key="-fb+5w+4e-db+86"
+        data-ad-client="ca-pub-9618079338040236"
+        data-ad-slot="8288106873"></ins>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+  </div>
+  <% } %>
 
   <div class="post-copyright">
     <div class="auth">

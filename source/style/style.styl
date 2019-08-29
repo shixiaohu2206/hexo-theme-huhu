@@ -24,7 +24,6 @@
         color: #7a7a7a
         padding: 1rem
         font-size: 0.8rem
-        font-weight: 600
         font-family: 'En-demo'
 
         &.current {
@@ -97,9 +96,12 @@
     }
 }
 
+.ads-widget {
+    margin: 0.5rem 0
+}
+
 #container {
     width: 980px
-    overflow: hidden
     display-flex()
 
     #main {
@@ -156,7 +158,7 @@
                         color: rgb(198, 198, 198)
                         background-color: rgb(248, 248, 248)
                         font-size: 1.1rem
-                        font-family: 'En-demo2'
+                        font-family: 'En-demo'
                         caret-color: #333
                         outline: none
                     }
@@ -459,10 +461,11 @@
         box-sizing: border-box
 
         .card {
-            width: 15rem
+            width: 100%
             min-height: 10rem
             padding: 2rem
             overflow: auto
+            box-sizing: border-box
             border-radius: 0.2rem
             box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2)
 
@@ -503,12 +506,6 @@
                     a {
                         font-size: 1.5rem
                     }
-                }
-
-                ol, ul {
-                    line-height: 1.2rem
-                    list-style: none
-                    margin-left: 1rem
                 }
 
                 a {
@@ -629,6 +626,9 @@
 
             .category-widget {
                 .list {
+                    margin-top: 0.3rem
+                    margin-left: 1rem
+
                     a {
                         height: 100%
                     }
