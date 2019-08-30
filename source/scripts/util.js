@@ -1,7 +1,7 @@
 /**
- * 大杂烩模块
+ * 工具模块
  */
-define('hodgepodge', [], function() {
+define('util', [], function() {
   'use strict'
 
   var WEATH_KEY = 'WEATH'

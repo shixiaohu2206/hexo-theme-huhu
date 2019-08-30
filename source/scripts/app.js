@@ -1,6 +1,6 @@
 define([
   'jquery',
-  'hodgepodge',
+  'util',
   'valine',
   'pjax',
   'fancybox',
@@ -8,7 +8,7 @@ define([
   'iconfont',
   'share',
   'search'
-], function($, $H, valine) {
+], function($, util, valine) {
   'use strict'
 
   // valine评论
@@ -66,7 +66,7 @@ define([
 
   // bind events
   $(document).ready(function() {
-    $H.WEATH.getWeath().then(resp => {
+    util.WEATH.getWeath().then(resp => {
       if (resp) {
         var city_name = resp.city || '上海' // 默认上海
         var today = (resp.data && resp.data[0]) || {}
@@ -136,9 +136,9 @@ define([
     })
 
     // site search
-    $(document).on('click', '#site-search', function() {
-      $().search()
-    })
+    // $(document).on('click', '#site-search', function() {
+    //   $().search()
+    // })
 
     // pjax
     if ($.support.pjax) {

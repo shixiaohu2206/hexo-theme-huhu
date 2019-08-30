@@ -1,7 +1,7 @@
 /**
  * 站内搜索
  */
-define(['jquery', 'hodgepodge', 'confirm'], function($, $H) {
+define(['jquery', 'util', 'confirm'], function($, $H) {
   'use strict'
 
   var SEARCH_KEY = 'SEARCH'
@@ -41,10 +41,10 @@ define(['jquery', 'hodgepodge', 'confirm'], function($, $H) {
 
   $.fn.search = function(options) {
     $.confirm({
-      // title: 'Seatch',
+      title: '',
       useBootstrap: false,
-      boxWidth: 'width',
       escapeKey: 'true',
+      animation: 'rotateYR',
       content: '',
       buttons: {
         close: {

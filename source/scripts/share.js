@@ -1,3 +1,6 @@
+/**
+ * 分享模块
+ */
 define(['jquery', 'confirm'], function($) {
   'use strict'
 
@@ -69,6 +72,7 @@ define(['jquery', 'confirm'], function($) {
       useBootstrap: false,
       boxWidth: '15rem',
       escapeKey: 'true',
+      animation: 'rotateYR',
       content: content,
       buttons: {
         close: {

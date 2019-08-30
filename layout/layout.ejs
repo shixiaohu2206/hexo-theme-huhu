@@ -74,8 +74,8 @@
           </div>
           <div class="search">
             <div class="input-warp">
-              <span class="iconfont icon-sousuo"></span>
-              <input type="text" name="" id="site-search" placeholder="Search Keys" />
+              <!-- <span class="iconfont icon-sousuo"></span> -->
+              <input type="text" name="" class="st-default-search-input" id="site-search" placeholder="Search Keys" />
             </div>
           </div>
         </div>
@@ -181,6 +181,27 @@
         <% } %>
       </div>
     </div>
+    <!-- swiftype -->
+    <% if (theme.swiftype && theme.swiftype.appKey) { %>
+    <script type="text/javascript">
+      ;(function(w, d, t, u, n, s, e) {
+        w['SwiftypeObject'] = n
+        w[n] =
+          w[n] ||
+          function() {
+            ;(w[n].q = w[n].q || []).push(arguments)
+          }
+        s = d.createElement(t)
+        e = d.getElementsByTagName(t)[0]
+        s.async = 1
+        s.src = u
+        e.parentNode.insertBefore(s, e)
+      })(window, document, 'script', '//s.swiftypecdn.com/install/v2/st.js', '_st')
+
+      _st('install', '<%= theme.swiftype.appKey %>', '2.0.0')
+    </script>
+    <% } %>
+    <!-- swiftype -->
   </body>
   <% if (theme.gtm_id) { %>
   <!-- Google Tag Manager (noscript) -->
@@ -234,32 +255,28 @@
           share: 'share',
           search: 'search',
           iconfont: 'iconfont',
-          hodgepodge: 'hodgepodge',
+          util: 'util',
           valine: ['cdn/Valine.min'],
 
           // cdn
           av: ['<%- theme.cdn_module.av_min %>', 'cdn/av-min'],
           pjax: ['<%- theme.cdn_module.pjax %>', 'cdn/pjax.min'],
           jquery: ['<%- theme.cdn_module.jquery %>', 'cdn/jquery.min'],
-          busuanzi: ['<%- theme.cdn_module.busuanzi %>', 'cdn/busuanzi.pure.mini'],
           confirm: ['<%- theme.cdn_module.confirm %>', 'cdn/jquery.confirm.min'],
           fancybox: ['<%- theme.cdn_module.fancybox %>', 'cdn/jquery.fancybox.min']
         },
 
         map: {
           '*': {
-            // css: '/scripts/cdn/css-min.js'
             css: 'https://cdn.bootcss.com/require-css/0.1.10/css.min.js'
           }
         },
 
         shim: {
           fancybox: {
-            // deps: ['css!../style/fancybox']
             deps: ['css!https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.css']
           },
           confirm: {
-            // deps: ['css!../style/confirm']
             deps: ['css!https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min.css']
           }
         },
