@@ -64,6 +64,7 @@ share:
 #cdn 不能以.js结尾
 cdn_module:
   av_min: 'https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min'
+  pjax: 'https://cdn.bootcss.com/jquery.pjax/2.0.1/jquery.pjax.min'
   jquery: 'https://cdn.bootcss.com/jquery/3.4.1/jquery.min'
   busuanzi: '//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini'
   confirm: 'https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min'

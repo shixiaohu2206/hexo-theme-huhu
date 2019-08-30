@@ -2,6 +2,7 @@ define([
   'jquery',
   'hodgepodge',
   'valine',
+  'pjax',
   'fancybox',
   'confirm',
   'iconfont',
@@ -138,5 +139,14 @@ define([
     $(document).on('click', '#site-search', function() {
       $().search()
     })
+
+    // pjax
+    if ($.support.pjax) {
+      $(document).on('click', 'a[data-pjax]', function(event) {
+        var container = $(this).closest('[data-pjax-container]')
+        var containerSelector = '#' + container.id
+        $.pjax.click(event, { container: containerSelector })
+      })
+    }
   })
 })
