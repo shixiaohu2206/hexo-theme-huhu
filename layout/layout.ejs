@@ -20,12 +20,6 @@
     <!-- Google Adsense -->
     <% if (theme.google_ad_client) { %>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-    <script>
-      ;(adsbygoogle = window.adsbygoogle || []).push({
-        google_ad_client: '<%= theme.google_ad_client %>',
-        enable_page_level_ads: true
-      })
-    </script>
     <% } %>
     <!-- Google Adsense -->
 
@@ -52,7 +46,7 @@
     <% } %>
     <meta name="description" content="<%= config.description%>" />
     <title><%= config.title %> - <%= config.subtitle %></title>
-    <link rel="shortcut icon" href="<%= theme.favicon%>" type="image/x-icon" />
+    <link rel="shortcut icon" href="<%= theme.favicon %>" type="image/x-icon" />
     <%- css('style/style') %>
   </head>
   <body>
@@ -81,7 +75,7 @@
           <div class="search">
             <div class="input-warp">
               <span class="iconfont icon-sousuo"></span>
-              <input type="text" name="" id="" placeholder="Search Keys" />
+              <input type="text" name="" id="site-search" placeholder="Search Keys" />
             </div>
           </div>
         </div>
@@ -171,10 +165,6 @@
         </div>
         <% if (theme.google_ad_client) { %>
         <div class="ads-widget">
-          <script
-            async
-            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
-          ></script>
           <!-- 右侧广告 -->
           <ins
             class="adsbygoogle"
@@ -206,68 +196,76 @@
   <% } %>
 </html>
 <script type="text/javascript">
-  window.THEME_CONFIG = JSON.parse('<%- JSON.stringify(theme) %>')
-  window.loadJs = function(d, m, a) {
-    var c = document.getElementsByTagName('head')[0] || document.head || document.documentElement
-    var b = document.createElement('script')
-    b.defer = true
-    b.setAttribute('type', 'text/javascript')
-    b.setAttribute('charset', 'UTF-8')
-    b.setAttribute('async', 'true')
-    b.setAttribute('src', d)
-    m && b.setAttribute('data-main', '<%- url_for("/scripts/app") %>')
-    if (typeof a === 'function') {
-      if (window.attachEvent) {
-        b.onreadystatechange = function() {
-          var e = b.readyState
-          if (e === 'loaded' || e === 'complete') {
-            b.onreadystatechange = null
-            a()
+  window.addEventListener('load', function() {
+    ;(adsbygoogle = window.adsbygoogle || []).push({
+      google_ad_client: '<%= theme.google_ad_client %>',
+      enable_page_level_ads: true
+    })
+
+    window.THEME_CONFIG = JSON.parse('<%- JSON.stringify(theme) %>')
+    window.loadJs = function(d, m, a) {
+      var c = document.getElementsByTagName('head')[0] || document.head || document.documentElement
+      var b = document.createElement('script')
+      b.defer = true
+      b.setAttribute('type', 'text/javascript')
+      b.setAttribute('charset', 'UTF-8')
+      b.setAttribute('async', 'true')
+      b.setAttribute('src', d)
+      m && b.setAttribute('data-main', '<%- url_for("/scripts/app") %>')
+      if (typeof a === 'function') {
+        if (window.attachEvent) {
+          b.onreadystatechange = function() {
+            var e = b.readyState
+            if (e === 'loaded' || e === 'complete') {
+              b.onreadystatechange = null
+              a()
+            }
           }
+        } else {
+          b.onload = a
         }
-      } else {
-        b.onload = a
       }
+      c.appendChild(b)
     }
-    c.appendChild(b)
-  }
-  loadJs('https://cdn.bootcss.com/require.js/2.3.6/require.min.js', true, function() {
-    require.config({
-      paths: {
-        // site
-        share: 'share',
-        iconfont: 'iconfont',
-        hodgepodge: 'hodgepodge',
-        valine: ['cdn/Valine.min'],
+    loadJs('https://cdn.bootcss.com/require.js/2.3.6/require.min.js', true, function() {
+      require.config({
+        paths: {
+          // site
+          share: 'share',
+          search: 'search',
+          iconfont: 'iconfont',
+          hodgepodge: 'hodgepodge',
+          valine: ['cdn/Valine.min'],
 
-        // cdn
-        av: ['<%- theme.cdn_module.av_min %>', 'cdn/av-min'],
-        jquery: ['<%- theme.cdn_module.jquery %>', 'cdn/jquery.min'],
-        busuanzi: ['<%- theme.cdn_module.busuanzi %>', 'cdn/busuanzi.pure.mini'],
-        confirm: ['<%- theme.cdn_module.confirm %>', 'cdn/jquery.confirm.min'],
-        fancybox: ['<%- theme.cdn_module.fancybox %>', 'cdn/jquery.fancybox.min']
-      },
-
-      map: {
-        '*': {
-          // css: '/scripts/cdn/css-min.js'
-          css: 'https://cdn.bootcss.com/require-css/0.1.10/css.min.js'
-        }
-      },
-
-      shim: {
-        fancybox: {
-          // deps: ['css!../style/fancybox']
-          deps: ['css!https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.css']
+          // cdn
+          av: ['<%- theme.cdn_module.av_min %>', 'cdn/av-min'],
+          jquery: ['<%- theme.cdn_module.jquery %>', 'cdn/jquery.min'],
+          busuanzi: ['<%- theme.cdn_module.busuanzi %>', 'cdn/busuanzi.pure.mini'],
+          confirm: ['<%- theme.cdn_module.confirm %>', 'cdn/jquery.confirm.min'],
+          fancybox: ['<%- theme.cdn_module.fancybox %>', 'cdn/jquery.fancybox.min']
         },
-        confirm: {
-          // deps: ['css!../style/confirm']
-          deps: ['css!https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min.css']
-        }
-      },
 
-      // 加载超时
-      waitSeconds: 3
+        map: {
+          '*': {
+            // css: '/scripts/cdn/css-min.js'
+            css: 'https://cdn.bootcss.com/require-css/0.1.10/css.min.js'
+          }
+        },
+
+        shim: {
+          fancybox: {
+            // deps: ['css!../style/fancybox']
+            deps: ['css!https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.css']
+          },
+          confirm: {
+            // deps: ['css!../style/confirm']
+            deps: ['css!https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min.css']
+          }
+        },
+
+        // 加载超时
+        waitSeconds: 3
+      })
     })
   })
 </script>

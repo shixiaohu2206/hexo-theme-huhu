@@ -6,14 +6,12 @@ define('hodgepodge', [], function() {
 
   var WEATH_KEY = 'WEATH'
   var STORAGE_INSTANCE = undefined
+  var DEFAULT_EXPIRE = 3 * 60 * 60 * 1000 // 默认过期时间3小时
 
   /**
    * 缓存模块
    */
   var STORAGE = (function() {
-    // 默认过期时间3小时
-    var expire = 3 * 60 * 60 * 1000
-
     function getInstance(type) {
       if (type === 'session' && STORAGE_INSTANCE !== window.sessionStorage) {
         STORAGE_INSTANCE = window.sessionStorage
@@ -40,25 +38,26 @@ define('hodgepodge', [], function() {
           }
         }
       } catch (e) {
-        console.warn(e)
+        console.warn('key', e)
         value = null
       }
 
       return value
     }
 
-    function set(key, value) {
+    function set(key, value, expire) {
       value = value || {}
       key = key && key.toLocaleUpperCase()
 
       if (value) {
         var now = getNow()
         value.setTime = now
-        value.expireTime = now + expire
+        value.expireTime = now + (expire || DEFAULT_EXPIRE)
 
         try {
           value = JSON.stringify(value)
         } catch (e) {
+          console.warn('key', e)
           value = ''
         }
 
@@ -98,7 +97,6 @@ define('hodgepodge', [], function() {
             data => {
               if (data.ok) {
                 data.json().then(resp => {
-                  console.log(resp)
                   if (resp) {
                     STORAGE.getInstance().set(WEATH_KEY, resp)
                     return resolve(resp)

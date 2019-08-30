@@ -201,6 +201,35 @@ $base-style {
         }
     }
 
+    .post-guide {
+        display-flex()
+        justify-content: space-between
+        padding: 1rem 0
+        border-bottom: 1px solid color-border
+
+        .item {
+            width: 50%
+            display-flex()
+            align-items()
+
+            a {
+                font-size: 0.9rem
+            }
+
+            .iconfont {
+                font-weight: 600
+            }
+        }
+
+        .left {
+            justify-content: flex-start
+        }
+
+        .right {
+            justify-content: flex-end
+        }
+    }
+
     .post-reward {
         margin: 2rem
         display-flex()
@@ -305,7 +334,7 @@ $base-style {
         margin: 0.9rem 0
         text-align: left
         padding: 0.5rem 1rem
-        color: rgb(0, 0, 0)
+        color: #4d4d4c
         border-radius: 0.2rem
         background-color: rgb(255, 248, 209)
         border-left: 8px solid rgb(255, 229, 100)
@@ -335,8 +364,7 @@ $base-style {
 
     code {
         margin: 0 0.5rem
-        color: #ff502c
-        background: #fff5f5
+        background: #bbeffd
         padding: 0 0.3em
         border-radius: 3px
         border: 1px solid #eee

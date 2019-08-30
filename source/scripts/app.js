@@ -1,8 +1,13 @@
-define(['jquery', 'hodgepodge', 'valine', 'fancybox', 'confirm', 'iconfont', 'share'], function(
-  $,
-  $H,
-  valine
-) {
+define([
+  'jquery',
+  'hodgepodge',
+  'valine',
+  'fancybox',
+  'confirm',
+  'iconfont',
+  'share',
+  'search'
+], function($, $H, valine) {
   'use strict'
 
   // valine评论
@@ -127,6 +132,11 @@ define(['jquery', 'hodgepodge', 'valine', 'fancybox', 'confirm', 'iconfont', 'sh
         top: 0,
         behavior: 'smooth'
       })
+    })
+
+    // site search
+    $(document).on('click', '#site-search', function() {
+      $().search()
     })
   })
 })

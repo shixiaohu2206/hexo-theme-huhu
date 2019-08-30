@@ -53,30 +53,42 @@
   <% } %>
 
   <% if (theme.reward && (theme.reward.weixin || theme.reward.zhifubao)) { %>
-  <div class="post-reward">
-    <div id="reward-button">请杯咖啡呗~</div>
-    <div id="qr">
-      <div class="wrap">
-          <% if (theme.reward.zhifubao) { %>
-          <div class="bg-wrap">
-            <a href="<%- url_for(theme.reward.zhifubao) %>" target="_block" class="bg" style="background-image:url('/<%- theme.reward.zhifubao %>')"></a>
-            支付宝
-          </div>
-          <% } %>
-          <% if (theme.reward.weixin) { %>
-          <div class="bg-wrap">
-              <a href="<%- url_for(theme.reward.weixin) %>" target="_block" class="bg" style="background-image:url('/<%- theme.reward.weixin %>')"></a>
-            微信
-          </div>
-          <% } %>
+    <div class="post-reward">
+      <div id="reward-button">请杯咖啡呗~</div>
+      <div id="qr">
+        <div class="wrap">
+            <% if (theme.reward.zhifubao) { %>
+            <div class="bg-wrap">
+              <a href="<%- url_for(theme.reward.zhifubao) %>" target="_block" class="bg" style="background-image:url('/<%- theme.reward.zhifubao %>')"></a>
+              支付宝
+            </div>
+            <% } %>
+            <% if (theme.reward.weixin) { %>
+            <div class="bg-wrap">
+                <a href="<%- url_for(theme.reward.weixin) %>" target="_block" class="bg" style="background-image:url('/<%- theme.reward.weixin %>')"></a>
+              微信
+            </div>
+            <% } %>
+        </div>
       </div>
     </div>
-    <% } %>
+  <% } %>
+  
+  <div class="post-guide">
+    <div class="item left">
+        <% if (page.prev){ %>
+          <a href="<%- page.prev.path %>"><span class="iconfont icon-left"></span><%- page.prev.title %></a>
+        <% } %>
+    </div>
+    <div class="item right">
+        <% if (page.next){ %>
+          <a href="<%- page.next.path %>"><%- page.next.title %><span class="iconfont icon-right"></span></a>
+        <% } %>
+    </div>
   </div>
 
   <% if (theme.google_ad_client) { %>
   <div class="google-ads">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     <ins class="adsbygoogle"
         style="display:block"
         data-ad-format="fluid"
