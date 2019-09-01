@@ -273,6 +273,10 @@
                                     .desp {
                                         ellipsis()
                                         color: #7a7a7a
+
+                                        a {
+                                            padding-right: 0.3rem
+                                        }
                                     }
 
                                     .icon {
@@ -294,7 +298,7 @@
                             .r {
                                 display-flex()
                                 justify-content(flex-end)
-                                width: 60%
+                                width: 40%
                                 margin: 0.3rem 0
 
                                 a {
@@ -491,7 +495,6 @@
             .category-widget, .tag-widget, .toc-widget {
                 display-flex()
                 flex-direction(column)
-                margin: 1rem 0
                 font-family: 'En-demo'
 
                 .title {
@@ -509,14 +512,12 @@
 
                 a {
                     color: #4a4a4a
-                    font-size: 0.85rem
+                    font-size: 0.9rem
                     font-weight: 600
                     padding: 0.2rem
-                    border-radius: 3px
+                    border-radius: 0.2rem
                     display: inline-block
-                    overflow: hidden
-                    text-overflow: ellipsis
-                    white-space: nowrap
+                    ellipsis()
                 }
 
                 a:hover {
@@ -610,9 +611,16 @@
             }
 
             .toc-widget {
+                margin: 1rem 0
+
                 .post-toc {
                     margin-top: 0.3rem
-                    margin-left: 1rem
+
+                    ol, ul {
+                        line-height: 1.2rem
+                        list-style: none
+                        margin-left: 1rem
+                    }
 
                     li {
                         ellipsis()
@@ -621,17 +629,17 @@
             }
 
             .category-widget {
+                margin: 1rem 0
+
                 .list {
                     margin-top: 0.3rem
                     margin-left: 1rem
-
-                    a {
-                        height: 100%
-                    }
                 }
             }
 
             .tag-widget {
+                margin-top: 1rem
+
                 .tag-cloud {
                     margin-top: 0.3rem
                     margin-left: 1rem

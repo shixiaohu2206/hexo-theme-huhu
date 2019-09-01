@@ -1,6 +1,18 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/instantsearch.css@7.3.1/themes/algolia-min.css"
+      integrity="sha256-HB49n/BZjuqiCtQQf49OdZn63XuKFaxcIHWf0HNKte8="
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/instantsearch.css@7.3.1/themes/reset-min.css"
+      integrity="sha256-HB49n/BZjuqiCtQQf49OdZn63XuKFaxcIHWf0HNKte8="
+      crossorigin="anonymous"
+    />
     <% if (theme.gtm_id) { %>
     <!-- Google Tag Manager -->
     <script>
@@ -75,16 +87,28 @@
           <div class="search">
             <div class="input-warp">
               <!-- <span class="iconfont icon-sousuo"></span> -->
-              <input type="text" name="" class="st-default-search-input" id="site-search" placeholder="Search Keys" />
+              <input
+                type="text"
+                name=""
+                class="st-default-search-input"
+                id="site-search"
+                placeholder="Search Keys"
+              />
             </div>
           </div>
         </div>
         <div class="content">
+          <div id="searchbox">
+            <div id="powered-by"></div>
+          </div>
+          <div id="hits"></div>
+
           <%- body %>
         </div>
         <footer>
           <div class="copyright">
-            ©2019 <a href="<%= config.url %>"><%= config.author %></a>. Powered by Hexo &
+            ©2019 <a href="<%= config.url %>"><%= config.author %></a>. Powered by
+            <a href="https://hexo.io">Hexo</a> &
             <a href="https://github.com/shixiaohu2206/hexo-theme-huhu">hexo-theme-huhu</a>
           </div>
           <% if (theme.site_icp) { %>
@@ -146,9 +170,7 @@
             </div>
             <div class="list">
               <% site.categories.each(function (c, k) { %> <% if ( k < theme.categories_max) { %>
-              <a href="<%- url_for(c.path) %>">
-                <%= c.name %>
-              </a>
+              <a href="<%- url_for(c.path) %>"><%= c.name %></a>
               <% } %> <% }) %>
             </div>
           </div>
@@ -248,43 +270,44 @@
       }
       c.appendChild(b)
     }
-    loadJs('https://cdn.bootcss.com/require.js/2.3.6/require.min.js', true, function() {
-      require.config({
-        paths: {
-          // site
-          share: 'share',
-          search: 'search',
-          iconfont: 'iconfont',
-          util: 'util',
-          valine: ['cdn/Valine.min'],
+    window.loadJs &&
+      window.loadJs('https://cdn.bootcss.com/require.js/2.3.6/require.min.js', true, function() {
+        require.config({
+          paths: {
+            // site
+            share: 'share',
+            search: 'search',
+            iconfont: 'iconfont',
+            util: 'util',
+            valine: ['cdn/Valine.min'],
 
-          // cdn
-          av: ['<%- theme.cdn_module.av_min %>', 'cdn/av-min'],
-          pjax: ['<%- theme.cdn_module.pjax %>', 'cdn/pjax.min'],
-          jquery: ['<%- theme.cdn_module.jquery %>', 'cdn/jquery.min'],
-          confirm: ['<%- theme.cdn_module.confirm %>', 'cdn/jquery.confirm.min'],
-          fancybox: ['<%- theme.cdn_module.fancybox %>', 'cdn/jquery.fancybox.min']
-        },
-
-        map: {
-          '*': {
-            css: 'https://cdn.bootcss.com/require-css/0.1.10/css.min.js'
-          }
-        },
-
-        shim: {
-          fancybox: {
-            deps: ['css!https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.css']
+            // cdn
+            av: ['<%- theme.cdn_module.av_min %>', 'cdn/av-min'],
+            pjax: ['<%- theme.cdn_module.pjax %>', 'cdn/pjax.min'],
+            jquery: ['<%- theme.cdn_module.jquery %>', 'cdn/jquery.min'],
+            confirm: ['<%- theme.cdn_module.confirm %>', 'cdn/jquery.confirm.min'],
+            fancybox: ['<%- theme.cdn_module.fancybox %>', 'cdn/jquery.fancybox.min']
           },
-          confirm: {
-            deps: ['css!https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min.css']
-          }
-        },
 
-        // 加载超时
-        waitSeconds: 3
+          map: {
+            '*': {
+              css: 'https://cdn.bootcss.com/require-css/0.1.10/css.min.js'
+            }
+          },
+
+          shim: {
+            fancybox: {
+              deps: ['css!https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.css']
+            },
+            confirm: {
+              deps: ['css!https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min.css']
+            }
+          },
+
+          // 加载超时
+          waitSeconds: 3
+        })
       })
-    })
   })
 </script>
 <% if (theme.baidu_push) { %>
@@ -302,3 +325,64 @@
   })()
 </script>
 <% } %>
+
+<script
+  src="https://cdn.jsdelivr.net/npm/algoliasearch@3.33.0/dist/algoliasearchLite.min.js"
+  integrity="sha256-3Laj91VXexjTlFLgL8+vvIq27laXdRmFIcO2miulgEs="
+  crossorigin="anonymous"
+></script>
+<script
+  src="https://cdn.jsdelivr.net/npm/instantsearch.js@3.4.0/dist/instantsearch.production.min.js"
+  integrity="sha256-pM0n88cBFRHpSn0N26ETsQdwpA7WAXJDvkHeCLh3ujI="
+  crossorigin="anonymous"
+></script>
+
+<script>
+  const searchClient = algoliasearch('UL5U4KF7NA', 'cb0ba3563c92ba60965c89cce8c69077')
+
+  const search = instantsearch({
+    indexName: 'Utone',
+    searchClient
+  })
+
+  search.addWidget(
+    instantsearch.widgets.searchBox({
+      container: '#searchbox'
+    })
+  )
+  search.addWidget(
+    instantsearch.widgets.poweredBy({
+      container: '#powered-by'
+    })
+  )
+
+  search.addWidget(
+    instantsearch.widgets.hits({
+      container: '#hits',
+      transformItems(items) {
+        console.log(items)
+        return items.map(item => ({
+          ...item
+          // name: item.name.toUpperCase()
+        }))
+      },
+      templates: {
+        item: `
+        <div>
+          <img src="{{image}}" align="left" alt="{{name}}" />
+          <div class="hit-name">
+              {{title}}
+            {{#helpers.highlight}}{ "attribute": "name" }{{/helpers.highlight}}
+          </div>
+          <div class="hit-description">
+            {{#helpers.highlight}}{ "attribute": "description" }{{/helpers.highlight}}
+          </div>
+          <div class="hit-price">\${{price}}</div>
+        </div>
+      `
+      }
+    })
+  )
+
+  search.start()
+</script>
