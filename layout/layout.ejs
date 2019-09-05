@@ -1,18 +1,6 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/instantsearch.css@7.3.1/themes/algolia-min.css"
-      integrity="sha256-HB49n/BZjuqiCtQQf49OdZn63XuKFaxcIHWf0HNKte8="
-      crossorigin="anonymous"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/instantsearch.css@7.3.1/themes/reset-min.css"
-      integrity="sha256-HB49n/BZjuqiCtQQf49OdZn63XuKFaxcIHWf0HNKte8="
-      crossorigin="anonymous"
-    />
     <% if (theme.gtm_id) { %>
     <!-- Google Tag Manager -->
     <script>
@@ -57,7 +45,13 @@
     <meta name="baidu_union_verify" content="<%= theme.baidu_union_verify %>" />
     <% } %>
     <meta name="description" content="<%= config.description%>" />
-    <title><%= config.title %> - <%= config.subtitle %></title>
+    <% let title = page.title; if (is_archive()) { title = __('archives') } if (is_month()) { title
+    += page.year + '/' + page.month; } else if (is_year()) { title += page.year; } else if
+    (is_category()) { title = page.category; } else if (is_tag()) { title = page.tag; } %>
+    <title>
+      <% if (title) { %><%= title %><% } else { %> <%= config.subtitle %><% }%> - <%= config.title
+      %>
+    </title>
     <link rel="shortcut icon" href="<%= theme.favicon %>" type="image/x-icon" />
     <%- css('style/style') %>
   </head>
@@ -98,11 +92,6 @@
           </div>
         </div>
         <div class="content">
-          <div id="searchbox">
-            <div id="powered-by"></div>
-          </div>
-          <div id="hits"></div>
-
           <%- body %>
         </div>
         <footer>
@@ -326,63 +315,21 @@
 </script>
 <% } %>
 
-<script
-  src="https://cdn.jsdelivr.net/npm/algoliasearch@3.33.0/dist/algoliasearchLite.min.js"
-  integrity="sha256-3Laj91VXexjTlFLgL8+vvIq27laXdRmFIcO2miulgEs="
-  crossorigin="anonymous"
-></script>
-<script
-  src="https://cdn.jsdelivr.net/npm/instantsearch.js@3.4.0/dist/instantsearch.production.min.js"
-  integrity="sha256-pM0n88cBFRHpSn0N26ETsQdwpA7WAXJDvkHeCLh3ujI="
-  crossorigin="anonymous"
-></script>
+<script src="https://cdn.jsdelivr.net/npm/algoliasearch@3.33.0/dist/algoliasearchLite.min.js"></script>
 
 <script>
-  const searchClient = algoliasearch('UL5U4KF7NA', 'cb0ba3563c92ba60965c89cce8c69077')
+  const client = algoliasearch('UL5U4KF7NA', 'cb0ba3563c92ba60965c89cce8c69077')
+  const index = client.initIndex('Utone')
 
-  const search = instantsearch({
-    indexName: 'Utone',
-    searchClient
-  })
+  // only query string
+  index.search(
+    {
+      query: '倒影'
+    },
+    (err, { hits } = {}) => {
+      if (err) throw err
 
-  search.addWidget(
-    instantsearch.widgets.searchBox({
-      container: '#searchbox'
-    })
+      console.log(hits)
+    }
   )
-  search.addWidget(
-    instantsearch.widgets.poweredBy({
-      container: '#powered-by'
-    })
-  )
-
-  search.addWidget(
-    instantsearch.widgets.hits({
-      container: '#hits',
-      transformItems(items) {
-        console.log(items)
-        return items.map(item => ({
-          ...item
-          // name: item.name.toUpperCase()
-        }))
-      },
-      templates: {
-        item: `
-        <div>
-          <img src="{{image}}" align="left" alt="{{name}}" />
-          <div class="hit-name">
-              {{title}}
-            {{#helpers.highlight}}{ "attribute": "name" }{{/helpers.highlight}}
-          </div>
-          <div class="hit-description">
-            {{#helpers.highlight}}{ "attribute": "description" }{{/helpers.highlight}}
-          </div>
-          <div class="hit-price">\${{price}}</div>
-        </div>
-      `
-      }
-    })
-  )
-
-  search.start()
 </script>
