@@ -226,6 +226,7 @@
   ></noscript>
   <!-- End Google Tag Manager (noscript) -->
   <% } %>
+  <p id="theme_str" hidden><%= JSON.stringify(theme) %></p>
 </html>
 <script type="text/javascript">
   window.addEventListener('load', function() {
@@ -234,7 +235,7 @@
       enable_page_level_ads: true
     })
 
-    window.THEME_CONFIG = JSON.parse('<%- JSON.stringify(theme) %>')
+    window.THEME_CONFIG = JSON.parse(document.getElementById("theme_str").innerText)
     window.loadJs = function(d, m, a) {
       var c = document.getElementsByTagName('head')[0] || document.head || document.documentElement
       var b = document.createElement('script')
