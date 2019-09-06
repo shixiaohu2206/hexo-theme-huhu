@@ -52,6 +52,7 @@
       <% if (title) { %><%= title %><% } else { %> <%= config.subtitle %><% }%> - <%= config.title
       %>
     </title>
+    <link rel="manifest" href="/manifest.json">
     <link rel="shortcut icon" href="<%= theme.favicon %>" type="image/x-icon" />
     <%- css('style/style') %>
   </head>
@@ -235,7 +236,7 @@
       enable_page_level_ads: true
     })
 
-    window.THEME_CONFIG = JSON.parse(document.getElementById("theme_str").innerText)
+    window.THEME_CONFIG = JSON.parse(document.getElementById('theme_str').innerText)
     window.loadJs = function(d, m, a) {
       var c = document.getElementsByTagName('head')[0] || document.head || document.documentElement
       var b = document.createElement('script')
@@ -269,6 +270,7 @@
             search: 'search',
             iconfont: 'iconfont',
             util: 'util',
+            registerSW: 'registerSW',
             valine: ['cdn/Valine.min'],
 
             // cdn
