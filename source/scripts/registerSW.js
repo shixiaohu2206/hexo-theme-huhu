@@ -1,39 +1,37 @@
 /**
- * ServiceWorker 模块
+ * ServiceWorker模块
  */
-define('registerSW', ['jquery'], function($) {
+define('registerSW', ['jquery'], $ => {
   function register() {
     navigator.serviceWorker
-      .register('/sw.js?', {
-        scope: `/`
-      })
+      .register('/sw.js', { scope: `/` })
       .then(function(registration) {
-        console.log('register sw success!:', registration.scope)
+        console.info('sw register success---', registration.scope)
         var activeWorker = registration.active
         registration.onupdatefound = () => {
           var installingWorker = registration.installing
           if (installingWorker) {
-            installingWorker.onstatechange = function() {
-              console.log('sw installing state:', installingWorker.state, installingWorker)
+            installingWorker.onstatechange = () => {
+              console.info('sw installing state---', installingWorker.state)
             }
           }
           if (activeWorker) {
             activeWorker.onstatechange = () => {
-              console.log('sw active state:', activeWorker.state, activeWorker)
+              console.info('sw active state---', activeWorker.state)
               activeWorker.state == 'redundant' && window.location.reload()
             }
           }
         }
 
-        // 发送消息，sw监听事件message接收，并处理缓存
-        registration.active && registration.active.postMessage()
+        // 发送消息，sw监听事件message接收
+        registration.active && registration.active.postMessage('success')
       })
       .catch(function(e) {
-        console.log('register sw failed!:', e)
+        console.warn('register sw failed---', e)
       })
 
     // 监听安装
-    window.addEventListener('beforeinstallprompt', function(e) {
+    window.addEventListener('beforeinstallprompt', e => {
       window.dfdPrompt = e
       // 阻止默认事件
       e.preventDefault()
@@ -67,19 +65,19 @@ define('registerSW', ['jquery'], function($) {
         if (registration.scope) {
           registration
             .unregister()
-            .then(function(flag) {
+            .then(flag => {
               if (flag) {
                 console.log(`unregister older sw success!`)
                 document.dispatchEvent(event) // 注册新sw
               }
             })
-            .catch(function(e) {
-              console.error(`unregister older sw failed!`, e)
+            .catch(e => {
+              console.error(`unregister older sw failed!---`, e)
             })
         }
       })
-      .catch(function(e) {
-        console.error(`get older sw failed!`, e)
+      .catch(e => {
+        console.error(`get older sw failed!---`, e)
       })
   }
 })

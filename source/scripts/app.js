@@ -2,7 +2,7 @@ define([
   'jquery',
   'util',
   'valine',
-  'pjax',
+  'registerSW',
   'fancybox',
   'confirm',
   'iconfont',

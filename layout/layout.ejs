@@ -52,7 +52,7 @@
       <% if (title) { %><%= title %><% } else { %> <%= config.subtitle %><% }%> - <%= config.title
       %>
     </title>
-    <link rel="manifest" href="/manifest.json">
+    <link rel="manifest" href="/manifest.json" />
     <link rel="shortcut icon" href="<%= theme.favicon %>" type="image/x-icon" />
     <%- css('style/style') %>
   </head>
@@ -266,10 +266,10 @@
         require.config({
           paths: {
             // site
+            util: 'util',
             share: 'share',
             search: 'search',
             iconfont: 'iconfont',
-            util: 'util',
             registerSW: 'registerSW',
             valine: ['cdn/Valine.min'],
 
@@ -321,18 +321,20 @@
 <script src="https://cdn.jsdelivr.net/npm/algoliasearch@3.33.0/dist/algoliasearchLite.min.js"></script>
 
 <script>
-  const client = algoliasearch('UL5U4KF7NA', 'cb0ba3563c92ba60965c89cce8c69077')
-  const index = client.initIndex('Utone')
+  if (window.algoliasearch) {
+    const client = algoliasearch('UL5U4KF7NA', 'cb0ba3563c92ba60965c89cce8c69077')
+    const index = client.initIndex('Utone')
 
-  // only query string
-  index.search(
-    {
-      query: '倒影'
-    },
-    (err, { hits } = {}) => {
-      if (err) throw err
+    // only query string
+    // index.search(
+    //   {
+    //     query: '倒影'
+    //   },
+    //   (err, { hits } = {}) => {
+    //     if (err) throw err
 
-      console.log(hits)
-    }
-  )
+    //     console.log(hits)
+    //   }
+    // )
+  }
 </script>

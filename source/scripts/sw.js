@@ -2,10 +2,20 @@
 var VERSION = '1.0.0'
 // cache key
 var CACHE_PRE_NAME = 'UTONE_CACHE_'
+// cache key
+var CACHE_WHITE_PRE_NAME = 'UTONE_WHITE_CACHE_'
 // cache name
 var CACHE_NAME = CACHE_PRE_NAME + VERSION
+// white cache name
+var WHITE_CACHE_NAME = CACHE_WHITE_PRE_NAME + VERSION
 // 需要预缓存文件
-var PRE_CACHE_FILES = ['/offline.html', '/offline.png']
+var PRE_CACHE_FILES = [
+  '/2019083151629',
+  '/2018082231017',
+  '/scripts/app.js',
+  '/scripts/util.js',
+  '/scripts/cdn/Valine.min.js'
+]
 
 // 监听message
 self.addEventListener('message', function(event) {
@@ -37,10 +47,19 @@ self.addEventListener('activate', event =>
   )
 )
 
+function fetchCacheFile(uri, cache) {
+  var path = self.location.origin + uri
+  return cache.add(path).catch(function(e) {
+    console.warn('pre cache' + path + 'file failed', e || {})
+    return Promise.resolve()
+  })
+}
+
 function fetchPreCache() {
   if (!PRE_CACHE_FILES || PRE_CACHE_FILES.length === 0) {
     return Promise.resolve()
   } else {
+    console.log(2222)
     return caches.open(CACHE_NAME).then(function(cache) {
       return cache.keys().then(function(list) {
         if (list && list.length > 0) {
@@ -55,7 +74,7 @@ function fetchPreCache() {
 
         return Promise.all(addPromiseArray)
           .then(function() {
-            console.warn('pre cache files success')
+            console.log('pre cache files success')
           })
           .catch(function(e) {
             console.warn('pre cache files failed', e || {})
@@ -64,14 +83,6 @@ function fetchPreCache() {
       })
     })
   }
-}
-
-function fetchCacheFile(uri, cache) {
-  var path = self.location.origin + uri
-  return cache.add(path).catch(function(e) {
-    console.warn('pre cache' + path + 'file failed', e || {})
-    return Promise.resolve()
-  })
 }
 
 function deleteCache() {
@@ -150,19 +161,19 @@ function onlineRequest(fetchRequest) {
       if (
         !response ||
         response.status !== 200 ||
-        !response.headers.get('Content-type').match(/image|javascript|test\/css/i)
+        !response.headers.get('Content-type').match(/image|javascript|text\/html|test\/css/i)
       ) {
         return response
       }
 
       const responseToCache = response.clone()
-      caches.open(CACHE_NAME).then(function(cache) {
+      caches.open(WHITE_CACHE_NAME).then(function(cache) {
         cache.put(event.request, responseToCache)
       })
 
       return response
     })
-    .catch(() => {
+    .catch(function() {
       // 获取失败，离线资源降级替换
       offlineRequest(fetchRequest)
     })
