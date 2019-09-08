@@ -63,6 +63,11 @@
     <div id="progress">
       <div class="line"></div>
     </div>
+    <div id="search-wrap">
+      <input type="text" />
+
+      <div class="result"></div>
+    </div>
     <div id="head">
       <% for (var i in theme.menu){ %>
       <a
@@ -278,7 +283,8 @@
             pjax: ['<%- theme.cdn_module.pjax %>', 'cdn/pjax.min'],
             jquery: ['<%- theme.cdn_module.jquery %>', 'cdn/jquery.min'],
             confirm: ['<%- theme.cdn_module.confirm %>', 'cdn/jquery.confirm.min'],
-            fancybox: ['<%- theme.cdn_module.fancybox %>', 'cdn/jquery.fancybox.min']
+            fancybox: ['<%- theme.cdn_module.fancybox %>', 'cdn/jquery.fancybox.min'],
+            algoliasearch: ['<%- theme.cdn_module.algoliasearch %>', 'cdn/algoliasearchLite.min']
           },
 
           map: {
@@ -317,24 +323,5 @@
   })()
 </script>
 <% } %>
-
 <script src="https://cdn.jsdelivr.net/npm/algoliasearch@3.33.0/dist/algoliasearchLite.min.js"></script>
-
-<script>
-  if (window.algoliasearch) {
-    const client = algoliasearch('UL5U4KF7NA', 'cb0ba3563c92ba60965c89cce8c69077')
-    const index = client.initIndex('Utone')
-
-    // only query string
-    // index.search(
-    //   {
-    //     query: '倒影'
-    //   },
-    //   (err, { hits } = {}) => {
-    //     if (err) throw err
-
-    //     console.log(hits)
-    //   }
-    // )
-  }
-</script>
+<script></script>

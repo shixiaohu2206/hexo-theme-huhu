@@ -2,13 +2,14 @@ define([
   'jquery',
   'util',
   'valine',
+  'algoliasearch',
   'registerSW',
   'fancybox',
   'confirm',
   'iconfont',
   'share',
   'search'
-], function($, util, valine) {
+], function($, util, valine, algoliasearch) {
   'use strict'
 
   // valine评论
@@ -147,6 +148,27 @@ define([
         var containerSelector = '#' + container.id
         $.pjax.click(event, { container: containerSelector })
       })
+    }
+
+    // algoliasearch
+    if (algoliasearch && THEME_CONFIG.algoliasearch) {
+      const client = algoliasearch(
+        THEME_CONFIG.algoliasearch.applicationID,
+        THEME_CONFIG.algoliasearch.apiKey
+      )
+      const index = client.initIndex(THEME_CONFIG.algoliasearch.indexName)
+
+      // only query string
+      index.search(
+        {
+          query: '倒影'
+        },
+        (err, { hits } = {}) => {
+          if (err) throw err
+
+          console.log(hits)
+        }
+      )
     }
   })
 })

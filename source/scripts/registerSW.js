@@ -48,10 +48,28 @@ define('registerSW', ['jquery'], $ => {
     false
   )
 
-  if ('serviceWorker' in navigator && window.caches && navigator.serviceWorker.getRegistration) {
+  if (
+    THEME_CONFIG &&
+    'serviceWorker' in navigator &&
+    window.caches &&
+    navigator.serviceWorker.getRegistration
+  ) {
     navigator.serviceWorker
       .getRegistration(`/`)
       .then(function(registration) {
+        if (
+          !THEME_CONFIG.service_worker ||
+          (THEME_CONFIG.service_worker && !THEME_CONFIG.service_worker.open)
+        ) {
+          registration &&
+            registration.scope &&
+            registration
+              .unregister()
+              .then(() => console.log('unregister older sw success!'))
+              .catch(e => console.error(`unregister older sw failed!---`, e))
+          return
+        }
+
         // 注册事件
         var event = new Event('registerSwEvent')
 
@@ -67,17 +85,17 @@ define('registerSW', ['jquery'], $ => {
             .unregister()
             .then(flag => {
               if (flag) {
-                console.log(`unregister older sw success!`)
+                console.log('unregister older sw success!')
                 document.dispatchEvent(event) // 注册新sw
               }
             })
             .catch(e => {
-              console.error(`unregister older sw failed!---`, e)
+              console.error('unregister older sw failed!---', e)
             })
         }
       })
       .catch(e => {
-        console.error(`get older sw failed!---`, e)
+        console.error('get older sw failed!---', e)
       })
   }
 })
