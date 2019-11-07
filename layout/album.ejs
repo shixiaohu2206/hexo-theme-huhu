@@ -1,0 +1,18 @@
+<div id="album">
+  <div class="title">
+    <%= __('album') %>
+  </div>
+
+  <div class="list">
+    <ul>
+      <% theme && !_.isEmpty(theme.album) && _.map(theme.album, function (f) { %>
+      <li>
+        <a href="<%= f.url %>" target="_blank">
+          <img src="<%= f.url %>" alt="<%= f.url %>" />
+        </a>
+      </li>
+      <% }) %>
+    </ul>
+  </div>
+  <div id="comment"></div>
+</div>

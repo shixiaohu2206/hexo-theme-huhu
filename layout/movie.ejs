@@ -1,0 +1,19 @@
+<div id="movie">
+  <div class="title">
+    <%= __('movie') %>
+  </div>
+
+  <div class="list">
+    <ul>
+      <% theme && !_.isEmpty(theme.movie) && _.map(theme.movie, function (f) { %>
+      <li>
+        <a href="<%= f.url %>" target="_blank">
+          <img src="<%= f.img %>" alt="<%= f.name %>" />
+          <div class="name"><%= f.name %></div>
+        </a>
+      </li>
+      <% }) %>
+    </ul>
+  </div>
+  <div id="comment"></div>
+</div>

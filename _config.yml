@@ -1,0 +1,87 @@
+#菜单导航
+menu:
+  home: /
+  archives: /archives
+  categories: /categories
+  tags: /tags
+  # movie: /movie
+  # album: /album
+  friends: /friends
+  about: /about
+
+#logo
+logo: /images/logo.png
+
+#categories-max
+categories_max: 5
+
+#tags-max
+tags_max: 10
+
+#favicon
+favicon: /images/favicon.ico
+
+#ite switch
+site_search: true
+
+#rss
+rss: /atom.xml
+
+#follow 按顺序展示
+follow:
+  github: 'https://github.com/shixiaohu2206'
+  facebook: 'https://www.facebook.com/shi.xiaohu.5'
+  instagram: 'https://www.instagram.com/shi_xiaohu/'
+  # twitter: 'https://github.com/shixiaohu2206'
+  # weixin: 'https://github.com/shixiaohu2206'
+  # alipay: 'https://github.com/shixiaohu2206'
+  # zhihu: 'https://github.com/shixiaohu2206'
+  # QQ: 'https://github.com/shixiaohu2206'
+  # weibo: 'https://github.com/shixiaohu2206'
+  # qqkongjian: 'https://github.com/shixiaohu2206'
+  # google: 'https://github.com/shixiaohu2206'
+
+#search post url
+search_url: /search.xml
+
+#ICP 皖ICP备16021483号
+site_icp: ''
+
+#分享
+share:
+  - weibo
+  - weixin
+  - qqkongjian
+  - QQ
+  - douban
+  - facebook
+  - twitter
+  - google
+
+#cdn script
+cdn_script:
+  css: 'https://cdn.bootcss.com/require-css/0.1.10/css.min.js'
+  pjax: 'https://cdn.bootcss.com/jquery.pjax/2.0.1/jquery.pjax.min.js'
+  av_min: 'https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min.js'
+  jquery: 'https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js'
+  require: 'https://cdn.bootcss.com/require.js/2.3.6/require.min.js'
+  confirm: 'https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min.js'
+  fancybox: 'https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.js'
+  algoliasearch: 'https://cdn.jsdelivr.net/npm/algoliasearch@3.33.0/dist/algoliasearchLite.min.js'
+
+#cdn css
+cdn_css:
+  confirm: 'https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min.css'
+  fancybox: 'https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.css'
+
+#baidu push
+baidu_push: true
+
+#reward
+reward:
+  weixin: 'images/weixin.png'
+  zhifubao: 'images/zhifubao.png'
+
+#service worker 配合pjax
+service_worker:
+  open: false #开启sw

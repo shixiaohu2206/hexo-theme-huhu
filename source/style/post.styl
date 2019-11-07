@@ -1,0 +1,397 @@
+
+color-border = #ddd
+line-height = 1.5rem
+
+.post-entry {
+  width: 100%
+  height: 100%
+  padding: 0.675rem
+
+  a {
+    color: #1976d2
+
+    &:hover {
+      color: #42a5f5
+    }
+  }
+
+  .hidden {
+    display: none
+  }
+}
+
+.post-entry, .post-wrap {
+  display-flex()
+  flex-direction(column)
+  box-sizing: border-box
+  position: relative
+
+  .header {
+    margin-bottom: 1rem
+
+    .title {
+      font-size: 2rem
+      margin-bottom: 1rem
+    }
+
+    .meta {
+      display-flex()
+      flex-wrap(wrap)
+      justify-content(space-between)
+      font-size: 0.75rem
+      color: rgb(137, 137, 137)
+
+      a {
+        font-size: 0.75rem
+        color: rgb(137, 137, 137)
+
+        &:hover {
+          color: #42a5f5
+        }
+      }
+
+      .item {
+        display-flex()
+        width: 50%
+        margin-bottom: 1rem
+
+        a {
+          padding-right: 0.3rem
+        }
+      }
+
+      .icon {
+        width: 1.2rem
+        height: 1.2rem
+        margin-right: 0.2rem
+      }
+    }
+  }
+
+  // 引入
+  .quote {
+    float: right
+  }
+
+  .post-copyright {
+    font-size: 0.875rem
+    color: #31708f
+    border-radius: 0.2rem
+    background-color: #C7E4F3
+    text-align: left
+    padding: 0.5rem 1rem
+
+    div {
+      padding: 0.3rem
+    }
+  }
+
+  .changyan {
+    margin-top: 1rem
+  }
+
+  // 底部引导
+  .post-guide {
+    display-flex()
+    justify-content: space-between
+    padding: 1rem 0
+    border-bottom: 1px solid color-border
+
+    .item {
+      width: 50%
+      display-flex()
+      align-items()
+
+      a {
+        font-size: 0.875rem
+      }
+    }
+
+    .left {
+      justify-content: flex-start
+
+      a:before {
+        content: '\e7ec'
+        font-weight: 600
+        font-family: 'iconfont' !important
+        font-size: 0.875rem
+        font-style: normal
+        -webkit-font-smoothing: antialiased
+        -moz-osx-font-smoothing: grayscale
+      }
+    }
+
+    .right {
+      justify-content: flex-end
+
+      a:after {
+        content: '\e7eb'
+        font-weight: 600
+        font-family: 'iconfont' !important
+        font-size: 0.875rem
+        font-style: normal
+        -webkit-font-smoothing: antialiased
+        -moz-osx-font-smoothing: grayscale
+      }
+    }
+  }
+
+  // 打赏
+  .post-reward {
+    margin: 2rem
+    display-flex()
+    align-items()
+    flex-direction(column)
+
+    #reward-button {
+      cursor: pointer
+      color: #333
+      padding: 0.7rem
+      font-size: 0.875rem
+      border-radius: 0.7rem
+      font-weight: 600
+      transition: all 0.4s
+      background-color: #fed336
+
+      &:hover {
+        color: #fff
+        transform: scale(1.1, 1.1)
+      }
+    }
+
+    #qr {
+      margin: 1rem
+      display: none
+
+      .wrap {
+        display-flex()
+
+        .bg-wrap {
+          text-align: center
+          font-size: 0.875rem
+        }
+
+        .bg {
+          width: 10rem
+          height: 10rem
+          margin: 0.2rem 1rem
+          display: block
+          border-radius: 0.2rem
+          background-size: cover
+          background-position: center center
+          background-color: #c9c6c1
+        }
+      }
+    }
+  }
+
+  .google-ads {
+    margin-bottom: 2rem
+  }
+
+  #comment {
+    margin-top: 3rem
+
+    .info {
+      display: none
+    }
+  }
+
+  .hljs {
+    padding: 0.75rem
+    border-radius: 0.3rem
+  }
+
+  pre, code {
+    font-size: 0.75rem
+    font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace
+  }
+
+  code:not(.hljs) {
+    color: #1565c0
+    margin: 0 0.5rem
+    background: #e3f2fd
+    padding: 0.2rem 0.3rem
+    border-radius: 0.3rem
+    border: 1px solid #eee
+  }
+
+  p, table {
+    font-size: 0.875rem // 正文14px
+    line-height: line-height
+  }
+
+  p {
+    margin: 0.5rem 0
+  }
+
+  table {
+    width: 100%
+    margin: 0.5rem 0
+    border-collapse: collapse
+    border-spacing: 0
+  }
+
+  img, video {
+    width: 100%
+    height: auto
+    display: block
+    margin: auto
+    margin: 0.5rem 0
+    box-sizing: border-box
+    border-radius: 0.3rem
+    border: 1px solid #e6e6e6
+  }
+
+  iframe {
+    border: none
+  }
+
+  th {
+    font-weight: bold
+    border-bottom: 3px solid color-border
+    padding-bottom: 0.5em
+  }
+
+  td {
+    border-bottom: 1px solid color-border
+    padding: 10px 0
+  }
+
+  blockquote {
+    font-size: 0.9rem
+    margin: 0.9rem 0
+    text-align: left
+    padding: 0.5rem 1rem
+    color: #4d4d4c
+    border-radius: 0.2rem
+    background-color: #E3F2FD
+    border-left: 0.45rem solid #1E88E5
+
+    footer {
+      font-size: 1rem
+      margin: line-height 0
+
+      cite {
+        &:before {
+          content: '—'
+          padding: 0 0.5em
+        }
+      }
+    }
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    margin-top: 1rem
+    margin-bottom: 0.5rem
+    padding-bottom: 0.5rem
+    font-weight: bold
+    position: relative
+    border-bottom: 1px solid color-border
+
+    .headerlink {
+      position: absolute
+      width: 1rem
+      color: green
+      font-weight: bold
+      font-size: 1.1rem
+      margin-left: -1rem
+      display: none
+    }
+
+    &:hover >.headerlink {
+      display: inline-block !important
+    }
+  }
+
+  h1 {
+    font-size: 1.75rem // 28px
+    line-height: 1.75rem // 28px
+  }
+
+  h2 {
+    font-size: 1.5rem // 24px
+    line-height: 1.5rem // 24px
+  }
+
+  h3 {
+    font-size: 1.25rem // 20px
+    line-height: 1.25rem // 20px
+  }
+
+  h4 {
+    font-size: 1rem // 16px
+    line-height: 1rem // 16px
+  }
+
+  h5 {
+    font-size: 0.875rem // 14px
+    line-height: 0.875rem // 14px
+  }
+
+  h6 {
+    font-size: 0.75rem // 12px
+    line-height: 0.75rem // 12px
+    color: color-border
+  }
+
+  hr {
+    border: 1px dashed color-border
+  }
+
+  strong {
+    font-weight: bold
+  }
+
+  em, cite {
+    font-style: italic
+  }
+
+  sup, sub {
+    font-size: 0.75rem
+    line-height: 0
+    position: relative
+    vertical-align: baseline
+  }
+
+  sup {
+    top: -0.5rem
+  }
+
+  sub {
+    bottom: -0.2rem
+  }
+
+  small {
+    font-size: 0.85rem
+  }
+
+  acronym, abbr {
+    border-bottom: 1px dotted
+  }
+
+  ul, ol, dl {
+    font-size: 0.875rem
+    margin: 0.5rem 1rem
+    line-height: line-height
+  }
+
+  ul, ol {
+    ul, ol {
+      margin-top: 0
+      margin-bottom: 0
+    }
+  }
+
+  ul {
+    list-style: disc
+  }
+
+  ol {
+    list-style: decimal
+  }
+
+  dt {
+    font-weight: bold
+  }
+}

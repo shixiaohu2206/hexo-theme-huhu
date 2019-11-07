@@ -1,0 +1,66 @@
+#dialog {
+  position: fixed
+  top: 0
+  left: 0
+  right: 0
+  bottom: 0
+  z-index: 99999999
+  overflow: hidden
+  center()
+
+  .bg {
+    position: fixed
+    top: 0
+    left: 0
+    right: 0
+    bottom: 0
+    opacity: 0.2
+    background-color: #444
+  }
+
+  .wrap {
+    display-flex()
+    flex-direction(column)
+    width: 13rem
+    min-height: 5rem
+    padding: 0.5rem 1rem
+    z-index: 1
+    overflow: hidden
+    border-radius: 0.3rem
+    background-color: rgb(255, 255, 255)
+    -webkit-box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2)
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2)
+
+    .title {
+      height: 2rem
+      line-height: 2rem
+      text-align: center
+      font-size: 1.2rem
+      font-weight: 600
+    }
+
+    .content {
+      text-align: center
+    }
+
+    .button {
+      align-self: flex-end
+      padding: 0.5rem
+      text-align: right
+
+      span {
+        cursor: pointer
+        padding: 0.5rem
+        font-size: 0.8rem
+        font-weight: 600
+        border-radius: 0.2rem
+        margin-left: 0.2rem
+        background-color: #ECF0F1
+
+        &:hover {
+          background-color: #FFF0F9
+        }
+      }
+    }
+  }
+}

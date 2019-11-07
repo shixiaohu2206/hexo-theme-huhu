@@ -1,0 +1,31 @@
+<div id="friends">
+  <div class="title">
+    <%= __('friends') %>
+  </div>
+
+  <div class="list">
+    <ul>
+      <% theme && !_.isEmpty(theme.friends) && _.map(theme.friends, function (f) { %>
+      <li>
+        <a href="<%= f.url %>" target="_blank">
+          <span class="photo" style="background-image: url('<%= f.logo ? f.logo : '/images/logo.jpeg' %>')"></span>
+          <span class="meta">
+            <span class="name"> <%= f.name %></span>
+            <span class="time"> <%= f.time %> / <%= f.intro %></span>
+          </span>
+        </a>
+      </li>
+      <% }) %>
+    </ul>
+  </div>
+
+  <blockquote>
+    欢迎互相添加友链，如需添加请在下方留言。<br /><br />
+
+    对于友链站点有两点要求<br />
+    1、日常更新博客<br />
+    2、正常访问，且百度、谷歌正常收录
+  </blockquote>
+
+  <div id="comment"></div>
+</div>

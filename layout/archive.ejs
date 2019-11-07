@@ -1,0 +1,47 @@
+<div id="archives">
+    <% if (is_category()) { %> 
+        <div class="title">
+            <%= __('categories') %> - <%= page.category %>
+        </div>
+    <% } else if (is_tag()) { %>
+        <div class="title">
+            <%= __('tags') %> - <%= page.tag %>
+        </div>
+    <% } else { %>
+        <div class="title">
+            <%= __('archives') %> 
+            <%= is_month() ? ' - ' + page.year + '/' + page.month : (is_year() ? ' - ' + page.year : '') %>
+        </div>
+    <% }  %>
+<% var last; %>
+<% page.posts.each(function(post, i) { %>
+<% var year = post.date.year(); %>
+<% if (last != year) { %>
+    <% if (last != null){ %>
+    </div>
+    </section>
+    <% } %>
+    <% last = year; %>
+    <section class="wrap">
+        <div class="meta">
+            <a href="<%- url_for(config.archive_dir + '/' + year) %>" >
+                <%= year %>
+            </a>
+        </div>
+        <div class="year">
+            <% } %>
+            <article class="item">
+            <a href="<%- post.path %>" title="<%= post.title %>">
+                <span><%= date(post.date, "YYYY/MM/DD") %></span>
+                <span><%= post.title %></span>
+            </a>
+            </article>
+            <% }) %>
+    <% if (page.posts.length) { %>
+        </div>
+    </section>
+    <% } %>  
+<div class="paginator">
+    <%- paginator({ prev_text: '<', next_text: '>', prev_next: false }) %>
+</div>
+</div>

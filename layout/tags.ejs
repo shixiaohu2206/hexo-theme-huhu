@@ -1,0 +1,30 @@
+<div id="tags">
+  <div class="title">
+    <%= __('tags') %>
+  </div>
+
+  <% if (site.tags.length) { %>
+  <div class="list">
+    <% site.tags.each(function(item, key) { %> <% if(item.posts.length) { %>
+    <li class="<%= item.name %> <%= key === 0 ? 'active' : '' %>">
+      <span><%= item.name %><sup><%= item.posts.length %></sup></span>
+    </li>
+    <% } %> <% }) %>
+  </div>
+  <% if (site.tags.length) { %>
+  <div class="post-wrap">
+    <% site.tags.each(function(cate, key) { %> <% if (cate.posts.length) { %>
+    <div class="post <%= cate.name %> <%= key === 0 ? 'active' : '' %>">
+      <% cate.posts.sort('date').each(function (post) {%>
+      <li>
+        <a href="<%- post.path %>" title="<%= post.title %>">
+          <span><%= date(post.date, "YYYY/MM/DD") %></span>
+          <span><%= post.title %></span>
+        </a>
+      </li>
+      <% }) %>
+    </div>
+    <% } %> <% }) %>
+  </div>
+  <% } %> <% } %>
+</div>

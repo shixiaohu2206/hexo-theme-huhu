@@ -1,0 +1,72 @@
+display-flex() {
+    display: -webkit-box
+    display: -moz-box
+    display: -ms-flexbox
+    display: -webkit-flex
+    display: flex
+}
+
+justify-content($content = center) {
+    -moz-justify-content: $content
+    -webkit-justify-content: $content
+    justify-content: $content
+}
+
+align-items($align = center) {
+    -moz-align-items: $align
+    -webkit-align-items: $align
+    align-items: $align
+}
+
+flex-direction($direction = row) {
+    -ms-flex-direction: $direction
+    -webkit-flex-direction: $direction
+    flex-direction: $direction
+}
+
+flex-wrap($wrap = wrap) {
+    -ms-flex-wrap: $wrap
+    -moz-flex-wrap: $wrap
+    -webkit-flex-wrap: $wrap
+    flex-wrap: $wrap
+}
+
+// 水平垂直居中
+center() {
+    display-flex()
+    justify-content()
+    align-items()
+}
+
+// 水平居中
+level-center() {
+    display-flex()
+    justify-content()
+}
+
+// 垂直居中
+vertical-center() {
+    display-flex()
+    align-items()
+}
+
+// 多行截断
+multi-line-ellipsis($line = 1) {
+    display: -webkit-box
+    -webkit-line-clamp: $line
+    -webkit-box-orient: vertical
+    overflow: hidden
+}
+
+// 省略号
+ellipsis() {
+    overflow: hidden
+    text-overflow: ellipsis
+    white-space: nowrap
+}
+
+.a {
+    transition: -webkit-transform, top, background-color 1s cubic-bezier(0.165, 0.84, 0.44, 1)
+    transition: transform, top, background-color 1s cubic-bezier(0.165, 0.84, 0.44, 1)
+    transition: transform, top, background-color 1s cubic-bezier(0.165, 0.84, 0.44, 1), -webkit-transform 1s cubic-bezier(0.165, 0.84, 0.44, 1)
+}

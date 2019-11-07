@@ -1,0 +1,118 @@
+<article class="post-entry">
+    <div class="header">
+      <div class="title"><%- page.title %></div>
+      <div class="meta">
+        <span class="item">
+          <span class="iconfont icon-time-circle"></span>
+          <span><%- date(page.date, "YYYY/MM/DD") %></span>
+        </span>
+
+        <% if (!is_current('about')) {%>
+          <span class="item leancloud-visitors" id="<%- url_for(page.path) %>" data-flag-title="<%- page.title %>">
+            <span class="iconfont icon-eye1"></span>
+            <span class="leancloud-visitors-count"></span>
+          </span>
+        <% } %>
+
+        <% if (page.categories && page.categories.data && page.categories.data.length > 0) { %> 
+        <span class="item">
+          <span class="iconfont icon-folder"></span>
+          <span>
+              <% for (var j=0; j < page.categories.data.length; j++) { %>
+                <% if (page.categories.data[j] && page.categories.data[j].name) { %>
+                  <a href="/categories/<%- page.categories.data[j].name %>"><%- page.categories.data[j].name %></a>
+                <% } %>
+              <% } %>
+          </span>
+        </span>
+        <% } %>
+        
+        <% if (page.tags && page.tags.data && page.tags.data.length > 0) { %> 
+          <span class="item">
+            <span class="iconfont icon-tag1"></span>
+            <span>
+                <% for (var j=0; j < page.tags.data.length; j++) { %>
+                  <% if (page.tags.data[j] && page.tags.data[j].name) { %>
+                    <a href="/tags/<%- page.tags.data[j].name %>"><%- page.tags.data[j].name %></a>
+                  <% } %>
+                <% } %>
+            </span>
+          </span>
+         <% } %>
+      </div>
+      <div>
+      </div>
+    </div>
+    <%- page.content %>
+
+  <% if (theme.reward && (theme.reward.weixin || theme.reward.zhifubao)) { %>
+    <div class="post-reward">
+      <div id="reward-button">请杯咖啡呗~</div>
+      <div id="qr">
+        <div class="wrap">
+            <% if (theme.reward.zhifubao) { %>
+            <div class="bg-wrap">
+              <a href="<%- url_for(theme.reward.zhifubao) %>" target="_block" class="bg" style="background-image:url('/<%- theme.reward.zhifubao %>')"></a>
+              支付宝
+            </div>
+            <% } %>
+            <% if (theme.reward.weixin) { %>
+            <div class="bg-wrap">
+                <a href="<%- url_for(theme.reward.weixin) %>" target="_block" class="bg" style="background-image:url('/<%- theme.reward.weixin %>')"></a>
+              微信
+            </div>
+            <% } %>
+        </div>
+      </div>
+    </div>
+  <% } %>
+  
+  <div class="post-guide">
+    <div class="item left">
+        <% if (page.prev){ %>
+          <a href="<%- page.prev.path %>"><%- page.prev.title %></a>
+        <% } %>
+    </div>
+    <div class="item right">
+        <% if (page.next){ %>
+          <a href="<%- page.next.path %>"><%- page.next.title %></a>
+        <% } %>
+    </div>
+  </div>
+
+  <% if (theme.google_ad_client && !_.isEmpty(theme.google_ad_client)) { %>
+  <div class="google-ads">
+    <ins class="adsbygoogle"
+        style="display:block"
+        data-ad-format="fluid"
+        data-ad-layout-key="-fb+5w+4e-db+86"
+        data-ad-client="ca-pub-9618079338040236"
+        data-ad-slot="8288106873"></ins>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+  </div>
+  <% } %>
+
+  <div class="post-copyright">
+    <div class="auth">
+      本文作者：<a href="<%- url_for(config.url) %>"><%= config.author %></a>
+    </div>
+    <div class="link">
+      永久链接：<a href="<%- url_for(config.url) %><%- url_for(page.path) %>"><%- url_for(config.url) %><%- url_for(page.path) %></a>
+    </div>
+    <div class="declare">
+      版权声明：本文首发于<a href="<%- url_for(config.url) %>"><%= config.author %></a>的博客，转载请注明出处！
+    </div>
+  </div>
+
+  <div id="comment"></div>
+
+  <% if (theme.changyan && theme.changyan.appid && theme.changyan.conf) { %>
+    <!--畅言PC和WAP自适应版-->
+    <div class="changyan">
+      <div id="SOHUCS" sid="<%- date(page.date, "YYYY/MM/DD") %>/<%- page.title %>"></div>
+    </div>
+  <% } %>
+  
+</article>
