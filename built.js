@@ -11,7 +11,6 @@
     pjax: 'empty:',
     confirm: 'empty:',
     fancybox: 'empty:',
-    algoliasearch: 'empty:',
     valine: 'empty:',
 
     // need built

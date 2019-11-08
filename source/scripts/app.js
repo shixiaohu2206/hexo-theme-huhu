@@ -1,8 +1,7 @@
-require(['jquery', 'util', 'valine', 'algoliasearch', 'registerSW', 'fancybox', 'confirm', 'share', 'search'], function(
+require(['jquery', 'util', 'valine', 'registerSW', 'fancybox', 'confirm', 'share', 'search'], function(
   $,
   util,
-  valine,
-  algoliasearch
+  valine
 ) {
   'use strict'
 
@@ -27,38 +26,8 @@ require(['jquery', 'util', 'valine', 'algoliasearch', 'registerSW', 'fancybox', 
     e.stopPropagation ? e.stopPropagation() : (e.cancelBubble = true)
   }
 
-  var IMG_ARRAY = {
-    xue: 'daxue',
-    lei: 'leidian',
-    shachen: 'shachenbao',
-    wu: 'wu',
-    bingbao: 'bingbao',
-    yun: 'duoyun',
-    yu: 'dayu',
-    yin: 'yintian',
-    qing: 'qingtian'
-  }
-
   // bind events
   $(document).ready(function() {
-    // util.WEATH.getWeath().then(resp => {
-    //   if (resp) {
-    //     var city_name = resp.city || '上海' // 默认上海
-    //     var today = (resp.data && resp.data[0]) || {}
-    //     var wea_img = today.wea_img || 'qingtian' // 默认晴天图标
-    //     var wea = today.wea // 当前天气
-    //     var tem = today.tem // 当前温度
-
-    //     $('#city-name').text(city_name)
-    //     $('#weather-detail').text((wea || tem) && `${wea}/${tem}`)
-    //     $('#weather-img').html(
-    //       `<svg class="icon weather" aria-hidden="true">
-    //         <use xlink:href="#icon-${IMG_ARRAY[wea_img] || 'qingtian'}"></use>
-    //     </svg>`
-    //     )
-    //   }
-    // })
-
     // 图片预览
     $('[data-fancybox="images"]').fancybox({ loop: true })
 
@@ -67,13 +36,24 @@ require(['jquery', 'util', 'valine', 'algoliasearch', 'registerSW', 'fancybox', 
       $('#side').hasClass('active') ? $('#side').removeClass('active') : $('#side').addClass('active')
     })
 
+    // phone menu
+    $(document).on('click', '.menu-icon', function() {
+      $('#menu-mask').toggleClass('showMenuMask')
+      $('body').toggleClass('overflow')
+    })
+
+    $(document).on('click', '#menu-mask .icon-close', function() {
+      $('#menu-mask').toggleClass('showMenuMask')
+      $('body').toggleClass('overflow')
+    })
+
     // search
     $(document).on('click', '.search-box', function() {
       $('#search-shade').toggleClass('showSearchBounce')
       $('body').toggleClass('overflow')
     })
 
-    $(document).on('click', '.icon-close', function() {
+    $(document).on('click', '#search-shade .icon-close', function() {
       $('#search-shade').toggleClass('showSearchBounce')
       $('body').toggleClass('overflow')
     })
@@ -133,7 +113,7 @@ require(['jquery', 'util', 'valine', 'algoliasearch', 'registerSW', 'fancybox', 
     }
 
     document.addEventListener && document.addEventListener('DOMMouseScroll', mousewheel, false) //firefox
-    window.onmousewheel = document.onmousewheel = mousewheel //滚动滑轮触发scrollFunc方法  //ie 谷歌
+    window.onmousewheel = document.onmousewheel = mousewheel //滚动滑轮触发scrollFunc方法 ie 谷歌
 
     // fiexed menu
     $(document).on('click', '#fixed-menu', function() {
@@ -171,39 +151,6 @@ require(['jquery', 'util', 'valine', 'algoliasearch', 'registerSW', 'fancybox', 
         var containerSelector = '#' + container.id
         $.pjax.click(event, { container: containerSelector })
       })
-    }
-
-    // todo algoliasearch
-    // if (algoliasearch && HUHU_CONFIG.algoliasearch) {
-    //   const client = algoliasearch(HUHU_CONFIG.algoliasearch.applicationID, HUHU_CONFIG.algoliasearch.apiKey)
-    //   const index = client.initIndex(HUHU_CONFIG.algoliasearch.indexName)
-
-    //   // only query string
-    //   index.search(
-    //     {
-    //       query: '倒影'
-    //     },
-    //     (err, { hits } = {}) => {
-    //       if (err) throw err
-
-    //       console.log(hits)
-    //     }
-    //   )
-    // }
-
-    // animateCSS
-    function animateCSS(element, animationName, callback) {
-      const node = document.querySelector(element)
-      node.classList.add('animated', animationName)
-
-      function handleAnimationEnd() {
-        node.classList.remove('animated', animationName)
-        node.removeEventListener('animationend', handleAnimationEnd)
-
-        if (typeof callback === 'function') callback()
-      }
-
-      node.addEventListener('animationend', handleAnimationEnd)
     }
   })
 })

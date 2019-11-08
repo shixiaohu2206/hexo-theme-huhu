@@ -9,11 +9,16 @@
 @import 'archives.styl'
 @import 'categories.styl'
 @import 'friends.styl'
-@import 'movie&album.styl'
 @import './iconfont/iconfont.css'
 
 .overflow {
     overflow: hidden
+}
+
+#header, #side {
+    .icon-sousuo {
+        font-size: 1.4rem !important
+    }
 }
 
 #header {
@@ -58,7 +63,6 @@
 #side {
     top: 0
     left: 0
-    // transform: translateX(0)
     width: 15rem
     height: 100%
     display-flex()
@@ -72,7 +76,6 @@
     &.active {
         width: 5rem
 
-        // transform: translateX(5rem)
         .magnify {
             display: none
         }
@@ -198,10 +201,51 @@
     }
 }
 
+#menu-mask {
+    top: 0
+    left: 0
+    position: fixed
+    width: 100%
+    height: 100%
+    z-index: 9999
+    padding: 2rem
+    box-sizing: border-box
+    background-color: #000
+    display: none
+
+    .icon-close {
+        cursor: pointer
+        color: #f0f0f0
+        font-weight: bolder
+        font-size: 2rem !important
+    }
+
+    .nav {
+        center()
+        width: 100%
+        display: flex
+        flex-direction: column
+        padding: 1rem
+
+        a {
+            cursor: pointer
+            width: 100%
+            padding: 1rem
+            color: #a9a9a9
+            text-align: center
+            font-size: 1.3rem
+
+            &:hover {
+                color: #fff
+            }
+        }
+    }
+}
+
 #search-shade {
     top: 0
     left: 0
-    position: absolute
+    position: fixed
     width: 100%
     height: 100%
     z-index: 9999

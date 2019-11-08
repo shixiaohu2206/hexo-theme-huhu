@@ -4,8 +4,6 @@ menu:
   archives: /archives
   categories: /categories
   tags: /tags
-  # movie: /movie
-  # album: /album
   friends: /friends
   about: /about
 
@@ -21,7 +19,7 @@ tags_max: 10
 #favicon
 favicon: /images/favicon.ico
 
-#ite switch
+#site switch
 site_search: true
 
 #rss
@@ -67,7 +65,6 @@ cdn_script:
   require: 'https://cdn.bootcss.com/require.js/2.3.6/require.min.js'
   confirm: 'https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min.js'
   fancybox: 'https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.js'
-  algoliasearch: 'https://cdn.jsdelivr.net/npm/algoliasearch@3.33.0/dist/algoliasearchLite.min.js'
 
 #cdn css
 cdn_css:

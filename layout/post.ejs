@@ -7,7 +7,7 @@
           <span><%- date(page.date, "YYYY/MM/DD") %></span>
         </span>
 
-        <% if (!is_current('about')) {%>
+        <% if (!is_current('about') && theme.valine) {%>
           <span class="item leancloud-visitors" id="<%- url_for(page.path) %>" data-flag-title="<%- page.title %>">
             <span class="iconfont icon-eye1"></span>
             <span class="leancloud-visitors-count"></span>

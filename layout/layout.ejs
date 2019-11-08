@@ -11,7 +11,8 @@
     __('categories'); } else if (is_current('tags')) { title = __('tags'); } else if (is_current('friends')) { title =
     __('friends'); } %>
     <title>
-      <% if (title) { %><%= title %><% } else { %> <%= config.subtitle %><% }%> - <%= config.title %>
+      <% if (title) { %><%= title %><% } else { %> <%= config.subtitle %> <% }%> <%= title || config.subtitle ? '-' : ''
+      %> <%= config.title %>
     </title>
     <link rel="manifest" href="/manifest.json" />
     <link rel="shortcut icon" href="<%= theme.favicon %>" type="image/x-icon" />
@@ -38,14 +39,24 @@
         <ul id="result-box"></ul>
       </div>
     </div>
+    <div id="menu-mask" class="animated">
+      <span class="iconfont icon-close"></span>
+      <div class="nav">
+        <% for (var i in theme.menu){ %>
+        <a href="<%- url_for(theme.menu[i]) %>" class="<%= is_current(theme.menu[i]) ? 'current' : '' %>">
+          <%= __(i) %>
+        </a>
+        <% } %>
+      </div>
+    </div>
     <div id="header">
       <div class="intro">
         <a href="/" class="logo" style="background-image: url('/images/logo.jpeg')"></a>
         <div class="author"><%= theme.author%></div>
       </div>
       <div class="nav">
-        <span class="iconfont icon-menu toggle-icon"></span>
-        <a href="javascript:void(0)" class="search-box">
+        <span class="iconfont icon-menu menu-icon"></span>
+        <a href="#" class="search-box">
           <span class="iconfont icon-sousuo"></span>
         </a>
       </div>
@@ -54,7 +65,7 @@
       <div class="shrink">
         <a href="/" class="logo" style="background-image: url('/images/logo.jpeg')"></a>
         <span class="iconfont icon-menu toggle-icon"></span>
-        <a href="javascript:void(0)" class="search-box">
+        <a href="#" class="search-box">
           <span class="iconfont icon-sousuo"></span>
         </a>
       </div>
@@ -70,7 +81,7 @@
             <%= __(i) %>
           </a>
           <% } %>
-          <a href="javascript:void(0)" class="search-box">
+          <a href="#" class="search-box">
             <span class="iconfont icon-sousuo"></span>
           </a>
         </div>
