@@ -22,6 +22,35 @@ git clone https://github.com/shixiaohu2206/hexo-theme-huhu.git themes/hexo-theme
 npm install --save shelljs
 ```
 
+## 站内搜索
+
+目前主题只支持自生成搜索文件的方式，因为依赖第三方站内搜索，始终不是很稳定的赶脚，而且会加载许多第三方的服务文件，导致博客首屏加载慢
+
+### 安装
+
+安装`hexo-generator-json-content`插件，用于生成站内搜索生成文件
+
+```bash
+npm install --save hexo-generator-json-content
+```
+
+在根目录下的 `_config.yml` 中新增配置，如下:
+
+```yml
+#https://github.com/alexbruno/hexo-generator-json-content
+jsonContent:
+  dateFormat: YYYY/MM/DD
+  pages: false
+  posts:
+    tags: true
+    title: true
+    date: true
+    text: true
+    permalink: true
+    photos: true
+  file: content.json
+```
+
 ## 新建 about 页面
 
 about 页面没有单独 layout，直接以 markdown 渲染
@@ -63,57 +92,6 @@ friends:
     intro: '码农'
 ```
 
-## 站内搜索
-
-目前支持两种站内搜索方案：
-
-1. swiftype
-2. 使用自生成搜索文件
-
-默认使用生成搜索文件的方案，因为依赖第三方，始终不是很稳定的赶脚，而且会加载许多第三方的服务文件，导致博客加载速度过慢
-
-如果配置了`swiftype`，则优先使用 swiftype 方案
-
-### 自生成搜索文件
-
-安装`hexo-generator-json-content`插件，用于生成站内搜索生成文件
-
-```bash
-npm install --save hexo-generator-json-content
-```
-
-在根目录下的 `_config.yml` 中新增配置，如下:
-
-```yml
-#https://github.com/alexbruno/hexo-generator-json-content
-jsonContent:
-  dateFormat: YYYY/MM/DD
-  pages: false
-  posts:
-    tags: true
-    title: true
-    date: true
-    text: true
-    permalink: true
-    photos: true
-  file: content.json
-```
-
-### swiftype
-
-[swiftype](https://app.swiftype.com)
-
-搜索使用了 swiftype 第三方服务，比较方便，网上相关教程很多，但教程比较老，swiftype 但设置有一点不同，但是大同小异
-
-使用了 swiftype 搜索服务，需要自行去注册账号。
-记录官方提供的安装代码中 appKey，在根目录下的 `_config.yml` 中新增 `swiftype`
-
-```yml
-#swiftype
-swiftype:
-  appKey: ''
-```
-
 ## Google 相关配置
 
 如果使用 GTM 统计、Goole 站点、Google 广告等，则在根目录配置`_config.yml` 中添加配置
@@ -138,7 +116,7 @@ google_ad_client: ''
 ```yml
 highlight:
   enable: true
-  hljs: true #新增hljs参数，并设为trye，不然无法使用highlight.js 官方的 css
+  hljs: true #新增hljs参数，并设为true，不然无法使用highlight.js 官方的 css
   line_number: false #暂不支持行号
   auto_detect: false #这一项也关闭，若开启有可能报错
   tab_replace:
@@ -207,4 +185,4 @@ feed:
 
 ## 自定义
 
-其他的自定义，修改也很方便，比如更换打赏二维码、Follow 地址在，都在主题的配置中`themes\huhu\_config.yml`，各位大佬请自行修改
+其他的自定义，修改也很方便，比如更换打赏二维码、Follow 地址，都在主题的配置中`themes\huhu\_config.yml`，各位大佬请自行修改
