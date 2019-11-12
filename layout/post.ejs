@@ -45,6 +45,11 @@
     </div>
     <%- page.content %>
 
+    <% if (is_current('about') && theme.baidu_tongji && theme.baidu_tongji.site_id && theme.baidu_tongji.access_token) { %>
+      <h2 id="近日访问"><a href="#近日访问" class="headerlink hidden" title="近日访问">#</a>近日访问</h2>
+      <canvas id="myChart" width="100" height="45"></canvas>
+    <% } %>
+
   <% if (theme.reward && (theme.reward.weixin || theme.reward.zhifubao)) { %>
     <div class="post-reward">
       <div id="reward-button">请杯咖啡呗~</div>

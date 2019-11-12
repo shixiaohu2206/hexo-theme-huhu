@@ -1,7 +1,7 @@
 /**
  * 站内搜索
  */
-define(['jquery', 'util'], function($, $H) {
+define(['jquery', 'util'], function($, util) {
   'use strict'
 
   var SEARCH_KEY = 'SEARCH'
@@ -21,11 +21,11 @@ define(['jquery', 'util'], function($, $H) {
               </li>`
 
   function getStatic() {
-    return $H.STORAGE.getInstance().get(SEARCH_KEY)
+    return util.STORAGE.getInstance().get(SEARCH_KEY)
   }
 
   function setStatic(value) {
-    return $H.STORAGE.getInstance().set(SEARCH_KEY, value, SEARCH_EXPIRE)
+    return util.STORAGE.getInstance().set(SEARCH_KEY, value, SEARCH_EXPIRE)
   }
 
   function getSeatchData() {
@@ -100,5 +100,5 @@ define(['jquery', 'util'], function($, $H) {
     }
   }
 
-  $(document).on('input', '.input-wrap > input', $H.debounce(inputSearch, 300))
+  $(document).on('input', '.input-wrap > input', util.debounce(inputSearch, 300))
 })

@@ -12,6 +12,7 @@
     confirm: 'empty:',
     fancybox: 'empty:',
     valine: 'empty:',
+    chart: 'empty:',
 
     // need built
     util: 'util',

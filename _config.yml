@@ -65,11 +65,13 @@ cdn_script:
   require: 'https://cdn.bootcss.com/require.js/2.3.6/require.min.js'
   confirm: 'https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min.js'
   fancybox: 'https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.js'
+  chart: 'https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.bundle.min.js'
 
 #cdn css
 cdn_css:
   confirm: 'https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min.css'
   fancybox: 'https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.css'
+  chart: 'https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.min.css'
 
 #baidu push
 baidu_push: true
