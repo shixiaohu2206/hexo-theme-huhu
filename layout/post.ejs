@@ -1,5 +1,10 @@
 <article class="post-entry">
     <div class="header">
+      <% if (page.top) { %>
+        <div class="top">
+          <div class="iconfont icon-zuirehotxiankuang animated infinite heartBeat"></div>
+        </div>
+      <% } %>
       <div class="title"><%- page.title %></div>
       <div class="meta">
         <span class="item">

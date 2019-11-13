@@ -20,6 +20,20 @@ line-height = 1.5rem
   }
 }
 
+// hot置顶
+.top {
+  z-index: 1
+  top: -1rem
+  right: -4rem
+  position: absolute
+  transform: rotate(30deg)
+
+  .iconfont {
+    color: #f46267
+    font-size: 5rem !important
+  }
+}
+
 .post-entry, .post-wrap {
   display-flex()
   flex-direction(column)
@@ -27,6 +41,7 @@ line-height = 1.5rem
   position: relative
 
   .header {
+    position: relative
     margin-bottom: 1rem
 
     .title {
