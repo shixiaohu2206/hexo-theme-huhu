@@ -509,9 +509,9 @@
         }
 
         .item {
+            position: relative
             display-flex()
             flex-direction(column)
-            overflow: hidden
             box-sizing: border-box
             width: 100%
             min-height: 10rem
@@ -523,6 +523,19 @@
 
             &:hover {
                 transform: translateY(-0.01rem)
+            }
+
+            .top {
+                z-index: 1
+                top: 0rem
+                right: -2rem
+                width: 8rem
+                position: absolute
+                transform: rotate(30deg)
+
+                img {
+                    width: 100%
+                }
             }
 
             .bg {

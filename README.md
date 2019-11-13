@@ -2,13 +2,13 @@
 
 ![huhu](/source/images/huhu.png)
 
-## 介绍
+## 1 介绍
 
 - 简单、突出文字，是开发的初衷
 - 一个在 Hexo 博客上开发的主题，主题会持续更新
 - 近日服务器搬迁完成，腾出时间来完善一下博客文档
 
-## 安装
+## 2 安装
 
 ```bash
 git clone https://github.com/shixiaohu2206/hexo-theme-huhu.git themes/hexo-theme-huhu
@@ -22,11 +22,11 @@ git clone https://github.com/shixiaohu2206/hexo-theme-huhu.git themes/hexo-theme
 npm install --save shelljs
 ```
 
-## 站内搜索
+## 3 站内搜索
 
 目前主题只支持自生成搜索文件的方式，因为依赖第三方站内搜索，始终不是很稳定的赶脚，而且会加载许多第三方的服务文件，导致博客首屏加载慢
 
-### 安装
+### 3.1 安装
 
 安装`hexo-generator-json-content`插件，用于生成站内搜索生成文件
 
@@ -51,7 +51,7 @@ jsonContent:
   file: content.json
 ```
 
-## 新建 about 页面
+## 4 新建 about 页面
 
 about 页面没有单独 layout，直接以 markdown 渲染
 
@@ -59,7 +59,7 @@ about 页面没有单独 layout，直接以 markdown 渲染
 hexo new page "about"
 ```
 
-## 新建 tags、categories、friends 页面
+## 5 新建 tags、categories、friends 页面
 
 tags、categories、friends 有单独的 layout，所以新增命令后，需要在对应的文件中新增 layout 参数
 
@@ -79,7 +79,7 @@ layout: tags
 ---
 ```
 
-### friends 友链
+### 5.1 friends 友链
 
 在根目录下的 `_config.yml` 中新增配置，例如：
 
@@ -92,9 +92,9 @@ friends:
     intro: '码农'
 ```
 
-## Google 相关配置
+## 6 Google 相关配置
 
-如果使用 GTM 统计、Goole 站点、Google 广告等，则在根目录配置`_config.yml` 中添加配置
+如果使用 GTM 统计、Goole 站点、Google 广告等，则在根目录配置 `_config.yml` 中添加配置
 
 ```yml
 #google-site-verification 添加在meta信息中
@@ -107,7 +107,27 @@ gtm_id: ''
 google_ad_client: ''
 ```
 
-## 代码高亮
+## 7 Baidu 相关配置
+
+主题新加了一个[百度统计图表功能](https://blog.utone.xyz/2019111314005)，使用方法见[链接](https://blog.utone.xyz/2019111314005)
+
+使用百度站点、百度联盟、百度统计等功能，在根目录配置 `_config.yml` 中添加配置
+
+```yml
+# 百度站点验证码
+baidu_site_verification: ''
+
+#百度联盟验证
+baidu_union_verify: ''
+
+#百度统计
+baidu_tongji:
+  site_from: '2019/7/26'
+  site_id: ''
+  access_token: 'xxxxx'
+```
+
+## 8 代码高亮
 
 本主题支持 highlight.js 官方的 css，[highlight.js 官网](https://highlightjs.org/static/demo/)看中哪个颜色搭配，复制 css 样式替换`themes\huhu\source\style\highlight.styl`
 
@@ -122,18 +142,16 @@ highlight:
   tab_replace:
 ```
 
-## 文章评论
+## 9 文章评论
 
 支持两种方案，二选一
 
 1. valine
 2. 畅言
 
-### valine 评论
+### 9.1 valine 评论
 
-[https://valine.js.org](https://valine.js.org)
-
-在根目录配置 `_config.yml` 中添加
+[官网教程](https://valine.js.org)，在根目录配置 `_config.yml` 中添加
 
 ```yml
 #valine评论
@@ -142,11 +160,9 @@ valine:
   API_KEY: ''
 ```
 
-### 畅言评论
+### 9.2 畅言评论
 
-[http://changyan.kuaizhan.com](http://changyan.kuaizhan.com)
-
-在根目录配置 `_config.yml` 中添加
+[官网教程](http://changyan.kuaizhan.com)，在根目录配置 `_config.yml` 中添加
 
 ```yml
 #畅言评论
@@ -155,7 +171,7 @@ changyan:
   conf: ''
 ```
 
-## RSS
+## 10 RSS
 
 安装插件`hexo-generator-feed`
 
@@ -179,10 +195,24 @@ feed:
   icon: icon.png
 ```
 
-## 兼容性
+## 11 置顶
+
+```bash
+#卸载官方插件
+npm uninstall hexo-generator-index --save
+
+#安装插件
+npm install hexo-generator-index-pin-top --save
+```
+
+在 markdown 文件的 `Front-matter`，新增 `top: 1`即可，top 值越大，越靠前展示
+
+主题在列表页增加了置顶的小图标，具体样式查看[虎虎博客](https://blog.utone.xyz/)
+
+## 12 兼容性
 
 使用了 Flex 布局，不支持 IE8
 
-## 自定义
+## 13 自定义
 
 其他的自定义，修改也很方便，比如更换打赏二维码、Follow 地址，都在主题的配置中`themes\huhu\_config.yml`，各位大佬请自行修改

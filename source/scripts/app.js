@@ -161,8 +161,6 @@ require(['jquery', 'util', 'valine', 'chart', 'registerSW', 'fancybox', 'confirm
       HUHU_CONFIG.baidu_tongji.access_token &&
       chart
     ) {
-      $('.site_from').html(HUHU_CONFIG.baidu_tongji.site_from || '')
-
       function prefix(date) {
         date = date + ''
         return date.length === 1 ? '0' + date : date
@@ -206,7 +204,7 @@ require(['jquery', 'util', 'valine', 'chart', 'registerSW', 'fancybox', 'confirm
               uv.push(value[1])
             })
 
-          var ctx = document.getElementById('myChart').getContext('2d')
+          var ctx = document.getElementById('line-chart').getContext('2d')
           new chart(ctx, {
             type: 'line',
             data: {
@@ -228,7 +226,12 @@ require(['jquery', 'util', 'valine', 'chart', 'registerSW', 'fancybox', 'confirm
                 }
               ]
             },
-            options: {}
+            options: {
+              title: {
+                display: true,
+                text: '近七天访问'
+              }
+            }
           })
         }
       })
@@ -239,8 +242,11 @@ require(['jquery', 'util', 'valine', 'chart', 'registerSW', 'fancybox', 'confirm
       var start_date = `${all_start_date.getFullYear()}${prefix(all_start_date.getMonth() + 1)}${prefix(
         all_start_date.getDate()
       )}`
-      var all_url = `https://openapi.baidu.com/rest/2.0/tongji/report/getData?access_token=${HUHU_CONFIG.baidu_tongji.access_token}&site_id=${HUHU_CONFIG.baidu_tongji.site_id}&method=source/all/a&start_date=${start_date}&end_date=${end_date}&metrics=pv_count,visitor_count`
 
+      var site_date = parseInt(Math.abs(date.getTime() - all_start_date.getTime()) / 1000 / 60 / 60 / 24)
+      $('.site_from').html(HUHU_CONFIG.baidu_tongji.site_from || '')
+      $('.site_date').html(site_date || '')
+      var all_url = `https://openapi.baidu.com/rest/2.0/tongji/report/getData?access_token=${HUHU_CONFIG.baidu_tongji.access_token}&site_id=${HUHU_CONFIG.baidu_tongji.site_id}&method=source/all/a&start_date=${start_date}&end_date=${end_date}&metrics=pv_count,visitor_count`
       function getAllData() {
         var data = util.STORAGE.getInstance().get(SITE_PV_UV)
         if (data) {
@@ -255,9 +261,27 @@ require(['jquery', 'util', 'valine', 'chart', 'registerSW', 'fancybox', 'confirm
       }
 
       getAllData().then(data => {
-        if (data && data.result && data.result.pageSum) {
+        setStatic(SITE_PV_UV, data)
+        if (data && data.result && data.result.pageSum && data.result.items) {
           $('.site_pv').html(data.result.pageSum[0][0] || '')
           $('.site_uv').html(data.result.pageSum[0][1] || '')
+          var labels = []
+          var datasets = []
+          data.result.items[0].map(item => labels.push(item[0].name))
+          data.result.items[1].map(item => datasets.push(item[0]))
+          var ctx = document.getElementById('doughnut-chart').getContext('2d')
+          new chart(ctx, {
+            type: 'doughnut',
+            data: {
+              labels: labels,
+              datasets: [
+                {
+                  data: datasets,
+                  backgroundColor: ['#d7ecfb', '#ffd8e1', '#e6d9ff']
+                }
+              ]
+            }
+          })
         }
       })
     }

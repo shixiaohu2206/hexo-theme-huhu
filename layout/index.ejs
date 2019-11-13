@@ -2,7 +2,29 @@
 <div class="posts">
   <ul>
     <% page.posts.each(function (post, key) { %> <% let bg = post.photos && post.photos[0] || ''%>
-    <li class="item">
+
+    <% if (key === 2 && theme.google_ad_client && !_.isEmpty(theme.google_ad_client)) { %>
+      <li class="item">
+        <div class="google-ads">
+          <ins class="adsbygoogle"
+              style="display:block"
+              data-ad-format="fluid"
+              data-ad-layout-key="-fb+5w+4e-db+86"
+              data-ad-client="ca-pub-9618079338040236"
+              data-ad-slot="8288106873"></ins>
+          <script>
+              (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+      </li>
+    <% } %>
+
+  <li class="item">
+
+      <% if (post.top) { %>
+        <span class="top"><img src="/images/top.png" alt="top.png" class="animated infinite tada"></span>
+      <% } %>
+
       <% if (bg) { %>
       <div class="bg">
         <a
