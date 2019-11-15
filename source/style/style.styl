@@ -382,6 +382,33 @@
     }
 }
 
+#fixed-menu-wrap {
+    bottom: 1rem
+    right: 1rem
+    z-index: 999
+    position: fixed
+
+    span {
+        center()
+        width: 2.5rem
+        height: 2.5rem
+        cursor: pointer
+        border-radius: 100%
+        display: inline-block
+        box-sizing: border-box
+        background-color: #7f7f7f
+        transition: all 0.2s
+    }
+
+    .icon-arrowup {
+        transform: translate3d(-80%, -60%, 0)
+    }
+
+    .icon-toc {
+        transform: translate3d(-60%, -170%, 0)
+    }
+}
+
 #progress {
     top: 0
     position: fixed

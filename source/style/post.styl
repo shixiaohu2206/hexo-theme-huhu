@@ -414,3 +414,44 @@ line-height = 1.5rem
     margin: 1.5rem 0
   }
 }
+
+#post-toc {
+  position: fixed
+  top: 10rem
+  right: 0.5rem
+  z-index: 999
+  padding: 1rem
+  width: 17rem
+  font-size: 0.875rem
+  list-style-type: none
+  border-radius: 0.5rem
+  box-sizing: border-box
+  background-color: #f7f7f7
+
+  .title {
+    font-size: 1.5rem
+  }
+
+  .toc > li {
+    ellipsis()
+    margin-bottom: 0.3rem
+  }
+
+  a {
+    &:hover {
+      color: #42a5f5
+    }
+  }
+
+  ul, ol, dl {
+    margin: 0 1rem
+    list-style-type: none
+  }
+
+  ul, ol {
+    ul, ol {
+      margin-top: 0
+      margin-bottom: 0
+    }
+  }
+}
