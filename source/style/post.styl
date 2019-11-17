@@ -24,13 +24,13 @@ line-height = 1.5rem
 .top {
   z-index: 1
   top: -1rem
-  right: -4rem
+  right: -3rem
   position: absolute
   transform: rotate(30deg)
 
   .iconfont {
     color: #f46267
-    font-size: 5rem !important
+    font-size: 4rem !important
   }
 }
 
@@ -304,18 +304,10 @@ line-height = 1.5rem
     position: relative
     border-bottom: 1px solid color-border
 
-    .headerlink {
-      position: absolute
-      width: 1rem
-      color: green
-      font-weight: bold
-      font-size: 1.1rem
-      margin-left: -1rem
-      display: none
-    }
-
-    &:hover >.headerlink {
-      display: inline-block !important
+    .post-anchor {
+      font-weight: bolder
+      font-size: 1.6rem
+      margin-left: 0.3rem
     }
   }
 
@@ -417,11 +409,13 @@ line-height = 1.5rem
 
 #post-toc {
   position: fixed
-  top: 10rem
+  top: 15%
   right: 0.5rem
   z-index: 999
   padding: 1rem
   width: 17rem
+  height: 30rem
+  overflow: auto
   font-size: 0.875rem
   list-style-type: none
   border-radius: 0.5rem
@@ -429,12 +423,26 @@ line-height = 1.5rem
   background-color: #f7f7f7
 
   .title {
-    font-size: 1.5rem
+    font-weight: bold
+    font-size: 1.875rem
+  }
+
+  .toc-number {
+    font-size: 0.8125rem
   }
 
   .toc > li {
     ellipsis()
-    margin-bottom: 0.3rem
+    margin-bottom: 0.4rem
+
+    > a {
+      width: 100%
+      // font-weight: bold
+    }
+
+    > ol, ul > a {
+      margin-top: 0.3rem
+    }
   }
 
   a {
@@ -444,7 +452,7 @@ line-height = 1.5rem
   }
 
   ul, ol, dl {
-    margin: 0 1rem
+    margin: 0.4rem 1rem
     list-style-type: none
   }
 

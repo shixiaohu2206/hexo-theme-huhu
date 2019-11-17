@@ -21,6 +21,10 @@
     }
 }
 
+.hide {
+    display: none !important
+}
+
 #header {
     z-index: 999
     position: fixed
@@ -211,7 +215,10 @@
     padding: 2rem
     box-sizing: border-box
     background-color: #000
-    display: none
+    display-flex()
+    align-items(center)
+    justify-content(center)
+    flex-direction(column)
 
     .icon-close {
         cursor: pointer
@@ -253,6 +260,9 @@
     display: none
     background-color: #f1f1f1
     box-sizing: border-box
+    display: flex
+    flex-direction(column)
+    align-items(center)
 
     .input-wrap {
         center()
@@ -382,30 +392,45 @@
     }
 }
 
+.menu-reset {
+    opacity: 0 !important
+    transform: translate3d(0, 0, 0) !important
+}
+
 #fixed-menu-wrap {
-    bottom: 1rem
-    right: 1rem
     z-index: 999
-    position: fixed
 
     span {
+        bottom: 1rem
+        right: 1rem
+        position: fixed
         center()
+        color: #fff
+        text-align: center
         width: 2.5rem
         height: 2.5rem
         cursor: pointer
         border-radius: 100%
-        display: inline-block
         box-sizing: border-box
-        background-color: #7f7f7f
-        transition: all 0.2s
+        font-weight: bold
+        background-color: #313131
+        opacity: 1
+        transition: all 0.3s
     }
 
-    .icon-arrowup {
-        transform: translate3d(-80%, -60%, 0)
+    span:nth-child(1) {
+        font-size: 1rem
+        transform: translate3d(-170%, 0, 0)
     }
 
-    .icon-toc {
-        transform: translate3d(-60%, -170%, 0)
+    span:nth-child(2) {
+        font-size: 0.75rem
+        transform: translate3d(-130%, -120%, 0)
+    }
+
+    span:nth-child(3) {
+        font-size: 0.875rem
+        transform: translate3d(-12%, -170%, 0)
     }
 }
 

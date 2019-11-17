@@ -39,23 +39,61 @@ require(['jquery', 'util', 'valine', 'chart', 'registerSW', 'fancybox', 'confirm
 
     // phone menu
     $(document).on('click', '.menu-icon', function() {
-      $('#menu-mask').toggleClass('showMenuMask')
+      $('#menu-mask')
+        .removeClass('hide')
+        .toggleClass('showMenuMask')
+        .toggleClass('hideMenuMask')
       $('body').toggleClass('overflow')
     })
 
     $(document).on('click', '#menu-mask .icon-close', function() {
-      $('#menu-mask').toggleClass('showMenuMask')
+      $('#menu-mask')
+        .removeClass('hide')
+        .toggleClass('showMenuMask')
+        .toggleClass('hideMenuMask')
       $('body').toggleClass('overflow')
+    })
+
+    // fixed-menu
+    $(document).on('click', '#fixed-menu', function() {
+      $('#fixed-menu-wrap > span').toggleClass('menu-reset')
+    })
+
+    $('h1,h2,h3,h4,h5,h6').hover(
+      function() {
+        $(this)
+          .find('.post-anchor')
+          .text('#')
+      },
+      function() {
+        $(this)
+          .find('.post-anchor')
+          .text('')
+      }
+    )
+
+    // post-toc
+    $(document).on('click', '.icon-toc', function() {
+      $('#post-toc')
+        .removeClass('hide')
+        .toggleClass('showToc')
+        .toggleClass('hiddenToc')
     })
 
     // search
-    $(document).on('click', '.search-box', function() {
-      $('#search-shade').toggleClass('showSearchBounce')
+    $(document).on('click', '.icon-sousuo', function() {
+      $('#search-shade')
+        .removeClass('hide')
+        .toggleClass('showSearch')
+        .toggleClass('hiddenSearch')
       $('body').toggleClass('overflow')
+      $('#fixed-menu-wrap > span').addClass('menu-reset')
     })
 
     $(document).on('click', '#search-shade .icon-close', function() {
-      $('#search-shade').toggleClass('showSearchBounce')
+      $('#search-shade')
+        .toggleClass('showSearch')
+        .toggleClass('hiddenSearch')
       $('body').toggleClass('overflow')
     })
 
@@ -117,11 +155,12 @@ require(['jquery', 'util', 'valine', 'chart', 'registerSW', 'fancybox', 'confirm
     window.onmousewheel = document.onmousewheel = mousewheel //滚动滑轮触发scrollFunc方法 ie 谷歌
 
     // fiexed menu
-    $(document).on('click', '#fixed-menu', function() {
+    $(document).on('click', '.icon-arrowup', function() {
       window.scrollTo({
         top: 0,
         behavior: 'smooth'
       })
+      $('#fixed-menu-wrap > span').addClass('menu-reset')
     })
 
     function handleDisplay() {
@@ -204,35 +243,37 @@ require(['jquery', 'util', 'valine', 'chart', 'registerSW', 'fancybox', 'confirm
               uv.push(value[1])
             })
 
-          var ctx = document.getElementById('line-chart').getContext('2d')
-          new chart(ctx, {
-            type: 'line',
-            data: {
-              labels: data.result.items[0],
-              datasets: [
-                {
-                  label: 'PV',
-                  data: pv,
-                  backgroundColor: ['rgba(54, 162, 235, 0.2)'],
-                  borderColor: ['rgba(54, 162, 235, 1)'],
-                  borderWidth: 2
-                },
-                {
-                  label: 'UV',
-                  data: uv,
-                  backgroundColor: ['rgba(255, 99, 132, 0.2)'],
-                  borderColor: ['rgba(255, 99, 132, 1)'],
-                  borderWidth: 2
+          var dom = document.getElementById('line-chart')
+          var ctx = dom ? dom.getContext('2d') : null
+          ctx &&
+            new chart(ctx, {
+              type: 'line',
+              data: {
+                labels: data.result.items[0],
+                datasets: [
+                  {
+                    label: 'PV',
+                    data: pv,
+                    backgroundColor: ['rgba(54, 162, 235, 0.2)'],
+                    borderColor: ['rgba(54, 162, 235, 1)'],
+                    borderWidth: 2
+                  },
+                  {
+                    label: 'UV',
+                    data: uv,
+                    backgroundColor: ['rgba(255, 99, 132, 0.2)'],
+                    borderColor: ['rgba(255, 99, 132, 1)'],
+                    borderWidth: 2
+                  }
+                ]
+              },
+              options: {
+                title: {
+                  display: true,
+                  text: '近七天访问'
                 }
-              ]
-            },
-            options: {
-              title: {
-                display: true,
-                text: '近七天访问'
               }
-            }
-          })
+            })
         }
       })
 
@@ -269,19 +310,21 @@ require(['jquery', 'util', 'valine', 'chart', 'registerSW', 'fancybox', 'confirm
           var datasets = []
           data.result.items[0].map(item => labels.push(item[0].name))
           data.result.items[1].map(item => datasets.push(item[0]))
-          var ctx = document.getElementById('doughnut-chart').getContext('2d')
-          new chart(ctx, {
-            type: 'doughnut',
-            data: {
-              labels: labels,
-              datasets: [
-                {
-                  data: datasets,
-                  backgroundColor: ['#d7ecfb', '#ffd8e1', '#e6d9ff']
-                }
-              ]
-            }
-          })
+          var dom = document.getElementById('doughnut-chart')
+          var ctx = dom ? dom.getContext('2d') : null
+          ctx &&
+            new chart(ctx, {
+              type: 'doughnut',
+              data: {
+                labels: labels,
+                datasets: [
+                  {
+                    data: datasets,
+                    backgroundColor: ['#d7ecfb', '#ffd8e1', '#e6d9ff']
+                  }
+                ]
+              }
+            })
         }
       })
     }

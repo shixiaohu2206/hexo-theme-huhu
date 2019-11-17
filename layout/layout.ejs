@@ -20,14 +20,15 @@
   </head>
   <body>
     <% if (page.content && !is_current('about') && toc(page.content, {list_number: false})) { %>
-      <div id="post-toc">
-        <span class="title">Toc</span>
-        <%- toc(page.content, {list_number: false}) %>
-      </div>
+    <div id="post-toc" class="animated hiddenToc hide">
+      <span class="title">Toc</span>
+      <%- toc(page.content, {list_number: false}) %>
+    </div>
     <% } %>
     <div id="fixed-menu-wrap">
-      <span class="iconfont icon-arrowup"></span>
-      <span class="icon-toc">Toc</span>
+      <span class="iconfont icon-sousuo menu-reset"></span>
+      <span class="icon-toc menu-reset">Toc</span>
+      <span class="iconfont icon-arrowup menu-reset"></span>
     </div>
     <div id="fixed-menu">
       <span class="iconfont icon-menu-"></span>
@@ -35,7 +36,7 @@
     <div id="progress">
       <div class="line"></div>
     </div>
-    <div id="search-shade" class="animated">
+    <div id="search-shade" class="animated hiddenSearch hide">
       <div class="input-wrap">
         <span class="iconfont icon-sousuo"></span>
         <input type="text" placeholder="Search" />
@@ -49,7 +50,7 @@
         <ul id="result-box"></ul>
       </div>
     </div>
-    <div id="menu-mask" class="animated">
+    <div id="menu-mask" class="animated hideMenuMask hide">
       <span class="iconfont icon-close"></span>
       <div class="nav">
         <% for (var i in theme.menu){ %>

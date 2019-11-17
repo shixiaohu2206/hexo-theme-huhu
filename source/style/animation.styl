@@ -22,12 +22,12 @@
   animation-name: bounceInLeft
 }
 
-@keyframes showSearchBounce {
+@keyframes showBounce {
   from {
     -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1)
     animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1)
-    -webkit-transform: translate3d(100%, 0, 0)
-    transform: translate3d(100%, 0, 0)
+    -webkit-transform: translate3d(110%, 0, 0)
+    transform: translate3d(110%, 0, 0)
   }
 
   to {
@@ -38,12 +38,40 @@
   }
 }
 
-.showSearchBounce {
-  display: flex !important
-  flex-direction(column)
-  align-items(center)
-  -webkit-animation-name: showSearchBounce
-  animation-name: showSearchBounce
+@keyframes hiddenBounce {
+  from {
+    -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1)
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1)
+    -webkit-transform: translate3d(0, 0, 0)
+    transform: translate3d(0, 0, 0)
+  }
+
+  to {
+    -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1)
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1)
+    -webkit-transform: translate3d(110%, 0, 0)
+    transform: translate3d(110%, 0, 0)
+  }
+}
+
+.showSearch {
+  -webkit-animation-name: showBounce
+  animation-name: showBounce
+}
+
+.hiddenSearch {
+  -webkit-animation-name: hiddenBounce
+  animation-name: hiddenBounce
+}
+
+.showToc {
+  -webkit-animation-name: showBounce
+  animation-name: showBounce
+}
+
+.hiddenToc {
+  -webkit-animation-name: hiddenBounce
+  animation-name: hiddenBounce
 }
 
 @keyframes showMenuMask {
@@ -80,13 +108,41 @@
   }
 }
 
+@keyframes hideMenuMask {
+  from, 60%, 75%, 90%, to {
+    -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1)
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1)
+  }
+
+  0% {
+    -webkit-transform: translate3d(0, 0, 0)
+    transform: translate3d(0, 0, 0)
+  }
+
+  30% {
+    -webkit-transform: translate3d(0, -10px, 0)
+    transform: translate3d(0, -10px, 0)
+  }
+
+  50% {
+    -webkit-transform: translate3d(0, 25px, 0)
+    transform: translate3d(0, 25px, 0)
+  }
+
+  to {
+    -webkit-transform: translate3d(0, -100%, 0)
+    transform: translate3d(0, -100%, 0)
+  }
+}
+
 .showMenuMask {
-  display: flex !important
-  align-items(center)
-  justify-content(center)
-  flex-direction(column)
   -webkit-animation-name: showMenuMask
   animation-name: showMenuMask
+}
+
+.hideMenuMask {
+  -webkit-animation-name: hideMenuMask
+  animation-name: hideMenuMask
 }
 
 @keyframes bounceInRight {
