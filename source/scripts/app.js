@@ -81,7 +81,7 @@ require(['jquery', 'util', 'valine', 'chart', 'registerSW', 'fancybox', 'confirm
     })
 
     // search
-    $(document).on('click', '.icon-sousuo', function() {
+    $(document).on('click', '.search-box', function() {
       $('#search-shade')
         .removeClass('hide')
         .toggleClass('showSearch')
@@ -108,12 +108,12 @@ require(['jquery', 'util', 'valine', 'chart', 'registerSW', 'fancybox', 'confirm
     })
 
     // 咖啡
-    $(document).on('click', '#reward-button', function(e) {
+    $(document).on('click', '#reward-button', function() {
       $('#qr').toggle('1000')
     })
 
     // 顶部滚动进度条
-    $(window).scroll(function(e) {
+    $(window).scroll(function() {
       var pageHeight = document.documentElement.scrollHeight || document.body.scrollHeight // 页面总高度
       var windowHeight = document.documentElement.clientHeight || document.body.clientHeight // 浏览器视口高度
       var scrollAvail = pageHeight - windowHeight // 可滚动的高度
@@ -125,34 +125,34 @@ require(['jquery', 'util', 'valine', 'chart', 'registerSW', 'fancybox', 'confirm
     var mousewheel = function(e) {
       e = e || window.event
 
-      //判断浏览器IE，谷歌滑轮事件
+      // 判断浏览器IE，谷歌滑轮事件
       if (e.wheelDelta) {
-        //当滑轮向上滚动时
+        // 当滑轮向上滚动时
         if (e.wheelDelta > 0) {
           $('#side').removeClass('active')
         }
 
-        //当滑轮向下滚动时
+        // 当滑轮向下滚动时
         if (e.wheelDelta < 0) {
           $('#side').addClass('active')
         }
       }
-      //Firefox滑轮事件
+      // Firefox滑轮事件
       else if (e.detail) {
-        //当滑轮向上滚动时
+        // 当滑轮向上滚动时
         if (e.detail > 0) {
           $('#side').removeClass('active')
         }
 
-        //当滑轮向下滚动时
+        // 当滑轮向下滚动时
         if (e.detail < 0) {
           $('#side').addClass('active')
         }
       }
     }
 
-    document.addEventListener && document.addEventListener('DOMMouseScroll', mousewheel, false) //firefox
-    window.onmousewheel = document.onmousewheel = mousewheel //滚动滑轮触发scrollFunc方法 ie 谷歌
+    document.addEventListener && document.addEventListener('DOMMouseScroll', mousewheel, false) // firefox
+    window.onmousewheel = document.onmousewheel = mousewheel // 滚动滑轮触发scrollFunc方法 ie 谷歌
 
     // fiexed menu
     $(document).on('click', '.icon-arrowup', function() {
@@ -171,7 +171,7 @@ require(['jquery', 'util', 'valine', 'chart', 'registerSW', 'fancybox', 'confirm
       var cate = $(this)
         .attr('class')
         .split(' ')[0]
-      $('.post-wrap > .post').each(function(post) {
+      $('.post-wrap > .post').each(function() {
         if ($(this).hasClass(cate)) {
           $(this).addClass('active')
         } else {
@@ -206,7 +206,10 @@ require(['jquery', 'util', 'valine', 'chart', 'registerSW', 'fancybox', 'confirm
       }
 
       function setStatic(key, data) {
-        var SEARCH_EXPIRE = 1 * 24 * 60 * 60 * 1000 // 默认过期时间1天
+        // 过期时间为当天的24点
+        var zero = new Date(new Date().toLocaleDateString()).getTime() + 24 * 60 * 60 * 1000 // new Date().toLocaleDateString() "2019/11/18"
+        var now = new Date().getTime()
+        var SEARCH_EXPIRE = zero - now
         util.STORAGE.getInstance().set(key, data, SEARCH_EXPIRE)
       }
 
@@ -280,14 +283,14 @@ require(['jquery', 'util', 'valine', 'chart', 'registerSW', 'fancybox', 'confirm
       // 统计整站PV、UV
       var SITE_PV_UV = 'SITE_PV_UV'
       var all_start_date = new Date(HUHU_CONFIG.baidu_tongji.site_from || new Date())
-      var start_date = `${all_start_date.getFullYear()}${prefix(all_start_date.getMonth() + 1)}${prefix(
+      var format_start_date = `${all_start_date.getFullYear()}${prefix(all_start_date.getMonth() + 1)}${prefix(
         all_start_date.getDate()
       )}`
 
       var site_date = parseInt(Math.abs(date.getTime() - all_start_date.getTime()) / 1000 / 60 / 60 / 24)
       $('.site_from').html(HUHU_CONFIG.baidu_tongji.site_from || '')
       $('.site_date').html(site_date || '')
-      var all_url = `https://openapi.baidu.com/rest/2.0/tongji/report/getData?access_token=${HUHU_CONFIG.baidu_tongji.access_token}&site_id=${HUHU_CONFIG.baidu_tongji.site_id}&method=source/all/a&start_date=${start_date}&end_date=${end_date}&metrics=pv_count,visitor_count`
+      var all_url = `https://openapi.baidu.com/rest/2.0/tongji/report/getData?access_token=${HUHU_CONFIG.baidu_tongji.access_token}&site_id=${HUHU_CONFIG.baidu_tongji.site_id}&method=source/all/a&start_date=${format_start_date}&end_date=${end_date}&metrics=pv_count,visitor_count`
       function getAllData() {
         var data = util.STORAGE.getInstance().get(SITE_PV_UV)
         if (data) {
