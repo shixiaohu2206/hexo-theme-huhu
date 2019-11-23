@@ -31,7 +31,7 @@
         <div class="year">
             <% } %>
             <article class="item">
-            <a href="<%- post.path %>" title="<%= post.title %>">
+            <a href="<%- url_for(post.path) %>" title="<%= post.title %>">
                 <span><%= date(post.date, "YYYY/MM/DD") %></span>
                 <span><%= post.title %></span>
             </a>
