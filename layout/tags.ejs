@@ -17,7 +17,7 @@
     <div class="post <%= cate.name %> <%= key === 0 ? 'active' : '' %>">
       <% cate.posts.sort('date').each(function (post) {%>
       <li>
-        <a href="<%- post.path %>" title="<%= post.title %>">
+        <a href="<%- url_for(post.path) %>" title="<%= post.title %>">
           <span><%= date(post.date, "YYYY/MM/DD") %></span>
           <span><%= post.title %></span>
         </a>
