@@ -74,12 +74,12 @@
   <div class="post-guide">
     <div class="item left">
         <% if (page.prev){ %>
-          <a href="<%- page.prev.path %>"><%- page.prev.title %></a>
+          <a href="<%- url_for(page.prev.path) %>"><%- page.prev.title %></a>
         <% } %>
     </div>
     <div class="item right">
         <% if (page.next){ %>
-          <a href="<%- page.next.path %>"><%- page.next.title %></a>
+          <a href="<%- url_for(page.next.path) %>"><%- page.next.title %></a>
         <% } %>
     </div>
   </div>
