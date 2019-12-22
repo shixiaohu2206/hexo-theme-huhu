@@ -18,6 +18,7 @@
     util: 'util',
     share: 'share',
     search: 'search',
+    pagemap: 'pagemap.min',
     registerSW: 'registerSW'
   }
 })

@@ -1,10 +1,29 @@
-require(['jquery', 'util', 'valine', 'chart', 'registerSW', 'fancybox', 'confirm', 'share', 'search'], function(
-  $,
-  util,
-  valine,
-  chart
-) {
+require([
+  'jquery',
+  'util',
+  'valine',
+  'chart',
+  'pagemap',
+  'registerSW',
+  'fancybox',
+  'confirm',
+  'share',
+  'search'
+], function($, util, valine, chart, pagemap) {
   'use strict'
+
+  pagemap(document.querySelector('#pagemap'), {
+    viewport: null,
+    styles: {
+      'header,footer,section,article': 'rgba(0, 0, 0, 0.08)',
+      'h1,a': 'rgba(0, 0, 0, 0.1)',
+      'h2,h3,h4': 'rgba(0, 0, 0, 0.08)'
+    },
+    back: 'rgba(0, 0, 0, 0.02)',
+    view: 'rgba(0, 0, 0, 0.05)',
+    drag: ' rgba(0, 0, 0, 0.1)',
+    interval: null
+  })
 
   // valine评论
   var API_ID = (HUHU_CONFIG.valine && HUHU_CONFIG.valine.API_ID) || ''

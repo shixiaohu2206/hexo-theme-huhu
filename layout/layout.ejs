@@ -19,6 +19,7 @@
     <%- css('style/style') %>
   </head>
   <body>
+    <canvas id='pagemap'></canvas>
     <% if (page.content && !is_current('about') && toc(page.content, {list_number: false})) { %>
     <div id="post-toc" class="animated hiddenToc hide">
       <span class="title">Toc</span>
